@@ -32,7 +32,7 @@
         <div class="contenedor-navegacion">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand me-auto" href="{{route('welcome')}}">UMSS</a>
+                    <a class="navbar-brand me-auto" href="{{ route('welcome') }}">UMSS</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -42,13 +42,13 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                             <li class="nav-item   text-center">
-                                <a class="nav-link  active" href="#">Simulaciones</a>
+                                <a class="nav-link  active" href="{{ route('simulations') }}">Simulaciones</a>
                             </li>
 
 
                             <li class='nav-item  text-center nav-item-usuario'>
                                 <div class='info-usuario-menu '>
-                                    <p class='nav-link  nombre-usuario-menu '>{{$usuario->name}}</p>
+                                    <p class='nav-link  nombre-usuario-menu '>{{ $usuario->name }}</p>
                                     <div class='imagen-usuario'>
                                         <p class='texto-imagen-usuario'>{{ substr($usuario->name, 0, 1) }}</p>
                                     </div>
@@ -84,10 +84,9 @@
 
         <div class="contenedor-cards-simulaciones">
 
-            <div class="card w-50 card-simulacion">
+            <!--<div class="card w-50 card-simulacion">
                 <div class="card-body ">
-                    <h5 class="card-title">Simulaci asda dasd as sda ssadadasd dasdasadadsadasdas sd asdadasd sdad sd
-                        asdon 2</h5>
+                    <h5 class="card-title">Simulacion de plan de negocios 1</h5>
                     <p class="card-text">Creado: 20/58/20203 </p>
                     <div class="seccion-btns-card">
                         <a href="#" class="btn btn-primary">Ingresar</a>
@@ -95,19 +94,23 @@
                     </div>
 
                 </div>
-            </div>
+            </div>  -->
 
-            <div class="card w-50 card-simulacion">
-                <div class="card-body ">
-                    <h5 class="card-title">Simulacion Plan de negicios</h5>
-                    <p class="card-text">Creado: 20/58/20203 </p>
-                    <div class="seccion-btns-card">
-                        <a href="#" class="btn btn-primary">Ingresar</a>
-                        <a class="btn btn-danger">Eliminar</a>
+            @foreach ($simulaciones as $simulacion)
+                <div class="card w-50 card-simulacion">
+                    <div class="card-body ">
+                        <h5 class="card-title">{{ $simulacion->title }}</h5>
+                        <p class="card-text">Creado: {{ $simulacion->created_at }} </p>
+                        <div class="seccion-btns-card">
+                            <a href="#" class="btn btn-primary">Ingresar</a>
+                            <a class="btn btn-danger">Eliminar</a>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
+            @endforeach
+
+
         </div>
 
 
