@@ -1,0 +1,47 @@
+.contenido-main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.titulo-seccion-simulaciones {
+    width: 80%;
+    margin: 70px auto 10px auto;
+    padding-left: 15px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: rgb(172, 172, 172) solid 1px;
+
+
+}
+
+.contenedor-cards-simulaciones {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+
+.card-simulacion {
+    width: 300px !important;
+    height: 190px !important;
+    margin: 15px;
+
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 51px !important;
+    overflow: hidden;
+    height: 51px !important;
+    text-overflow: ellipsis !important;
+}
+
+.seccion-btns-card .btn{
+    margin-right: 15px;
+}
