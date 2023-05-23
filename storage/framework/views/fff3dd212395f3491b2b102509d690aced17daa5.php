@@ -129,7 +129,12 @@
                             <td>
                                 <div class="seccion-btns">
                                     <button href="#" class="btn btn-primary">Ingresar</button>
-                                    <button class="btn btn-danger"> Eliminar</button>
+                                   
+                                    <form action="<?php echo e(route('simulation.deleate')); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="idSimulation" value=<?php echo e($simulacion->idSimulation); ?>>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('estas seguro de borrar?')"> Eliminar</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\simulationModel;
+use App\Models\usersModel;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -34,11 +35,24 @@ class simulationsController extends Controller
       return response()->json([
          "alerta" => "success"
       ]);
-
-      
    }
 
-   function simulationShow(){
+   function deleteSimulation(Request $request)
+   {
+      $usuario = Auth::user();
+      $elemento = simulationModel::where('idUser', $usuario->id)->where('idSimulation', $request->input('idSimulation'))->first();
+
+      if ($elemento) {
+         $elemento->delete();
+      } else {
+         // en caso de no encontrar el registro
+      }
+
+      return redirect(route('simulations'));
+   }
+
+   function simulationShow()
+   {
       return view('newRoutes.simulation');
    }
 }

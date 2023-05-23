@@ -9,9 +9,29 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>dsasdasd</h1>
-    <h1>dsasdasd</h1>
-    <h1>dsasdasd</h1>
+   <?php echo Form::open(); ?>
+
+
+    <div class="card">
+        <img class="card-img-top" src="holder.js/100x180/" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="holder.js/100x180/" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+   </div>
+   
+
+
+   <?php echo Form::close(); ?>
+
     
     
 </body>

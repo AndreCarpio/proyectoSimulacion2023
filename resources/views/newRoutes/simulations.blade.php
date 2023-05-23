@@ -119,7 +119,12 @@
                             <td>
                                 <div class="seccion-btns">
                                     <button href="#" class="btn btn-primary">Ingresar</button>
-                                    <button class="btn btn-danger"> Eliminar</button>
+                                   
+                                    <form action="{{route('simulation.deleate')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="idSimulation" value={{$simulacion->idSimulation}}>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('estas seguro de borrar?')"> Eliminar</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
