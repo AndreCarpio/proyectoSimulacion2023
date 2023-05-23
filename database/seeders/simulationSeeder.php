@@ -14,7 +14,9 @@ class simulationSeeder extends Seeder
      */
     public function run()
     {
-        $s1 = new simulationModel();
+
+        simulationModel::factory(50)->create();
+        /*$s1 = new simulationModel();
 
         $s1 -> idUser = 1 ;
         $s1 -> title = "Simulacion de modelo de negocios 1" ;
@@ -41,10 +43,9 @@ class simulationSeeder extends Seeder
         $s4 -> title = "Modelo de negocios 2" ;
 
         $s4 -> save();
-        
+        */
 
 
-        //idUser	idSimulation	created_at	updated_at	
 
     }
 }

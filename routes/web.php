@@ -28,4 +28,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get("/simulations", [simulationsController::class,"simulationsList"])->name('simulations');
+    Route::post("/simulations/create",[simulationsController::class,"createSimulation"])->name('simulation.create');
+    Route::get("/simulations/{idSumulacion}",[simulationsController::class,"simulationShow"])->name('simulation.show');
+
 });

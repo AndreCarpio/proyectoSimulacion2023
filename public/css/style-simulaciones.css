@@ -1,8 +1,20 @@
 .contenido-main {
     display: flex;
     flex-direction: column;
+    margin: 0px auto;
 }
 
+.barra-opciones {
+    width: 80%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 10px auto 10px auto;
+
+}
+
+.btn-crear-simulacion {
+    margin: 5px;
+}
 
 .titulo-seccion-simulaciones {
     width: 80%;
@@ -17,31 +29,82 @@
 
 }
 
-.contenedor-cards-simulaciones {
-    width: 90%;
+.contenedor-lista-simulaciones {
+    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 10px auto;
-}
-
-.card-simulacion {
-    width: 300px !important;
-    height: 190px !important;
-    margin: 15px;
 
 }
 
-.card-title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    max-height: 51px !important;
-    overflow: hidden;
-    height: 51px !important;
-    text-overflow: ellipsis !important;
+.tabla-simulaciones {
+    font-size: 17px;
 }
 
-.seccion-btns-card .btn{
-    margin-right: 15px;
+.seccion-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.seccion-btns button {
+    margin: 2px 6px;
+}
+
+.celda-tabla-simulaciones p {
+    margin-top: 10px;
+    margin-bottom: auto;
+}
+
+
+.contenedor-crear-simulacion {
+
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.48503151260504207) 0%, rgba(0, 0, 0, 0.47102591036414565) 100%);
+
+
+}
+
+
+.contenedor-crear-simulacion .card {
+    margin: auto;
+    width: 400px;
+    padding: 10px;
+}
+
+.form-label-crear-simulacion {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 5px auto;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+
+
+.btns-form-crear-simuacion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btns-form-crear-simuacion button {
+    margin: 5px 20px;
+}
+
+.oculto {
+    display: none;
 }

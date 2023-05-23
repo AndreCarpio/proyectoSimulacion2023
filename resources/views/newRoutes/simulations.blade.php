@@ -80,41 +80,83 @@
     </div>
 
     <main class="contenido-main">
+
+
         <p class="titulo-seccion-simulaciones">LISTA DE SIMULACIONES</p>
+        <div class="barra-opciones">
+            <button type="button" class="btn btn-primary btn-crear-simulacion">Crear Simulacion</button>
+        </div>
 
-        <div class="contenedor-cards-simulaciones">
+        <div class="contenedor-lista-simulaciones">
 
-            <!--<div class="card w-50 card-simulacion">
-                <div class="card-body ">
-                    <h5 class="card-title">Simulacion de plan de negocios 1</h5>
-                    <p class="card-text">Creado: 20/58/20203 </p>
-                    <div class="seccion-btns-card">
-                        <a href="#" class="btn btn-primary">Ingresar</a>
-                        <a class="btn btn-danger">Eliminar</a>
-                    </div>
+            <table class="table caption-top tabla-simulaciones">
 
-                </div>
-            </div>  -->
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha Creacion</th>
+                        <th scope="col" style="text-align: center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            @foreach ($simulaciones as $simulacion)
-                <div class="card w-50 card-simulacion">
-                    <div class="card-body ">
-                        <h5 class="card-title">{{ $simulacion->title }}</h5>
-                        <p class="card-text">Creado: {{ $simulacion->created_at }} </p>
-                        <div class="seccion-btns-card">
-                            <a href="#" class="btn btn-primary">Ingresar</a>
-                            <a class="btn btn-danger">Eliminar</a>
-                        </div>
+                    @php
+                        $n = 0;
+                    @endphp
+                    @foreach ($simulaciones as $simulacion)
+                        <tr class="fila-tabla-simulaciones">
+                            <th class="celda-tabla-simulaciones" scope="row">
+                                <p>{{ $n = $n + 1 }}</p>
+                            </th>
+                            <td class="celda-tabla-simulaciones">
+                                <p>{{ $simulacion->title }}</p>
+                            </td>
+                            <td class="celda-tabla-simulaciones">
+                                <p>{{ $simulacion->created_at }}</p>
+                            </td>
+                            <td>
+                                <div class="seccion-btns">
+                                    <button href="#" class="btn btn-primary">Ingresar</button>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
 
-                    </div>
-                </div>
-            @endforeach
 
+
+                </tbody>
+            </table>
 
         </div>
 
 
     </main>
+
+    <div class="contenedor-crear-simulacion oculto">
+        <div class="card">
+            <div class="card-body">
+                <form class="formulario-crear-simulacion" class="row g-3" autocomplete="off" id="form">
+                    @csrf
+
+                    <label for="nombre" class="form-label-crear-simulacion">Nombre de la Simulacion</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre"
+                        placeholder="Ingresa el nombre">
+                    <span class="badge text-danger errors-nombre"></span>
+                    <div class="btns-form-crear-simuacion">
+
+
+                        <button type="text" id="btn-enviar" class="btn btn-primary">Aceptar</button>
+                        <button type="text" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -127,6 +169,10 @@
     <script src='{{ asset('js/particles.js') }}'></script>
     <script src='{{ asset('js/scrip-particles.js') }}'></script>
     <script src='{{ asset('js/script-nav.js') }}'></script>
+    <script src='{{ asset('js/script-simulations.js') }}'></script>
+
+
+
 
 </body>
 
