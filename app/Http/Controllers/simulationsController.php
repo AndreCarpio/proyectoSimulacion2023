@@ -51,8 +51,8 @@ class simulationsController extends Controller
       return redirect(route('simulations'));
    }
 
-   function simulationShow()
+   function simulationShow($idSimulacion)
    {
-      return view('newRoutes.simulation');
+      return view('newRoutes.simulation',compact('idSimulacion'));
    }
 }

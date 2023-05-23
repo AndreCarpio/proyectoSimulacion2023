@@ -118,7 +118,7 @@
                             </td>
                             <td>
                                 <div class="seccion-btns">
-                                    <button href="#" class="btn btn-primary">Ingresar</button>
+                                    <a href= "{{ route('simulation.show', $simulacion->idSimulation)}}" class="btn btn-primary ">Ingresar</a>
                                    
                                     <form action="{{route('simulation.deleate')}}" method="POST">
                                         @csrf

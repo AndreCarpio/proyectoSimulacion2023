@@ -128,7 +128,7 @@
                             </td>
                             <td>
                                 <div class="seccion-btns">
-                                    <button href="#" class="btn btn-primary">Ingresar</button>
+                                    <a href= "<?php echo e(route('simulation.show', $simulacion->idSimulation)); ?>" class="btn btn-primary ">Ingresar</a>
                                    
                                     <form action="<?php echo e(route('simulation.deleate')); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
