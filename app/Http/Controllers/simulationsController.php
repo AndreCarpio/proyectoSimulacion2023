@@ -26,7 +26,7 @@ class simulationsController extends Controller
 
       $simulation = new simulationModel();
       $simulation->idUser = $usuario->id;
-      $simulation->title = $request->input('nombre');
+      $simulation->title = $request->input('input-nombre-simulacion');
       $simulation->save();
 
       $simulation->save();

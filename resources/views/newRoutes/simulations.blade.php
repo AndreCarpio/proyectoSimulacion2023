@@ -17,6 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="icon" href="https://www.umss.edu.bo/wp-content/uploads/2021/07/cropped-Logo7-32x32.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel='stylesheet' href='{{ asset('css/style-nav.css') }}'>
     <link rel="stylesheet" href='{{ asset('css/style-particles.css') }}'>
@@ -109,7 +110,7 @@
                             <th class="celda-tabla-simulaciones" scope="row">
                                 <p>{{ $n = $n + 1 }}</p>
                             </th>
-                            <td class="celda-tabla-simulaciones">
+                            <td class="celda-tabla-simulaciones celda-tabla-simulaciones-titulo">
                                 <p>{{ $simulacion->title }}</p>
                             </td>
                             <td class="celda-tabla-simulaciones">
@@ -118,7 +119,7 @@
                             <td>
                                 <div class="seccion-btns">
                                     <button href="#" class="btn btn-primary">Ingresar</button>
-                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-danger"> Eliminar</button>
                                 </div>
                             </td>
                         </tr>
@@ -137,18 +138,21 @@
     <div class="contenedor-crear-simulacion oculto">
         <div class="card">
             <div class="card-body">
-                <form class="formulario-crear-simulacion" class="row g-3" autocomplete="off" id="form">
+                <form class="formulario-crear-simulacion" class="row g-3" autocomplete="off" id="form-crear-simulacion">
                     @csrf
 
-                    <label for="nombre" class="form-label-crear-simulacion">Nombre de la Simulacion</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre"
-                        placeholder="Ingresa el nombre">
+                    <label for="input-nombre-simulacion" class="form-label-crear-simulacion">Nombre de la
+                        Simulacion</label>
+                    <input type="text" class="form-control" id="input-nombre-simulacion"
+                        name="input-nombre-simulacion" placeholder="Ingresa el nombre">
                     <span class="badge text-danger errors-nombre"></span>
                     <div class="btns-form-crear-simuacion">
 
 
-                        <button type="text" id="btn-enviar" class="btn btn-primary">Aceptar</button>
-                        <button type="text" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
+                        <button type="text" id="btn-enviar" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-spin loader-btn-aceptar oculto"></i> Aceptar
+                        </button>
+                        <button type="text" id="btn-cancelar" class="btn btn-secondary"> Cancelar</button>
                     </div>
                 </form>
             </div>
