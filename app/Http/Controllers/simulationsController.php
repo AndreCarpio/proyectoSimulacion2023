@@ -8,7 +8,7 @@ use App\Models\simulationModel;
 use App\Models\usersModel;
 use Illuminate\Support\Facades\Auth;
 
-
+date_default_timezone_set("America/La_Paz");
 
 class simulationsController extends Controller
 {
@@ -56,6 +56,8 @@ class simulationsController extends Controller
       $usuario = Auth::user();
       $tabla = new simulationModel();
       $simulaciones = $tabla->where('idUser', $usuario->id)->orderBy('created_at', 'desc')->get();
+
+      // obtener todo los datos de la simulacion de la bade de datos
       return view('newRoutes.simulation',compact('idSimulacion','usuario'));
    }
 }
