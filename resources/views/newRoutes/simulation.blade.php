@@ -1,21 +1,18 @@
+@extends('templates.templateType1')
 
+@section('title')
+    Simulacion
+@endsection
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-
-   <h1> mostrar contenido de la simulacion con id: {{$idSimulacion}}</h1>
-
-
-
+@section('estilos')
     
+@endsection
+
+@section('contenidoPrincipal')
+   <h1>Cponer contenido de la simulacion con id: {{$idSimulacion}}</h1>
+@endsection
+
+
+@section('scripts')
     
-</body>
-</html>
+@endsection

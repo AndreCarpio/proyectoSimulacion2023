@@ -53,6 +53,9 @@ class simulationsController extends Controller
 
    function simulationShow($idSimulacion)
    {
-      return view('newRoutes.simulation',compact('idSimulacion'));
+      $usuario = Auth::user();
+      $tabla = new simulationModel();
+      $simulaciones = $tabla->where('idUser', $usuario->id)->orderBy('created_at', 'desc')->get();
+      return view('newRoutes.simulation',compact('idSimulacion','usuario'));
    }
 }
