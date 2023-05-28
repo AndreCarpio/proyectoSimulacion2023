@@ -1,3 +1,4 @@
+/*------------------------------------------------  codigo plantilla form 1--------------------------------------------------- */
 body{
     font-size: 19px;
 }
@@ -41,6 +42,7 @@ label{
     border-radius: 10px;
     padding: 25px 10px 10px 10px;
     margin: 10px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -68,6 +70,51 @@ label{
 
 }
 
+
+
+textarea{
+    resize: vertical;
+    padding-right: 5px!important;
+    font-size: 1rem!important;
+}
+textarea::-webkit-scrollbar{
+    width: 13px;
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-thumb{
+    background: #a1a1a1;
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}
+
+.titulo-tabla-tipo1{
+    font-size: 0.9rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-agregar-tabla-tipo1{
+    margin: 3px 10px 3px auto;
+    font-size: 0.8rem;
+}
+.btn-agregar-tabla-tipo1 i{
+    margin-right: 5px;
+}
+
+
+/*------------------------------------------------  codigo plantilla form 2--------------------------------------------------- */
+/*------------------------------------------------  codigo plantilla form 3--------------------------------------------------- */
+/*------------------------------------------------  codigo plantilla form 4--------------------------------------------------- */
+/*------------------------------------------------  codigo plantilla form 5--------------------------------------------------- */
+
+
+/*------------------------------------------------   reponsive  --------------------------------------------------- */
+
 @media (max-width : 1300px ){
     body{
         font-size: 17px;
@@ -75,7 +122,9 @@ label{
     .contenedor-formulario-simulacion{
         width: 80%;
     }
-    
+    .titulo-seccion{
+        font-size: 1.4rem;
+    }
 }
 
 @media (max-width : 800px ){
@@ -92,6 +141,10 @@ label{
        
         font-size: 1.2rem;
     }
+
+    .titulo-seccion{
+        font-size: 1.3rem;
+    }
     
 }
 
@@ -102,9 +155,18 @@ label{
     .titulo-simulacion{
         font-size: 1.2rem;
     }
+
+    .contenedor-formulario-simulacion{
+        width: 97%;
+        padding: 5px 10px;
+    }
     
     .cotenedor-legenda{
        
+        font-size: 1.1rem;
+    }
+
+    .titulo-seccion{
         font-size: 1.1rem;
     }
 }
