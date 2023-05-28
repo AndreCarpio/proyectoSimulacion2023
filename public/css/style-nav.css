@@ -1,6 +1,5 @@
 body{
     font-family: 'Arimo', sans-serif ;
-    font-size: 15px;
     margin: 0;
     padding: 0;
     min-width: 400px;
@@ -20,6 +19,7 @@ body::-webkit-scrollbar-thumb{
 main{
    padding-top: 97px ;
    min-height: 100vh;
+   margin: 0px auto;
 }
 
 header{
@@ -28,6 +28,7 @@ header{
     width: 100%;
     background-color: #f9fafb;
     z-index: 10;
+    font-size: 15px;
 }
 
 .contenedor-navegacion{
@@ -191,7 +192,7 @@ header{
 
 @media(max-width: 1400px){
 
-    body{
+    header{
         font-size: 13px;
     }
 
@@ -217,7 +218,7 @@ header{
 
 @media(max-width: 1070px){
 
-    body{
+    header{
         font-size: 10px;
     }
 

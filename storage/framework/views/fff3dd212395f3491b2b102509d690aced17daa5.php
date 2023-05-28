@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?>
+<?php $__env->startSection('titulo'); ?>
     Simulacion
 <?php $__env->stopSection(); ?>
 

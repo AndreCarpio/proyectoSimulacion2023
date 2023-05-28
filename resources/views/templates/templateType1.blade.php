@@ -19,12 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    <link rel='stylesheet' href='{{ asset('css/style-nav.css') }}'>
+   
     <link rel="stylesheet" href='{{ asset('css/style-particles.css') }}'>
 
     @yield('estilos')
 
     <title>@yield('titulo')</title>
+    <link rel='stylesheet' href='{{ asset('css/style-nav.css') }}'>
 
 </head>
 

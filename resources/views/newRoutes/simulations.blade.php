@@ -1,6 +1,6 @@
 @extends('templates.templateType1')
 
-@section('title')
+@section('titulo')
     Simulacion
 @endsection
 
