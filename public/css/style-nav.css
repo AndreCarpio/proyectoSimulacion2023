@@ -199,22 +199,10 @@ header{
     .nav-link{
         font-size: 1.5em;
     }
-
-    .contenido-main{
-        width: 90%;
-    }
-
-
     
 }
 
-@media(max-width: 1200px){
 
-    .contenido-main{
-        width: 95%;
-    }
-    
-}
 
 @media(max-width: 1070px){
 

@@ -152,7 +152,7 @@
 <p class="titulo-seccion">▶ Descripcion del plan de negocios</p>
 
 <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Describa la actividad que quiere emprender</label>
+    <label  class="form-label">Describa la actividad que quiere emprender</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
 </div>
 <div class="row g-3 mb-3">
@@ -170,12 +170,12 @@
     </div>
 </div>
 <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">¿Qué inversiones necesita para la
+    <label  class="form-label">¿Qué inversiones necesita para la
         actividad?</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
 </div>
 <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Describa los motivos por la que el proyecto será
+    <label  class="form-label">Describa los motivos por la que el proyecto será
         rentable</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
 </div>

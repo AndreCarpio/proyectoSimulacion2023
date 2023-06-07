@@ -1,6 +1,6 @@
 /*------------------------------------------------  codigo plantilla form 1--------------------------------------------------- */
 body{
-    font-size: 19px;
+    font-size: 17px;
 }
 .contenedor-formulario-simulacion{
     width: 70%;
@@ -14,7 +14,7 @@ body{
 }
 
 .titulo-simulacion{
-    font-size: 2rem;
+    font-size: 1.8rem;
     width: 100%;
     text-align: center;
     margin: 0.94rem auto;
@@ -23,12 +23,12 @@ body{
 }
 
 .titulo-seccion{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     padding-bottom: 0.3rem;
     margin-bottom: 1.6rem;
     margin-top: 0.6rem;
-    border-bottom: 3px solid  rgb(99, 99, 99);
+    border-bottom: 2px solid  rgb(99, 99, 99);
     color: rgb(70, 70, 70);
 }
 
@@ -106,6 +106,36 @@ textarea::-webkit-scrollbar-thumb:hover {
     margin-right: 5px;
 }
 
+.tabla-tipo2  th{
+    font-size: 0.9rem;
+    vertical-align: middle;
+    text-align: center;
+    
+}
+
+.tabla-tipo2  td,input{
+    text-align: center;
+    
+}
+
+.tabla-tipo2 input{
+    padding: 2px 4px;
+
+}
+.tabla-tipo2 button{
+    padding: 0.6rem;
+    line-height: 1;
+    font-size: 0.875rem;
+
+}
+
+.tabla-tipo2-celda-pequenia{
+    width: 110px;
+}
+.tabla-tipo2-celda-btn{
+    width: 60px;
+}
+
 
 /*------------------------------------------------  codigo plantilla form 2--------------------------------------------------- */
 /*------------------------------------------------  codigo plantilla form 3--------------------------------------------------- */
@@ -115,12 +145,16 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 /*------------------------------------------------   reponsive  --------------------------------------------------- */
 
+@media (max-width : 1500px ){
+ 
+    .contenedor-formulario-simulacion{
+        width: 85%;
+    }
+}
+
 @media (max-width : 1300px ){
     body{
         font-size: 17px;
-    }
-    .contenedor-formulario-simulacion{
-        width: 80%;
     }
     .titulo-seccion{
         font-size: 1.4rem;
@@ -143,7 +177,11 @@ textarea::-webkit-scrollbar-thumb:hover {
     }
 
     .titulo-seccion{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+    .tabla-tipo2  th{
+        font-size: 0.7rem;
+        
     }
     
 }
@@ -167,6 +205,6 @@ textarea::-webkit-scrollbar-thumb:hover {
     }
 
     .titulo-seccion{
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }
