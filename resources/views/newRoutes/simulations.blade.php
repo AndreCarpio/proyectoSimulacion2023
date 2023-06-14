@@ -90,5 +90,5 @@
 
 
 @section('scripts')
-    <script src='{{ asset('js/script-simulations.js') }}'></script>
+    <script src='{{ asset('js/script-simulations.js') }}' ></script>
 @endsection
