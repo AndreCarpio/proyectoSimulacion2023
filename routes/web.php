@@ -30,5 +30,6 @@ Route::middleware([
     Route::get("/simulations", [simulationsController::class,"simulationsList"])->name('simulations');
     Route::post("/simulations/create",[simulationsController::class,"createSimulation"])->name('simulation.create');
     Route::post("/simulations/delete",[simulationsController::class,"deleteSimulation"])->name('simulation.deleate');
-    Route::get("/simulations/{idSumulacion}",[simulationsController::class,"simulationShow"])->name('simulation.show');
+    Route::get("/simulations/{idSimulacion}",[simulationsController::class,"simulationShow"])->name('simulation.show');
+    Route::get("/simulations/{idSimulacion}/costos",[simulationsController::class,"simulationCostos"])->name('simulation.costos');
 });

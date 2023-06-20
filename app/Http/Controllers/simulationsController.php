@@ -60,4 +60,7 @@ class simulationsController extends Controller
       // obtener todo los datos de la simulacion de la bade de datos
       return view('newRoutes.simulation',compact('idSimulacion','usuario'));
    }
+   function simulationCostos(){
+      return view('costos.costos');
+   }
 }
