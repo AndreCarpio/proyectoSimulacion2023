@@ -61,7 +61,7 @@
       <option value="media">Media</option>
       <option value="baja">Baja</option>
     </select>
-
+    
     <label>Julio:</label>
     <select id="mes7" name="mes7" onchange="calcularTotal()">
       <option value="alta">Alta</option>
@@ -141,7 +141,7 @@
                 <td><input type="text" id="totCom1"></td>
                 <td><input type="text" id="totVen1"></td>
                 <td><input type="text" id="mub1"></td>
-
+                
             </tr>
             <tr>
                 <td><input type="text" id="pro2"></td>
@@ -300,272 +300,6 @@
             </tr>
         </tbody>
     </table>
-    <h2>ANALISIS FINANCIERO</h2>
-    <h6> <b> Costos Operativos</b></h6>
-        <label>Impuestos (Bs):</label>
-        <input type="number" id="impuestos" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Alimentación (Bs):</label>
-        <input type="number" id="alimentacion" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Luz (Bs):</label>
-        <input type="number" id="servicioLuz" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Agua (Bs):</label>
-        <input type="number" id="servicioAgua" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Gas (Bs):</label>
-        <input type="number" id="servicioGas" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Telefono (Bs):</label>
-        <input type="number" id="servicioTel" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Internet (Bs):</label>
-        <input type="number" id="servicioInt" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de Alquiler (Bs):</label>
-        <input type="number" id="servicioAlq" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Servicio de transporte (Bs):</label>
-        <input type="number" id="servicioTra" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Material de Escritorio (Bs):</label>
-        <input type="number" id="escritorio" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Pago a Empleados (Bs):</label>
-        <input type="number" id="empleados" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Promoción (Bs):</label>
-        <input type="number" id="promocion" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Vestimenta (Bs):</label>
-        <input type="number" id="vestimenta" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Salud (Bs):</label>
-        <input type="number" id="salud" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>Otros (Bs):</label>
-        <input type="number" id="otros" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
-        <label>TOTAL (Bs):</label>
-        <input type="number" id="totalOperativo" min="0" readonly><br>
-        <br>
-        <!--utilidad-->
-        <h6> <b> TABLA DE UTILIDAD</b></h6>
-        <table>
-            <tbody>
-                <tr>
-                    <td>(+)Ingresos Totales:</td>
-                    <td><input type="text" id="ingresosTotales"></td>
-                </tr>
-                <tr>
-                    <td>(-)Costos Directos:</td>
-                    <td><input type="text" id="costosDirectos"></td>
-                </tr>
-                <tr>
-                    <td>(=)Utilidad Bruta:</td>
-                    <td><input type="text" id="utilidadBruta"></td>
-                </tr>
-                <tr>
-                    <td>(-)Costo Operativo:</td>
-                    <td><input type="text" id="costoOperativo"></td>
-                </tr>
-                <tr>
-                    <td>(=)Utilidad Operativa:</td>
-                    <td><input type="text" id="utilidadOperativa"></td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-        <h6> <b> DATOS DE CREDITO</b></h6>
-        <label>Frecuencia: </label>
-        <select id="frecuenciaCredito" onchange="calcularFlujo()">
-            <option value="12">Mensual</option>
-            <option value="6">Bimestral</option>
-            <option value="4">Trimestral</option>
-            <option value="3">Cuatrimestral</option>
-            <option value="2">Semestral</option>
-            <option value="1">Anual</option>
-        </select>
-        <label>Poliza: </label>
-        <input type="number" id="poliza" min="0"  onchange="calcularFlujo()" onkeyup="calcularFlujo()">
-        <br>
-        <label>Monto (Bs): </label>
-        <input type="number" id="monto" min="0" onchange="calcularFlujo()" onkeyup="calcularFlujo()">
-        <label>Plazo (meses): </label>
-        <input type="number" id="plazo" min="0" onchange="calcularFlujo()" onkeyup="calcularFlujo()">
-        <label>Tasa de interes (%): </label>
-        <input type="number" id="interes" min="0" onchange="calcularFlujo()" onkeyup="calcularFlujo()">
-        <br>
-        <label>Tipo de Cuota: </label>
-        <select id="tipoCuota" onchange="calcularFlujo()">
-            <option value="0">Cuota Fija</option>
-            <option value="1">Cuota Variable</option>
-            <option value="2">Personalizada</option>
-        </select><br>
-        <label>Actividad: </label>
-        <select id="actividad" onchange="calcularFlujo()">
-            <option value="0">Productiva</option>
-            <option value="1">Servicios</option>
-        </select><br>
-        <br>
-        <h6> <b> FLUJO </b></h6>
-        <table border="1">
-            <thead>
-                <tr>
-                    <td></td>
-                    <td>Inicial</td>
-                    <td>Enero</td>
-                    <td>Febrero</td>
-                    <td>Marzo</td>
-                    <td>Abril</td>
-                    <td>Mayo</td>
-                    <td>Junio</td>
-                    <td>Julio</td>
-                    <td>Agosto</td>
-                    <td>Septiembre</td>
-                    <td>Octubre</td>
-                    <td>Noviembre</td>
-                    <td>Diciembre</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Inversiones</td>
-                    <td> <input type="text" id="inversion0"> </td>
-                    <td> <input type="text" id="inversion1"> </td>
-                    <td> <input type="text" id="inversion2"> </td>
-                    <td> <input type="text" id="inversion3"> </td>
-                    <td> <input type="text" id="inversion4"> </td>
-                    <td> <input type="text" id="inversion5"> </td>
-                    <td> <input type="text" id="inversion6"> </td>
-                    <td> <input type="text" id="inversion7"> </td>
-                    <td> <input type="text" id="inversion8"> </td>
-                    <td> <input type="text" id="inversion9"> </td>
-                    <td> <input type="text" id="inversion10"> </td>
-                    <td> <input type="text" id="inversion11"> </td>
-                    <td> <input type="text" id="inversion12"> </td>
-                </tr>
-                <tr>
-                    <td>Saldo Inicial</td>
-                    <td> <input type="text" id="saldoInicial0"> </td>
-                    <td> <input type="text" id="saldoInicial1"> </td>
-                    <td> <input type="text" id="saldoInicial2"> </td>
-                    <td> <input type="text" id="saldoInicial3"> </td>
-                    <td> <input type="text" id="saldoInicial4"> </td>
-                    <td> <input type="text" id="saldoInicial5"> </td>
-                    <td> <input type="text" id="saldoInicial6"> </td>
-                    <td> <input type="text" id="saldoInicial7"> </td>
-                    <td> <input type="text" id="saldoInicial8"> </td>
-                    <td> <input type="text" id="saldoInicial9"> </td>
-                    <td> <input type="text" id="saldoInicial10"> </td>
-                    <td> <input type="text" id="saldoInicial11"> </td>
-                    <td> <input type="text" id="saldoInicial12"> </td>
-                </tr>
-                <tr>
-                    <td>Ingresos</td>
-                    <td> <input type="text" id="ingresos0"> </td>
-                    <td> <input type="text" id="ingresos1"> </td>
-                    <td> <input type="text" id="ingresos2"> </td>
-                    <td> <input type="text" id="ingresos3"> </td>
-                    <td> <input type="text" id="ingresos4"> </td>
-                    <td> <input type="text" id="ingresos5"> </td>
-                    <td> <input type="text" id="ingresos6"> </td>
-                    <td> <input type="text" id="ingresos7"> </td>
-                    <td> <input type="text" id="ingresos8"> </td>
-                    <td> <input type="text" id="ingresos9"> </td>
-                    <td> <input type="text" id="ingresos10"> </td>
-                    <td> <input type="text" id="ingresos11"> </td>
-                    <td> <input type="text" id="ingresos12"> </td>
-                </tr>
-                <tr>
-                    <td>Costos de producción</td>
-                    <td> <input type="text" id="costosProduccion0"> </td>
-                    <td> <input type="text" id="costosProduccion1"> </td>
-                    <td> <input type="text" id="costosProduccion2"> </td>
-                    <td> <input type="text" id="costosProduccion3"> </td>
-                    <td> <input type="text" id="costosProduccion4"> </td>
-                    <td> <input type="text" id="costosProduccion5"> </td>
-                    <td> <input type="text" id="costosProduccion6"> </td>
-                    <td> <input type="text" id="costosProduccion7"> </td>
-                    <td> <input type="text" id="costosProduccion8"> </td>
-                    <td> <input type="text" id="costosProduccion9"> </td>
-                    <td> <input type="text" id="costosProduccion10"> </td>
-                    <td> <input type="text" id="costosProduccion12"> </td>
-                    <td> <input type="text" id="costosProduccion11"> </td>
-                </tr>
-                <tr>
-                    <td>Utilidad Bruta</td>
-                    <td> <input type="text" id="utilidadBruta0"> </td>
-                    <td> <input type="text" id="utilidadBruta1"> </td>
-                    <td> <input type="text" id="utilidadBruta2"> </td>
-                    <td> <input type="text" id="utilidadBruta3"> </td>
-                    <td> <input type="text" id="utilidadBruta4"> </td>
-                    <td> <input type="text" id="utilidadBruta5"> </td>
-                    <td> <input type="text" id="utilidadBruta6"> </td>
-                    <td> <input type="text" id="utilidadBruta7"> </td>
-                    <td> <input type="text" id="utilidadBruta8"> </td>
-                    <td> <input type="text" id="utilidadBruta9"> </td>
-                    <td> <input type="text" id="utilidadBruta10"> </td>
-                    <td> <input type="text" id="utilidadBruta11"> </td>
-                    <td> <input type="text" id="utilidadBruta12"> </td>
-                </tr>
-                <tr>
-                    <td>Costos Fijos</td>
-                    <td> <input type="text" id="costosFijos0"> </td>
-                    <td> <input type="text" id="costosFijos1"> </td>
-                    <td> <input type="text" id="costosFijos2"> </td>
-                    <td> <input type="text" id="costosFijos3"> </td>
-                    <td> <input type="text" id="costosFijos4"> </td>
-                    <td> <input type="text" id="costosFijos5"> </td>
-                    <td> <input type="text" id="costosFijos6"> </td>
-                    <td> <input type="text" id="costosFijos7"> </td>
-                    <td> <input type="text" id="costosFijos8"> </td>
-                    <td> <input type="text" id="costosFijos9"> </td>
-                    <td> <input type="text" id="costosFijos10"> </td>
-                    <td> <input type="text" id="costosFijos11"> </td>
-                    <td> <input type="text" id="costosFijos12"> </td>
-                </tr>
-                <tr>
-                    <td>Utilidad Neta</td>
-                    <td> <input type="text" id="utilidadNeta0"> </td>
-                    <td> <input type="text" id="utilidadNeta1"> </td>
-                    <td> <input type="text" id="utilidadNeta2"> </td>
-                    <td> <input type="text" id="utilidadNeta3"> </td>
-                    <td> <input type="text" id="utilidadNeta4"> </td>
-                    <td> <input type="text" id="utilidadNeta5"> </td>
-                    <td> <input type="text" id="utilidadNeta6"> </td>
-                    <td> <input type="text" id="utilidadNeta7"> </td>
-                    <td> <input type="text" id="utilidadNeta8"> </td>
-                    <td> <input type="text" id="utilidadNeta9"> </td>
-                    <td> <input type="text" id="utilidadNeta10"> </td>
-                    <td> <input type="text" id="utilidadNeta11"> </td>
-                    <td> <input type="text" id="utilidadNeta12"> </td>
-                </tr>
-                <tr>
-                    <td>Cuota</td>
-                    <td> <input type="text" id="cuota0"> </td>
-                    <td> <input type="text" id="cuota1"> </td>
-                    <td> <input type="text" id="cuota2"> </td>
-                    <td> <input type="text" id="cuota3"> </td>
-                    <td> <input type="text" id="cuota4"> </td>
-                    <td> <input type="text" id="cuota5"> </td>
-                    <td> <input type="text" id="cuota6"> </td>
-                    <td> <input type="text" id="cuota7"> </td>
-                    <td> <input type="text" id="cuota8"> </td>
-                    <td> <input type="text" id="cuota9"> </td>
-                    <td> <input type="text" id="cuota10"> </td>
-                    <td> <input type="text" id="cuota11"> </td>
-                    <td> <input type="text" id="cuota12"> </td>
-                </tr>
-                <tr>
-                    <td>Flujo Acumulado</td>
-                    <td> <input type="text" id="flujoAcumulado0"> </td>
-                    <td> <input type="text" id="flujoAcumulado1"> </td>
-                    <td> <input type="text" id="flujoAcumulado2"> </td>
-                    <td> <input type="text" id="flujoAcumulado3"> </td>
-                    <td> <input type="text" id="flujoAcumulado4"> </td>
-                    <td> <input type="text" id="flujoAcumulado5"> </td>
-                    <td> <input type="text" id="flujoAcumulado6"> </td>
-                    <td> <input type="text" id="flujoAcumulado7"> </td>
-                    <td> <input type="text" id="flujoAcumulado8"> </td>
-                    <td> <input type="text" id="flujoAcumulado9"> </td>
-                    <td> <input type="text" id="flujoAcumulado10"> </td>
-                    <td> <input type="text" id="flujoAcumulado11"> </td>
-                    <td> <input type="text" id="flujoAcumulado12"> </td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-        <label>VAN: </label>
-        <input type="text" id="van" value=""><br>
-        <label>TIR: </label>
-        <input type="text" id="tir" value="">
 </form>
 </body>
 <script>
@@ -616,13 +350,13 @@
             }else if(document.getElementById('mes'+i).value == 'media'){
                 document.getElementById('venMen'+i).value = document.getElementById('medio').value;
             }else if(document.getElementById('mes'+i).value == 'baja'){
-                document.getElementById('venMen'+i).value = document.getElementById('bajo').value;
+                document.getElementById('venMen'+i).value = document.getElementById('bajo').value;    
             }
         }
         for (let i = 1; i <= 12; i++) {
             aux = (1-mubTotal);
             document.getElementById('comMen'+i).value = (document.getElementById('venMen'+i).value*aux).toFixed(0);
-
+            
         }
         for(let i = 1; i <= 12; i++){
             sumaAnuVen = sumaAnuVen + Number(document.getElementById('venMen'+i).value);
@@ -631,61 +365,6 @@
         document.getElementById('venAnu').value = sumaAnuVen;
         document.getElementById('comAnu').value = sumaAnuCom;
     }
-</script>
-<script>
-function sumarOperativo(){
-    document.getElementById("totalOperativo").value =
-    parseFloat(document.getElementById("impuestos").value) +
-    parseFloat(document.getElementById("alimentacion").value) +
-    parseFloat(document.getElementById("servicioLuz").value) +
-    parseFloat(document.getElementById("servicioAgua").value) +
-    parseFloat(document.getElementById("servicioGas").value) +
-    parseFloat(document.getElementById("servicioTel").value) +
-    parseFloat(document.getElementById("servicioInt").value) +
-    parseFloat(document.getElementById("servicioAlq").value) +
-    parseFloat(document.getElementById("servicioTra").value) +
-    parseFloat(document.getElementById("escritorio").value) +
-    parseFloat(document.getElementById("empleados").value) +
-    parseFloat(document.getElementById("promocion").value) +
-    parseFloat(document.getElementById("vestimenta").value) +
-    parseFloat(document.getElementById("salud").value) +
-    parseFloat(document.getElementById("otros").value);
-}
-function calcularFlujo(){
-    document.getElementById("inversion0").value = document.getElementById("monto").value;
-    document.getElementById("saldoInicial0").value = document.getElementById("monto").value;
-    for(let i = 1; i <= 12; i++){
-        document.getElementById("ingresos"+i).value = document.getElementById("venMen"+i).value;
-        document.getElementById("costosProduccion"+i).value = document.getElementById("comMen"+i).value;
-    }
-    for(let i = 1; i <= 12; i++){
-        document.getElementById("utilidadBruta"+i).value = parseFloat(document.getElementById("ingresos"+i).value)-parseFloat(document.getElementById("costosProduccion"+i).value);
-        document.getElementById("costosFijos"+i).value = document.getElementById("totalOperativo").value;
-    }
-    for(let i = 1; i <= 12; i++){
-        document.getElementById("utilidadNeta"+i).value = parseFloat(document.getElementById("utilidadBruta"+i).value) - parseFloat(document.getElementById("costosFijos"+i).value);
-        document.getElementById("cuota"+i).value = 300*parseFloat(document.getElementById("tipoCuota").value);
-    }
-    for(let i = 1; i <= 12; i++){
-        if(document.getElementById("saldoInicial"+i).value == ""){
-          document.getElementById("flujoAcumulado"+i).value = parseFloat(document.getElementById("utilidadNeta"+i).value) - parseFloat(document.getElementById("cuota"+i).value);
-        }else{
-            document.getElementById("flujoAcumulado"+i).value = parseFloat(document.getElementById("utilidadNeta"+i).value) - parseFloat(document.getElementById("cuota"+i).value) + parseFloat(document.getElementById("saldoInicial"+i).value);
-        }
-    }
-    for(let i = 2; i <= 12; i++){
-        document.getElementById("saldoInicial"+i).value = parseFloat(document.getElementById("flujoAcumulado"+(i-1)).value);
-    }
-    let flujos = [];
-    flujos[0] = parseFloat(document.getElementById("flujoAcumulado1").value)*(-1);
-    for(let i = 1; i <= 11; i++){
-        flujos[i] = parseFloat(document.getElementById("flujoAcumulado"+(i+1)).value);
-    }
-    let tasa = parseFloat(document.getElementById("interes").value);
-
-    document.getElementById("van").value = calcularVAN(flujos,tasa);
-    document.getElementById("tir").value = calcularTIR(flujos,0.0001);
-}
 </script>
 <script>
 function calcularVAN(flujosEfectivo, tasaDescuento) {
@@ -701,7 +380,7 @@ function calcularTIR(flujosEfectivo, precision) {
     let maxIteraciones = 10000;
     let iteracion = 0;
     let error = 1;
-
+  
     while (error > precision && iteracion < maxIteraciones) {
         let van = calcularVAN(flujosEfectivo, tir);
         let derivada = 0;
@@ -713,7 +392,7 @@ function calcularTIR(flujosEfectivo, precision) {
         error = Math.abs(incremento / tir);
         iteracion++;
     }
-
+  
   return tir * 100;
 }
 
