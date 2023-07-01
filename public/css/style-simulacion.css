@@ -185,7 +185,89 @@ input {
 .table-desembolsos .mensaje{
     background-color: #FFFB69;
 }
-/*------------------------------------------------  codigo plantilla form 4--------------------------------------------------- */
+/*------------------------------------------------  codigo plantilla costos --------------------------------------------------- */
+
+.formulario-costos{
+    display: flex;
+    flex-direction: column;
+}
+.rango-venta-mes{
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+
+.rango-venta-mes input{
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.comportamiento-ventas-mes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.comportamiento-mes{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+
+.comportamiento-mes select{
+    width: 95px;
+    margin-bottom: 8px;
+}
+.tabla-manofactura-producto-servicios{
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding: 10px 0px;
+    margin-bottom: 25px;
+}
+.tabla-manofactura-producto-servicios input{
+    min-width: 120px;
+    text-overflow: ellipsis;
+}
+
+.tabla-manofactura-producto-servicios select{
+    min-width: 150px;
+    text-overflow: ellipsis;
+}
+.tabla-manofactura-producto-servicios::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+    border-radius: 20px;
+}
+
+.tabla-manofactura-producto-servicios::-webkit-scrollbar-thumb {
+    background: #a1a1a1;
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+.tabla-manofactura-producto-servicios::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}
+
+.tabla-ventas-costos-mensuales input{
+    border: none;
+    padding: 0px;
+    text-overflow: ellipsis;
+
+}
+
+.tabla-ventas-costos-mensuales td{
+    text-align: center;
+
+}
 /*------------------------------------------------  codigo plantilla form 5--------------------------------------------------- */
 
 
