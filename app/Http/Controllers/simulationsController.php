@@ -55,11 +55,15 @@ class simulationsController extends Controller
    {
       $usuario = Auth::user();
       $tabla = new simulationModel();
-      $simulaciones = $tabla->where('idUser', $usuario->id)->orderBy('created_at', 'desc')->get();
-
+      $simulacion = $tabla->where('idUser', $usuario->id)
+                                 ->where('idSimulation', $idSimulacion)
+                                               ->orderBy('created_at', 'desc')
+                                               ->get();
       // obtener todo los datos de la simulacion de la bade de datos
-      return view('newRoutes.simulation',compact('idSimulacion','usuario'));
+      return view('newRoutes.simulation',compact('idSimulacion','usuario','simulacion'));
    }
+
+   
    function simulationCostos(){
       return view('costos.costos');
    }

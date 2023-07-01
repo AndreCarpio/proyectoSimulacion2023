@@ -22,7 +22,7 @@
         </div>
 
 
-        <p class="titulo-simulacion">Titulo de la simulacion ID: {{ $idSimulacion }}</p>
+        <p class="titulo-simulacion">{{ ($simulacion[0])['title'] }}</p>
 
         <div class="seccion-informacion">
             @include('templates.simulationForms.informacion')
