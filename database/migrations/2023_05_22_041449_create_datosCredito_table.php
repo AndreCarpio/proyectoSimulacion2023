@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateDatosCreditoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,7 +23,7 @@ class CreateSimulationsTable extends Migration
             $table->string('cuota',30)->nullable();
             $table->string('actividad',30)->nullable();
             $table->double('cuentaAproximada',10,2)->nullable();
-            $table->bigIncrements('idEmprendimiento');
+            $table->unsignedBigInteger('idEmprendimiento');
             $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });

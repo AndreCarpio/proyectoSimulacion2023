@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateComplementarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateSimulationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('flujo', function (Blueprint $table) {
+        Schema::create('complementario', function (Blueprint $table) {
             $table->id();
-            $table->date('desembolsoEst')->nullable();
-            $table->date('implemenEst')->nullable();
-            $table->double('van',10,2)->nullable();
-            $table->double('tir',10,2)->nullable();
-            $table->bigIncrements('idEmprendimiento');
+            $table->text('ingresos')->nullable();
+            $table->text('deudas')->nullable();
+            $table->text('experiencia',10,2)->nullable();
+            $table->text('garantia',10,2)->nullable();
+            $table->text('otros',10,2)->nullable();
+            $table->unsignedBigInteger('idEmprendimiento');
             $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreateSimulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flujo');
+        Schema::dropIfExists('complementario');
     }
 }

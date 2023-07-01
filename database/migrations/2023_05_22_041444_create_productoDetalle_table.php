@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateProductoDetalleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ class CreateSimulationsTable extends Migration
             $table->integer('unidades')->nullable();
             $table->double('precioUnitario',10,2)->nullable();
             $table->double('total',10,2)->nullable();
-            $table->bigIncrements('idProducto');
+            $table->unsignedBigInteger('idProducto');
             $table->foreign('idProducto')->references('id')->on('producto');
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreatePresupuestoTotalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,8 +22,8 @@ class CreateSimulationsTable extends Migration
             $table->double('montoFinanciar',10,2)->nullable();
             $table->double('primerDesembolso',10,2)->nullable();
             $table->double('segundoDesembolso',10,2)->nullable();
-            $table->bigIncrements('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('empredimiento');
+            $table->unsignedBigInteger('idEmprendimiento');
+            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
     }

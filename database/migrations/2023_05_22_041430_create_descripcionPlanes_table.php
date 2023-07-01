@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateDescripcionPlanesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSimulationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('utilidad', function (Blueprint $table) {
+        Schema::create('descripcionPlanes', function (Blueprint $table) {
             $table->id();
-            $table->double('ingresos',10,2)->nullable();
-            $table->double('costos',10,2)->nullable();
-            $table->double('utilidadBruta',10,2)->nullable();
-            $table->double('costoOperativo',10,2)->nullable();
-            $table->double('utilidadOperativa',10,2)->nullable();
-            $table->bigIncrements('idEmprendimiento');
+            $table->string('descripcion',255)->nullable();
+            $table->tinyInteger('funcionando')->nullable();
+            $table->integer('inicio')->nullable();
+            $table->text('inversiones')->nullable();
+            $table->text('rentabilidades')->nullable();
+            $table->unsignedBigInteger('idEmprendimiento');
             $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateSimulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utilidad');
+        Schema::dropIfExists('descripcionPlanes');
     }
 }

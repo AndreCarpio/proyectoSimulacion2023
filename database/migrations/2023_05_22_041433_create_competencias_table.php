@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateCompetenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,9 @@ class CreateSimulationsTable extends Migration
             $table->id();
             $table->text('competidores')->nullable();
             $table->text('acciones')->nullable();
-            $table->bigIncrements('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('empredimiento');
+            
+            $table->unsignedBigInteger('idEmprendimiento');
+            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
     }

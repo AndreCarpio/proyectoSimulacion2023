@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateOperativosDetalleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateSimulationsTable extends Migration
             $table->id();
             $table->string('descripcion',255)->nullable();
             $table->double('monto',10,2)->nullable();
-            $table->bigIncrements('idOperativo');
+            $table->unsignedBigInteger('idOperativo');
             $table->foreign('idOperativo')->references('id')->on('operativos');
             $table->timestamps();
         });

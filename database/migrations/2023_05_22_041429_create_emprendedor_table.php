@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateEmprendedorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -24,8 +24,8 @@ class CreateSimulationsTable extends Migration
             $table->string('direccion',100)->nullable();
             $table->string('contacto',10)->nullable();
             $table->string('tipo',1)->nullable();
-            $table->bigIncrements('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('empredimiento');
+            $table->unsignedBigInteger('idEmprendimiento');
+            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
     }

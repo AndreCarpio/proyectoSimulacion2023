@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateMercadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -24,8 +24,8 @@ class CreateSimulationsTable extends Migration
             $table->integer('cantidadProductosMin')->nullable();
             $table->integer('cantidadProduccionMax')->nullable();
             $table->integer('cantidadProduccionMin')->nullable();
-            $table->bigIncrements('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('empredimiento');
+            $table->unsignedBigInteger('idEmprendimiento');
+            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
     }

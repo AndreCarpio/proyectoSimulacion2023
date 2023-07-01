@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSimulationsTable extends Migration
+class CreateCalendarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -27,8 +27,8 @@ class CreateSimulationsTable extends Migration
             $table->string('octubre',1)->nullable();
             $table->string('noviembre',1)->nullable();
             $table->string('diciembre',1)->nullable();
-            $table->bigIncrements('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('empredimiento');
+            $table->unsignedBigInteger('idEmprendimiento');
+            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
             $table->timestamps();
         });
     }
