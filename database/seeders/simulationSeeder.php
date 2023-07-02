@@ -15,7 +15,7 @@ class simulationSeeder extends Seeder
     public function run()
     {
 
-        simulationModel::factory(20)->create();
+       // simulationModel::factory(5)->create();
         /*$s1 = new simulationModel();
 
         $s1 -> idUser = 1 ;

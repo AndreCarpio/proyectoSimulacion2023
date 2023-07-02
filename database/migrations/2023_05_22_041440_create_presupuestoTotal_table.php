@@ -15,15 +15,17 @@ class CreatePresupuestoTotalTable extends Migration
     {
         Schema::create('presupuestoTotal', function (Blueprint $table) {
             $table->id();
-            $table->double('totalAportePropio',10,2)->nullable();
-            $table->double('totalPlanInversion',10,2)->nullable();
-            $table->double('totalProyecto',10,2)->nullable();
-            $table->double('porAportePropio',10,2)->nullable();
-            $table->double('montoFinanciar',10,2)->nullable();
-            $table->double('primerDesembolso',10,2)->nullable();
-            $table->double('segundoDesembolso',10,2)->nullable();
-            $table->unsignedBigInteger('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
+            $table->double('apGastosOperativos')->nullable();
+            $table->double('apMateriaPrima')->nullable();
+            $table->double('apRquePromocionales')->nullable();
+            $table->double('apInfraestructura')->nullable();
+            $table->double('apMaquinaria')->nullable();
+            $table->double('apRequeLegales')->nullable();
+
+            $table->double('primerDesembolso')->nullable();
+            $table->double('segundoDesembolso')->nullable();
+            $table->unsignedBigInteger('idSimulation');
+            $table->foreign('idSimulation')->references('idSimulation')->on('simulations');
             $table->timestamps();
         });
     }

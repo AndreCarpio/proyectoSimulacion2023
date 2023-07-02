@@ -19,31 +19,36 @@
                 <option value="3">Costos</option>
                 <option value="4">Flujo</option>
             </select>
+
+            <button class="btn-guardar-simulacion">Guardar</button>
         </div>
 
 
-        <p class="titulo-simulacion">{{ ($simulacion[0])['title'] }}</p>
+        <p class="titulo-simulacion">{{ $simulacion[0]['title'] }}</p>
 
-        <div class="seccion-informacion">
-            @include('templates.simulationForms.informacion')
-        </div>
 
-        <div class="seccion-presupuesto oculto">
-            @include('templates.simulationForms.presupuesto')
-        </div>
+        <form class="formulario-guardar-simulacion" method="post">
+            @csrf
+            <div class="seccion-informacion">
+                @include('templates.simulationForms.informacion')
+            </div>
 
-        <div class="seccion-presupuesto-total oculto">
-            @include('templates.simulationForms.presupuestoTotal')
-        </div>
+            <div class="seccion-presupuesto oculto">
+                @include('templates.simulationForms.presupuesto')
+            </div>
 
-        <div class="seccion-costos oculto">
-            @include('templates.simulationForms.costos')
-        </div>
+            <div class="seccion-presupuesto-total oculto">
+                @include('templates.simulationForms.presupuestoTotal')
+            </div>
 
-        <div class="seccion-flujo oculto">
-            @include('templates.simulationForms.flujo')
-        </div>
+            <div class="seccion-costos oculto">
+                @include('templates.simulationForms.costos')
+            </div>
 
+            <div class="seccion-flujo oculto">
+                @include('templates.simulationForms.flujo')
+            </div>
+        </form>
 
 
     </div>
@@ -51,5 +56,6 @@
 
 
 @section('scripts')
-    <script src='{{ asset('js/script-simulacion.js') }}' ></script>
+    <script src='{{ asset('js/script-simulacion.js') }}'></script>
+    <script src='{{ asset('js/script-guardar-simulacion.js') }}'></script>
 @endsection

@@ -160,10 +160,10 @@ document.querySelector(".btn-agregar-descripcion-producto-servico").addEventList
 
     tr.innerHTML = ` <th class="numeracion" style="text-align: center; vertical-align: middle;" scope="row">${(filasTbody.length + 1)}</th>
                      <td>
-                         <textarea spellcheck="false" class="nombre-producto-servico form-control" rows="4"></textarea>
+                         <textarea spellcheck="false"  class="nombre-producto-servico form-control" rows="4"></textarea>
                      </td>
                      <td>
-                         <textarea spellcheck="false" class="proceso-elaboracion form-control" rows="4"></textarea>
+                         <textarea spellcheck="false"  class="proceso-elaboracion form-control" rows="4"></textarea>
                      </td>
                      <td>
                          <textarea spellcheck="false" class="caracteristicas form-control" rows="4"></textarea>
@@ -316,30 +316,31 @@ function eliminarFilaTablaTipo2(btn) {
     }
 }
 
-function agregarFilaTablaTipo2(btn) {
+function agregarFilaTablaTipo2(btn, tipo) {
     try {
         let tabla = btn.closest('table');
         let body = tabla.querySelector("tbody");
 
         let tr = document.createElement('tr');
-        tr.classList.add("fila-descripcion-producto-servico");
+        tr.classList.add("fila-contenido-tabla-capital");
+        tr.classList.add(tipo);
         tr.innerHTML = `
                         <th style="vertical-align: middle">
-                        <input type="text" class="form-control">
+                        <input type="number" type="text" class="form-control input-cantidad"  >
                         </th>
                         <th style="vertical-align: middle">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control  input-unidad" >
                         </th>
                         <th style="vertical-align: middle">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control input-detalle" >
                         </th>
                         <td>
                             <input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"
-                                class="form-control input-aporte-propio" value="0">
+                                class="form-control input-aporte-propio" value="0" > 
                         </td>
                         <td>
                             <input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"
-                                class="form-control input-inversion" value="0">
+                                class="form-control input-inversion" value="0" >
                         </td>
                         <th>
                             <button onclick="eliminarFilaTablaTipo2(this)" type="text" id=""
@@ -370,7 +371,56 @@ function validarInputNumber(event) {
 /*------------------------------------------------  codigo  presupuesto total--------------------------------------------------- */
 
 
-/*------------------------------------------------  codigo plantilla form 4--------------------------------------------------- */
+/*------------------------------------------------  codigo plantilla  costos --------------------------------------------------- */
+
+function agregarFilaCostoProductoServico() {
+    let tbodyTabla = document.querySelector('.tbody-tabla-manofactura-producto-servicios');
+
+    let elemento = document.createElement('tr');
+    elemento.classList.add("fila-costo-produto-servicio");
+
+    elemento.innerHTML = `
+                            <td>
+                                <button type="button" onclick="eliminarFilaCostoProductoServico(this)" class="btn btn-danger ">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                            <td><input type="text" class="form-control productoServicio"></td>
+                            <td><input type="text" class="form-control tipoProductoServico"></td>
+                            <td><input type="number" min="0" class="form-control cantidadProductoServicio" value="0"
+                                    oninput="calcularManufactura()"></td>
+                            <td><input type="text" class="form-control unidadProductoServicio"></td>
+                            <td>
+                                <select class="form-select frecuenciaProductoServicio" onchange="calcularManufactura()">
+                                    <option value="25">Diario</option>
+                                    <option value="4">Semanal</option>
+                                    <option value="2">Quincenal</option>
+                                    <option value="1">Mensual</option>
+                                    <option value="0.5">Bimestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="6">Semestral</option>
+                                </select>
+                            </td>
+                            <td><input type="number" min="0" class="form-control  precioCompra" value="0"
+                                    oninput="calcularManufactura()"></td>
+                            <td><input type="number" min="0" class="form-control precionVenta " value="0"
+                                    oninput="calcularManufactura()"></td>
+                            <td><input type="text" class="form-control totalCompra"></td>
+                            <td><input type="text" class="form-control totalVenta"></td>
+                            <td><input type="text" class="form-control mub"></td>
+                              `;
+
+    let totales = tbodyTabla.querySelector('.totales-manofactura-producto-servicios');
+
+    tbodyTabla.insertBefore(elemento, totales);
+
+}
+function eliminarFilaCostoProductoServico(btn) {
+
+    let fila = btn.closest('.fila-costo-produto-servicio');
+    fila.remove();
+
+}
 
 /*------------------------------------------------  codigo plantilla form 5--------------------------------------------------- */
 
@@ -382,8 +432,40 @@ function validarInputNumber(event) {
 
 
 
-/*------------------------------------------------  Creacion de  Objetos --------------------------------------------------- */
 
 
 
 
+
+/*
+ <tr class="fila-costo-produto-servicio">
+                    <td>
+                        <button type="button" onclick="" class="btn btn-danger ">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <td><input type="text" class="form-control productoServicio"></td>
+                    <td><input type="text" class="form-control tipoProductoServico"></td>
+                    <td><input type="number" class="form-control cantidadProductoServicio" value="0"
+                            oninput="calcularManufactura()"></td>
+                    <td><input type="text" class="form-control unidadProductoServicio"></td>
+                    <td>
+                        <select class="form-select frecuenciaProductoServicio" onchange="calcularManufactura()">
+                            <option value="25">Diario</option>
+                            <option value="4">Semanal</option>
+                            <option value="2">Quincenal</option>
+                            <option value="1">Mensual</option>
+                            <option value="0.5">Bimestral</option>
+                            <option value="3">Trimestral</option>
+                            <option value="6">Semestral</option>
+                        </select>
+                    </td>
+                    <td><input type="number" min="0" class="form-control  precioCompra" value="0"
+                            oninput="calcularManufactura()"></td>
+                    <td><input type="number" min="0" class="form-control precionVenta " value="0"
+                            oninput="calcularManufactura()"></td>
+                    <td><input type="text" class="form-control totalCompra"></td>
+                    <td><input type="text" class="form-control totalVenta"></td>
+                    <td><input type="text" class="form-control mub"></td>
+                </tr>
+ */

@@ -12,20 +12,20 @@ class CreateEmprendedorTable extends Migration
      * @return void
      */
     public function up()
+    
     {
         Schema::create('emprendedor', function (Blueprint $table) {
             $table->id();
-            $table->string('ci',10);
-            $table->string('extension',4)->nullable();
-            $table->string('nombres',50)->nullable();
-            $table->string('apellidos',50)->nullable();
-            $table->date('fechaNacimiento')->nullable();
-            $table->string('estadoCivil',50)->nullable();
-            $table->string('direccion',100)->nullable();
-            $table->string('contacto',10)->nullable();
-            $table->string('tipo',1)->nullable();
-            $table->unsignedBigInteger('idEmprendimiento');
-            $table->foreign('idEmprendimiento')->references('id')->on('emprendimiento');
+            $table->string('tipo',10)->nullable();
+            $table->string('nombre',100)->nullable();
+            $table->string('ci',100)->nullable();
+            $table->string('extension',100)->nullable();
+            $table->integer('edad')->nullable();
+            $table->string('estadoCivil',100)->nullable();
+            $table->string('telefono',100)->nullable();
+            $table->string('direccion',200)->nullable();
+            $table->unsignedBigInteger('idSimulation');
+            $table->foreign('idSimulation')->references('idSimulation')->on('simulations');
             $table->timestamps();
         });
     }

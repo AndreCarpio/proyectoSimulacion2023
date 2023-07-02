@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\simulationsController;
+use App\Http\Controllers\simulationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,9 @@ Route::middleware([
     Route::get("/simulations", [simulationsController::class,"simulationsList"])->name('simulations');
     Route::post("/simulations/create",[simulationsController::class,"createSimulation"])->name('simulation.create');
     Route::post("/simulations/delete",[simulationsController::class,"deleteSimulation"])->name('simulation.deleate');
+    Route::post("/simulations/simulation/save",[simulationController::class,"saveSimulation"])->name('simulation.save');
     Route::get("/simulations/{idSimulacion}",[simulationsController::class,"simulationShow"])->name('simulation.show');
     Route::get("/simulations/{idSimulacion}/costos",[simulationsController::class,"simulationCostos"])->name('simulation.costos');
+    
+    
 });

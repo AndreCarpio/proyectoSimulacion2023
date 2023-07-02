@@ -18,8 +18,10 @@ class CreateEmprendimientoTable extends Migration
             $table->string('actividad',255)->nullable();
             $table->string('departamento',30)->nullable();
             $table->string('municipio',30)->nullable();
-            $table->string('contacto',10)->nullable();
+            $table->string('telefono',10)->nullable();
             $table->string('direccion',50)->nullable();
+            $table->unsignedBigInteger('idSimulation');
+            $table->foreign('idSimulation')->references('idSimulation')->on('simulations');
             $table->timestamps();
         });
     }

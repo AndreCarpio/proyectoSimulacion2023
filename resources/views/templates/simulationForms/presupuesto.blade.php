@@ -1,4 +1,5 @@
 <p class="titulo-seccion">▶ Presupuesto Del Emprendimiento</p>
+
 <div class="mb-3">
     <label class="form-label">¿Con que Efectivo cuenta para realizar el emprendimiento?</label>
     <table class="table table-bordered  tabla-presupuesto-emprendimiento tabla-tipo2 ">
@@ -12,24 +13,33 @@
         <tbody>
             <tr>
                 <th style="vertical-align: middle">EFECTIVO/ORIGEN</th>
-                <td><input type="text" class="form-control" value="Efectivo"></td>
-                <td><input type="text" class="form-control" value="Ahorro"></td>
-                <td><input type="number" oninput="validarInputNumber(event)"
-                        class="form-control monto-presupuesto-emprendimiento" value="0"></td>
+                <td><input name="efectivo_detalle" type="text" class="form-control"
+                        value="{{ $presupuestoEfectivo->detalle ?? 'Efectivo' }}"></td>
+                <td><input name="efectivo_procedencia" type="text" class="form-control"
+                        value="{{ $presupuestoEfectivo->procedencia ?? 'Ahorro' }}"></td>
+                <td><input name="efectivo_aporte" type="number" oninput="validarInputNumber(event)"
+                        class="form-control monto-presupuesto-emprendimiento"
+                        value="{{ $presupuestoEfectivo->aportePropio ?? '0' }}"></td>
             </tr>
             <tr>
                 <th>CAJA DE AHORRO/ENTIDAD FINACIERA</th>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="number" oninput="validarInputNumber(event)"
-                        class="form-control monto-presupuesto-emprendimiento" value="0"></td>
+                <td><input name="caja_ahorro_detalle" type="text" class="form-control"
+                        value="{{ $presupuestoCaja->detalle ?? '' }}"></td>
+                <td><input name="caja_ahorro_procedencia" type="text" class="form-control"
+                        value="{{ $presupuestoCaja->procedencia ?? '' }}"></td>
+                <td><input name="caja_ahorro_aporte" type="number" oninput="validarInputNumber(event)"
+                        class="form-control monto-presupuesto-emprendimiento"
+                        value="{{ $presupuestoCaja->aportePropio ?? '0' }}"></td>
             </tr>
             <tr>
                 <th style="vertical-align: middle">OTROS</th>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="number" oninput="validarInputNumber(event)"
-                        class="form-control monto-presupuesto-emprendimiento" value="0"></td>
+                <td><input name="otros_detalle" type="text" class="form-control"
+                        value="{{ $presupuestoOtros->detalle ?? '' }}"></td>
+                <td><input name="otros_procedencia" type="text" class="form-control"
+                        value="{{ $presupuestoOtros->procedencia ?? '' }}"></td>
+                <td><input name="otros_aporte" type="number" oninput="validarInputNumber(event)"
+                        class="form-control monto-presupuesto-emprendimiento"value="{{ $presupuestoOtros->aportePropio ?? '0' }}">
+                </td>
             </tr>
             <tr>
                 <th colspan="3" style="text-align: right; vertical-align: middle">SUB TOTAL</th>
@@ -58,7 +68,12 @@
                     <th style="vertical-align: middle">MANO DE OBRA DEL EMPRENDEDOR HASTA LA INSTALACION DEL NEGOCIO
                     </th>
                     <td><input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"
-                            class="form-control input-aporte-propio" value="0">
+                            class="form-control input-aporte-propio mano-obra-aporte-propio"
+                            @foreach ($capital as $item)
+                                 @if ($item->tipo == 'manoObra')
+                                     value="{{ $item->aportePropio }}"
+                                 @endif
+                            @endforeach>
                     </td>
                 </tr>
             </tbody>
@@ -66,19 +81,28 @@
 
         <label class="form-label">Materia Prima, Insumos y/o animales de engorde</label>
 
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-materia-prima'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-materia-prima',
+            'tipo' => 'materiaPrima',
+            'capital' => $capital,
+        ])
         @endcomponent
 
         <label class="form-label">Requerimientos promocionales</label>
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-requerimientos-promocionales'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-requerimientos-promocionales',
+            'tipo' => 'requePromocionales',
+            'capital' => $capital,
+        ])
         @endcomponent
 
 
         <label class="form-label">Gastos operativos (Mano de obra, Alquileres, Servicios Básicos, etc)</label>
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-gastos-operativos'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-gastos-operativos',
+            'tipo' => 'gastoOperativos',
+            'capital' => $capital,
+        ])
         @endcomponent
 
         <table class="table table-bordered">
@@ -105,20 +129,29 @@
 
         <label class="form-label"> Infraestructura y/o terrenos y/o plantines</label>
 
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-infraestructura'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-infraestructura',
+            'tipo' => 'infraestructura',
+            'capital' => $capital,
+        ])
         @endcomponent
 
         <label class="form-label"> Maquinaria, Equipos, Vehículos y/o Ganado</label>
 
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-Maquinaria'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-Maquinaria',
+            'tipo' => 'maquinaria',
+            'capital' => $capital,
+        ])
         @endcomponent
 
         <label class="form-label"> Requerimientos legales </label>
 
-        @component('templates.presupuestoTableTemplate',['nombreTabla'=>'tabla-requerimientos-legales'])
-            
+        @component('templates.presupuestoTableTemplate', [
+            'nombreTabla' => 'tabla-requerimientos-legales',
+            'tipo' => 'requeLegales',
+            'capital' => $capital,
+        ])
         @endcomponent
         <table class="table table-bordered">
             <tbody>
