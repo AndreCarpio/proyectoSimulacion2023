@@ -76,11 +76,11 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
         costoProductoServicio.push({
             productoServicio: element.querySelector('.productoServicio').value,
             tipo: element.querySelector('.tipoProductoServico').value,
-            cantidad: element.querySelector('.cantidadProductoServicio').value,
+            cantidad: element.querySelector('.cantidadProductoServicio').value == '' ? '0' :element.querySelector('.cantidadProductoServicio').value,
             unidad: element.querySelector('.unidadProductoServicio').value,
             frecuencia: element.querySelector('.frecuenciaProductoServicio').value,
-            precioCompra: element.querySelector('.precioCompra').value,
-            precioVenta: element.querySelector('.precionVenta').value
+            precioCompra: element.querySelector('.precioCompra').value == '' ? '0' :element.querySelector('.precioCompra').value,
+            precioVenta: element.querySelector('.precionVenta').value == '' ? '0': element.querySelector('.precionVenta').value
 
         });
     });

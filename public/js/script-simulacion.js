@@ -188,13 +188,13 @@ function agregarFilaDescripcionProductoServicio() {
     tr.classList.add("fila-descripcion-producto-servico");
     tr.innerHTML = ` 
                      <td>
-                         <textarea spellcheck="false"  class="nombre-producto-servico form-control" rows="4"></textarea>
+                         <textarea maxlength="500" spellcheck="false"  class="nombre-producto-servico form-control" rows="4"></textarea>
                      </td>
                      <td>
-                         <textarea spellcheck="false"  class="proceso-elaboracion form-control" rows="4"></textarea>
+                         <textarea maxlength="500" spellcheck="false"  class="proceso-elaboracion form-control" rows="4"></textarea>
                      </td>
                      <td>
-                         <textarea spellcheck="false" class="caracteristicas form-control" rows="4"></textarea>
+                         <textarea maxlength="500" spellcheck="false" class="caracteristicas form-control" rows="4"></textarea>
                      </td>
                      <td style="text-align: center; vertical-align: middle;">
                          <button onclick="eliminarFilaDescripcionProductoServicio(this)" type="button" id="" class="btn btn-danger btn-eliminar-descripcion-producto-servico">
@@ -327,13 +327,13 @@ function agregarFilaTablaCapital(btn, tipo) {  // se agrega una fila a algunas d
         tr.classList.add(tipo);
         tr.innerHTML = `
                         <th style="vertical-align: middle">
-                        <input type="number" type="text" class="form-control input-cantidad"  >
+                        <input oninput="validarInputNumber(event);" type="number" type="text" class="form-control input-cantidad"  >
                         </th>
                         <th style="vertical-align: middle">
-                            <input type="text" class="form-control  input-unidad" >
+                            <input type="text" class="form-control  input-unidad" maxlength="100" >
                         </th>
                         <th style="vertical-align: middle">
-                            <input type="text" class="form-control input-detalle" >
+                            <input type="text" class="form-control input-detalle" maxlength="200" >
                         </th>
                         <td>
                             <input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"
@@ -426,11 +426,11 @@ function agregarFilaCostoProductoServico() {
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </td>
-                            <td><input type="text" class="form-control productoServicio"></td>
-                            <td><input type="text" class="form-control tipoProductoServico"></td>
+                            <td><input type="text" class="form-control productoServicio" maxlength="200"></td>
+                            <td><input type="text" class="form-control tipoProductoServico" maxlength="100" ></td>
                             <td><input type="number" min="0" class="form-control cantidadProductoServicio" value="0"
-                                    oninput="calcularManufactura()"></td>
-                            <td><input type="text" class="form-control unidadProductoServicio"></td>
+                                    oninput="validarInputNumber(event); calcularManufactura();"></td>
+                            <td><input type="text" class="form-control unidadProductoServicio" maxlength="100"></td>
                             <td>
                                 <select class="form-select frecuenciaProductoServicio" onchange="calcularManufactura()">
                                     <option value="25">Diario</option>
@@ -443,9 +443,9 @@ function agregarFilaCostoProductoServico() {
                                 </select>
                             </td>
                             <td><input type="number" min="0" class="form-control  precioCompra" value="0"
-                                    oninput="calcularManufactura()"></td>
+                                    oninput="validarInputNumber(event); calcularManufactura();"></td>
                             <td><input type="number" min="0" class="form-control precionVenta " value="0"
-                                    oninput="calcularManufactura()"></td>
+                                    oninput="validarInputNumber(event); calcularManufactura();"></td>
                             <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalCompra"></td>
                             <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalVenta"></td>
                             <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control mub"></td>

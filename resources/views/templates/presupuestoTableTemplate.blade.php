@@ -23,13 +23,13 @@
                 <tr class="fila-contenido-tabla-capital {{ $tipo }}">
                     <th style="vertical-align: middle">
                         <input type="number" class="form-control input-cantidad" type="text"
-                            value="{{ $item->cantidad }}">
+                        oninput="validarInputNumber(event);"   value="{{ $item->cantidad }}">
                     </th>
                     <th style="vertical-align: middle">
-                        <input class="form-control input-unidad" type="text" value="{{ $item->unidad }}">
+                        <input class="form-control input-unidad" type="text" maxlength="100" value="{{ $item->unidad }}">
                     </th>
                     <th style="vertical-align: middle">
-                        <input class="form-control input-detalle" type="text" value="{{ $item->detalle }}">
+                        <input class="form-control input-detalle" type="text" maxlength="200" value="{{ $item->detalle }}">
                     </th>
                     <td>
                         <input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"

@@ -15,11 +15,11 @@ class CreatePersonaJuridicaTable extends Migration
     {
         Schema::create('persona_juridica', function (Blueprint $table) {
             $table->id();
-            $table->string('razonSocial', 200)->nullable();
-            $table->string('nit', 200)->nullable();
-            $table->string('sigla', 200)->nullable();
-            $table->string('tipoSociedad', 200)->nullable();
-            $table->string('repreLegales', 200)->nullable();
+            $table->string('razonSocial', 100)->nullable();
+            $table->string('nit', 100)->nullable();
+            $table->string('sigla', 100)->nullable();
+            $table->string('tipoSociedad', 100)->nullable();
+            $table->string('repreLegales', 100)->nullable();
             $table->string('domicilio', 200)->nullable();
             $table->unsignedBigInteger('idSimulation');
             $table->foreign('idSimulation')->references('idSimulation')->on('simulations');

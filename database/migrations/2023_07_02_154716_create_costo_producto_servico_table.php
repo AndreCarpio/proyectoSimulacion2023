@@ -17,10 +17,10 @@ class CreateCostoProductoServicoTable extends Migration
             $table->id();
 
             $table->string('productoServicio',200)->nullable();
-            $table->string('tipo',200)->nullable();
+            $table->string('tipo',100)->nullable();
             $table->integer('cantidad')->nullable();
-            $table->string('unidad',200)->nullable();
-            $table->string('frecuencia',200)->nullable();
+            $table->string('unidad',100)->nullable();
+            $table->string('frecuencia',100)->nullable();
 
             $table->double('precioCompra')->nullable();
             $table->double('precioVenta')->nullable();

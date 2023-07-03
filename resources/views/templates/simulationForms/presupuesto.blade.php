@@ -13,9 +13,9 @@
         <tbody>
             <tr>
                 <th style="vertical-align: middle">EFECTIVO/ORIGEN</th>
-                <td><input name="efectivo_detalle" type="text" class="form-control"
+                <td><input name="efectivo_detalle" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoEfectivo->detalle ?? 'Efectivo' }}"></td>
-                <td><input name="efectivo_procedencia" type="text" class="form-control"
+                <td><input name="efectivo_procedencia" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoEfectivo->procedencia ?? 'Ahorro' }}"></td>
                 <td><input name="efectivo_aporte" type="number"
                         oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"
@@ -24,9 +24,9 @@
             </tr>
             <tr>
                 <th>CAJA DE AHORRO/ENTIDAD FINACIERA</th>
-                <td><input name="caja_ahorro_detalle" type="text" class="form-control"
+                <td><input name="caja_ahorro_detalle" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoCaja->detalle ?? '' }}"></td>
-                <td><input name="caja_ahorro_procedencia" type="text" class="form-control"
+                <td><input name="caja_ahorro_procedencia" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoCaja->procedencia ?? '' }}"></td>
                 <td><input name="caja_ahorro_aporte" type="number"
                         oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"
@@ -35,9 +35,9 @@
             </tr>
             <tr>
                 <th style="vertical-align: middle">OTROS</th>
-                <td><input name="otros_detalle" type="text" class="form-control"
+                <td><input name="otros_detalle" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoOtros->detalle ?? '' }}"></td>
-                <td><input name="otros_procedencia" type="text" class="form-control"
+                <td><input name="otros_procedencia" type="text" class="form-control" maxlength="100"
                         value="{{ $presupuestoOtros->procedencia ?? '' }}"></td>
                 <td><input name="otros_aporte" type="number"
                         oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"

@@ -5,13 +5,13 @@
         <p class="cotenedor-legenda"> Ventas Totales/Mes:</p>
         <label class="form-label" for="alto">Alto</label>
         <input class="form-control" type="number" id="alto" min="0" onchange="calcularTotal()"
-            oninput="calcularTotal()" name="rangoVentasAlto" value="{{ $comportamientoVentas->alta ?? 0 }}">
+            oninput="validarInputNumber(event); calcularTotal();" name="rangoVentasAlto" value="{{ $comportamientoVentas->alta ?? 0 }}">
         <label class="form-label" for="medio">Medio</label>
         <input class="form-control" type="number" id="medio" min="0" onchange="calcularTotal()"
-            oninput="calcularTotal()" name="rangoVentasMedio" value="{{ $comportamientoVentas->media ?? 0 }}">
+            oninput="validarInputNumber(event); calcularTotal();" name="rangoVentasMedio" value="{{ $comportamientoVentas->media ?? 0 }}">
         <label class="form-label" for="bajo">Bajo</label>
         <input class="form-control" type="number" id="bajo" min="0" onchange="calcularTotal()"
-            oninput="calcularTotal()" name="rangoVentasBajo" value="{{ $comportamientoVentas->baja ?? 0 }}">
+            oninput="validarInputNumber(event); calcularTotal();" name="rangoVentasBajo" value="{{ $comportamientoVentas->baja ?? 0 }}">
     </div>
 <br>
     <div class=" cotenedor-fieldset comportamiento-ventas-mes">
@@ -184,13 +184,13 @@
                             </button>
                         </td>
                         <td><input type="text" class="form-control productoServicio"
-                                value="{{ $item->productoServicio }}"></td>
+                              maxlength="200"  value="{{ $item->productoServicio }}"></td>
                         <td><input type="text" class="form-control tipoProductoServico"
-                                value="{{ $item->tipo }}"></td>
+                            maxlength="100"   value="{{ $item->tipo }}"></td>
                         <td><input type="number" min="0" class="form-control cantidadProductoServicio"
-                                value="{{ $item->cantidad ?? '0' }}" oninput="calcularManufactura()"></td>
+                                value="{{ $item->cantidad ?? '0' }}" oninput="validarInputNumber(event); calcularManufactura();"></td>
                         <td><input type="text" class="form-control unidadProductoServicio"
-                                value="{{ $item->unidad }}"></td>
+                              maxlength="100"  value="{{ $item->unidad }}"></td>
                         <td>
                             <select class="form-select frecuenciaProductoServicio" onchange="calcularManufactura()">
                                 <option {{ ($item->frecuencia ?? '') == '25' ? 'selected' : '' }} value="25">
@@ -210,9 +210,9 @@
                             </select>
                         </td>
                         <td><input type="number" min="0" class="form-control  precioCompra"
-                                value="{{ $item->precioCompra ?? '0' }}" oninput="calcularManufactura()"></td>
+                                value="{{ $item->precioCompra ?? '0' }}" oninput="validarInputNumber(event); calcularManufactura();"></td>
                         <td><input type="number" min="0" class="form-control precionVenta "
-                                value="{{ $item->precioVenta ?? '0' }}" oninput="calcularManufactura()"></td>
+                                value="{{ $item->precioVenta ?? '0' }}" oninput="validarInputNumber(event); calcularManufactura();"></td>
                         <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalCompra"></td>
                         <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalVenta"></td>
                         <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control mub"></td>
@@ -378,7 +378,7 @@
             sumaAnuVen = sumaAnuVen + Number(document.getElementById('venMen' + i).value);
             //sumaAnuCom = sumaAnuCom + Number(document.getElementById('comMen' + i).value);
         }
-        document.getElementById('venAnu').value = sumaAnuVen.toFixed(0);;
+        document.getElementById('venAnu').value = sumaAnuVen.toFixed(0);
         document.getElementById('comAnu').value = sumaAnuCom.toFixed(0);
     }
 </script>
