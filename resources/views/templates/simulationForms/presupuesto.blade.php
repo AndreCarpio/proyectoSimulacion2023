@@ -74,7 +74,7 @@
                             class="form-control input-aporte-propio mano-obra-aporte-propio"
                             @foreach ($capital as $item)
                                  @if ($item->tipo == 'manoObra')
-                                     value="{{ $item->aportePropio }}"
+                                     value="{{ $item->aportePropio ?? '0' }}"
                                  @endif @endforeach>
                     </td>
                 </tr>

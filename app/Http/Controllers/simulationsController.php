@@ -53,6 +53,18 @@ class simulationsController extends Controller
       $elemento = simulationModel::where('idUser', $usuario->id)->where('idSimulation', $request->input('idSimulation'))->first();
 
       if ($elemento) {
+
+         capitalModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         comportamientoVentasModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         costoProductoServicioModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         descripcionPlanNegociosModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         descripcionProductoServicioModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         emprendedorModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         emprendimientoModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         personaJuridicaModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         presupuestoModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         presupuestoTotalModel::where('idSimulation', $request->input('idSimulation'))->delete();
+
          $elemento->delete();
       } else {
          // en caso de no encontrar el registro
