@@ -16,6 +16,9 @@ body {
 }
 
 .pestaniaSimulacion {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
     position: absolute;
     background-color: transparent;
     top: -60px;
@@ -31,6 +34,42 @@ body {
     outline: none;
     cursor: pointer;
 }
+
+.pestaniaSimulacion .btn-guardar-simulacion {
+    font-size: 1rem !important;
+    outline: none;
+    cursor: pointer;
+    height: 42px;
+    min-width: 120px;
+    padding: 0px 10px;
+    border:  1px solid #dee2e6;
+    background: #fff;
+    border-radius: 0.5rem;
+    color: #212529;
+}
+
+.pestaniaSimulacion .btn-guardar-simulacion:hover {
+    background: #e2e2e2;
+}
+
+
+.pestaniaSimulacion .btn-exportar-simulacion{
+    font-size: 1rem !important;
+    outline: none;
+    cursor: pointer;
+    height: 42px;
+    padding: 0px 15px;
+    border:  1px solid #dee2e6;
+    background: #fff;
+    border-radius: 0.5rem;
+    color: #212529;
+}
+
+.pestaniaSimulacion .btn-exportar-simulacion:hover {
+    background: #e2e2e2;
+}
+
+
 
 .titulo-simulacion {
     font-size: 1.8rem;

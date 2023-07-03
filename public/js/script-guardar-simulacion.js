@@ -1,5 +1,5 @@
 
-console.log("conectado.............")
+
 
 var btnGuardarSimulacion = document.querySelector(".btn-guardar-simulacion");
 var formGuardarSimulacion = document.querySelector(".formulario-guardar-simulacion");
@@ -10,23 +10,22 @@ var pathname = new URL(url).pathname;
 var parts = pathname.split("/");
 var idSimulation = parts[parts.length - 1];
 
-console.log("idSimu: " + idSimulation)
+setInterval(autoGuardado, 25000);
+
+function autoGuardado() {
+    btnGuardarSimulacion.click();
+}
 
 
 btnGuardarSimulacion.addEventListener("click", (e) => {
     e.preventDefault();
+    btnGuardarSimulacion.querySelector('.loader-btn-guardar-simulacion').classList.remove('oculto');
     let formularioFinal = new FormData(formGuardarSimulacion);
+    formularioFinal.set('idSimulation', idSimulation); //mandamos el id de la simulacion
 
-
-    formularioFinal.set('idSimulation', idSimulation)
-
-
-    // formularioFinal.set("lista",JSON.stringify({dato1 : 'holaMundo',dato2: 'hola mundo 2'}));
-
+     // mandaremos en formado JSON todas las filas de la tabla descripcionProductoServicio en Informacion
     let descripcionProductoServicio = [];
-
     let filasDescripcionProductoServicio = document.querySelectorAll('.fila-descripcion-producto-servico');
-
     filasDescripcionProductoServicio.forEach(element => {
         descripcionProductoServicio.push({
             nombre: element.querySelector('.nombre-producto-servico').value,
@@ -34,14 +33,13 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
             caracteristicas: element.querySelector('.caracteristicas').value
         })
     });
-
     formularioFinal.set('filasDescripcionProductoServicio', JSON.stringify(descripcionProductoServicio));
 
 
+
+    // mandaremos en formado JSON todas las filas de las tablas que hay en PRESUPUESTO
     let capitalOperarivo = [];
-
     let filasTablasCapital = document.querySelectorAll(".fila-contenido-tabla-capital");
-
     let auxI = 0;
     filasTablasCapital.forEach(element => {
         let auxCantidad = element.querySelector('.input-cantidad').value
@@ -58,9 +56,7 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
         });
         auxI++
     });
-
     let auxAportePropioMnoObra = document.querySelector('.mano-obra-aporte-propio').value
-
     capitalOperarivo.push({
         tipo: "manoObra",
         cantidad: "1",
@@ -70,17 +66,13 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
         seInvertira: "0",
         orden: auxI
     });
-
-
     formularioFinal.set('filasTablasCapital', JSON.stringify(capitalOperarivo));
 
-
+    
+    // mandaremos en formado JSON todas las filas de la tabla costoProductoServicio en COSTOS
     let costoProductoServicio = [];
-
     let filasCostoProductoServicio = document.querySelectorAll(".fila-costo-produto-servicio");
-
     filasCostoProductoServicio.forEach(element => {
-        console.log(element);
         costoProductoServicio.push({
             productoServicio: element.querySelector('.productoServicio').value,
             tipo: element.querySelector('.tipoProductoServico').value,
@@ -92,12 +84,10 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
 
         });
     });
-
     formularioFinal.set('filasCostoProductoServicio', JSON.stringify(costoProductoServicio));
 
 
 
-    console.log(formularioFinal);
     fetch('simulation/save', {
         method: 'post',
         body: formularioFinal
@@ -105,6 +95,7 @@ btnGuardarSimulacion.addEventListener("click", (e) => {
         .then(response => response.json())
         .then(result => {
             console.log(result)
+            btnGuardarSimulacion.querySelector('.loader-btn-guardar-simulacion').classList.add('oculto');
         })
 
 });

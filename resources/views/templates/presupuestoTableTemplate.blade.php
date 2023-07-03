@@ -8,7 +8,7 @@
             <th class="tabla-tipo2-celda-pequenia" scope="col">SE INVERTIRÁ (BS)</th>
             <th class="tabla-tipo2-celda-btn" scope="col">
                 <button type="button" class="btn btn-primary "
-                    onclick="agregarFilaTablaTipo2(this,'{{ $tipo }}');"><i class="fa fa-plus"
+                    onclick="agregarFilaTablaCapital(this,'{{ $tipo }}');"><i class="fa fa-plus"
                         aria-hidden="true"></i>
                 </button>
             </th>
@@ -40,7 +40,7 @@
                             class="form-control input-inversion" value="{{ $item->seInvertira }}">
                     </td>
                     <th>
-                        <button type="button" onclick="eliminarFilaTablaTipo2(this)" type="text"
+                        <button type="button" onclick="eliminarFilaTablaCapital(this)" type="text"
                             class="btn btn-danger ">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>

@@ -213,18 +213,18 @@
                                 value="{{ $item->precioCompra ?? '0' }}" oninput="calcularManufactura()"></td>
                         <td><input type="number" min="0" class="form-control precionVenta "
                                 value="{{ $item->precioVenta ?? '0' }}" oninput="calcularManufactura()"></td>
-                        <td><input type="text" class="form-control totalCompra"></td>
-                        <td><input type="text" class="form-control totalVenta"></td>
-                        <td><input type="text" class="form-control mub"></td>
+                        <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalCompra"></td>
+                        <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalVenta"></td>
+                        <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control mub"></td>
                     </tr>
                 @endforeach
 
                 <tr class="totales-manofactura-producto-servicios">
                     <td colspan="7"></td>
                     <td><b>Totales:</b></td>
-                    <td><input type="text" class="form-control" readonly id="totCom"></td>
-                    <td><input type="text" class="form-control" readonly id="totVen"></td>
-                    <td><input type="text" class="form-control" readonly id="mubTotal"></td>
+                    <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" type="text" class="form-control" readonly id="totCom"></td>
+                    <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" type="text" class="form-control" readonly id="totVen"></td>
+                    <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" type="text" class="form-control" readonly id="mubTotal"></td>
                 </tr>
             </tbody>
         </table>
@@ -311,6 +311,7 @@
 
 
 <script>
+    calcularManufactura();
     var mubTotal;
 
     function calcularManufactura() {
@@ -365,18 +366,20 @@
                 document.getElementById('venMen' + i).value = document.getElementById('bajo').value;
             }
         }
+        let sumaCosto = 0;
         for (let i = 1; i <= 12; i++) {
             aux = (1 - mubTotal);
-            document.getElementById('comMen' + i).value = (document.getElementById('venMen' + i).value * aux).toFixed(
-                0);
-
+            sumaCosto += (document.getElementById('venMen' + i).value * aux) ;
+            document.getElementById('comMen' + i).value = (document.getElementById('venMen' + i).value * aux).toFixed(0);
+            
         }
+        sumaAnuCom =sumaCosto;
         for (let i = 1; i <= 12; i++) {
             sumaAnuVen = sumaAnuVen + Number(document.getElementById('venMen' + i).value);
-            sumaAnuCom = sumaAnuCom + Number(document.getElementById('comMen' + i).value);
+            //sumaAnuCom = sumaAnuCom + Number(document.getElementById('comMen' + i).value);
         }
-        document.getElementById('venAnu').value = sumaAnuVen;
-        document.getElementById('comAnu').value = sumaAnuCom;
+        document.getElementById('venAnu').value = sumaAnuVen.toFixed(0);;
+        document.getElementById('comAnu').value = sumaAnuCom.toFixed(0);
     }
 </script>
 <script>

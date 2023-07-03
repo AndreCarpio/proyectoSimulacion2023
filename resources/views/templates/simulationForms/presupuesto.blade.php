@@ -17,7 +17,8 @@
                         value="{{ $presupuestoEfectivo->detalle ?? 'Efectivo' }}"></td>
                 <td><input name="efectivo_procedencia" type="text" class="form-control"
                         value="{{ $presupuestoEfectivo->procedencia ?? 'Ahorro' }}"></td>
-                <td><input name="efectivo_aporte" type="number" oninput="validarInputNumber(event)"
+                <td><input name="efectivo_aporte" type="number"
+                        oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"
                         class="form-control monto-presupuesto-emprendimiento"
                         value="{{ $presupuestoEfectivo->aportePropio ?? '0' }}"></td>
             </tr>
@@ -27,7 +28,8 @@
                         value="{{ $presupuestoCaja->detalle ?? '' }}"></td>
                 <td><input name="caja_ahorro_procedencia" type="text" class="form-control"
                         value="{{ $presupuestoCaja->procedencia ?? '' }}"></td>
-                <td><input name="caja_ahorro_aporte" type="number" oninput="validarInputNumber(event)"
+                <td><input name="caja_ahorro_aporte" type="number"
+                        oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"
                         class="form-control monto-presupuesto-emprendimiento"
                         value="{{ $presupuestoCaja->aportePropio ?? '0' }}"></td>
             </tr>
@@ -37,7 +39,8 @@
                         value="{{ $presupuestoOtros->detalle ?? '' }}"></td>
                 <td><input name="otros_procedencia" type="text" class="form-control"
                         value="{{ $presupuestoOtros->procedencia ?? '' }}"></td>
-                <td><input name="otros_aporte" type="number" oninput="validarInputNumber(event)"
+                <td><input name="otros_aporte" type="number"
+                        oninput="validarInputNumber(event); actualizarSubTotalMontoEmprendimiento();"
                         class="form-control monto-presupuesto-emprendimiento"value="{{ $presupuestoOtros->aportePropio ?? '0' }}">
                 </td>
             </tr>
@@ -72,8 +75,7 @@
                             @foreach ($capital as $item)
                                  @if ($item->tipo == 'manoObra')
                                      value="{{ $item->aportePropio }}"
-                                 @endif
-                            @endforeach>
+                                 @endif @endforeach>
                     </td>
                 </tr>
             </tbody>

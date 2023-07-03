@@ -218,14 +218,13 @@ class simulationController extends Controller
          
       } catch (Exception $e) {
          return response()->json([
-            "alerta" => $e->getMessage()
+            "Error" => $e->getMessage()
          ]);
       }
 
+      return response()->json([
+         "Exito" => $request 
+      ]);
 
-      return $request;
-      /* return response()->json([
-         "alerta" => $request->input('idSimulation')
-      ]);*/
    }
 }

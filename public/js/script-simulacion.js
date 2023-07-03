@@ -92,6 +92,16 @@ class ControladorPresupuestoTotal {
         this.tablaDesembolsos.querySelector('.monto-financiar').innerHTML = (totalPlanInversion - efectivo);
     }
 
+    getMontoAfinanciar(datos) {
+        let totalPlanInversion = (datos.costosOperativos.inversion +
+            datos.materiaPrima.inversion +
+            datos.requePromocinales.inversion +
+            datos.infraestructura.inversion +
+            datos.maquinaria.inversion +
+            datos.requeLegales.inversion);
+        return totalPlanInversion - datos.efectivo.aporte;
+    }
+
 }
 
 class ControladorPresupuesto {
@@ -137,6 +147,20 @@ class ControladorPresupuesto {
         });
         return { aporte: montoAporte, inversion: montoInversion };
     }
+
+    getTablasTotales() {
+        let datos = {
+            efectivo: this.getTotalEfectivo(),
+            manoObraEmprendedor: this.getTotalManoObraEmprendedor(),
+            costosOperativos: this.getTotalTabla('.tabla-gastos-operativos'),
+            materiaPrima: this.getTotalTabla('.tabla-materia-prima'),
+            requePromocinales: this.getTotalTabla('.tabla-requerimientos-promocionales'),
+            infraestructura: this.getTotalTabla('.tabla-infraestructura'),
+            maquinaria: this.getTotalTabla('.tabla-Maquinaria'),
+            requeLegales: this.getTotalTabla('.tabla-requerimientos-legales')
+        }
+        return datos;
+    }
 }
 
 
@@ -148,17 +172,21 @@ var cotroladorPresupuesto = new ControladorPresupuesto(document.querySelector('.
 var controladorPresupuestoTotal = new ControladorPresupuestoTotal(document.querySelector('.contenedor-formulario-simulacion'));
 
 
-/*------------------------------------------------  codigo plantilla form 1--------------------------------------------------- */
+actualizarSubTotalMontoEmprendimiento();
+actualizarTotalOperativoInversion();
+actualizaSubTotalPlaInversionApPropio();
+actualizarDesembolso();
 
-document.querySelector(".btn-agregar-descripcion-producto-servico").addEventListener('click', function () {
+
+/*------------------------------------------------   Codigo Informacion --------------------------------------------------- */
+
+function agregarFilaDescripcionProductoServicio() {
 
     let tbody = document.querySelector(".body-table-descripcion-producto-servico");
-    let filasTbody = tbody.querySelectorAll(".fila-descripcion-producto-servico");
 
     let tr = document.createElement('tr');
     tr.classList.add("fila-descripcion-producto-servico");
-
-    tr.innerHTML = ` <th class="numeracion" style="text-align: center; vertical-align: middle;" scope="row">${(filasTbody.length + 1)}</th>
+    tr.innerHTML = ` 
                      <td>
                          <textarea spellcheck="false"  class="nombre-producto-servico form-control" rows="4"></textarea>
                      </td>
@@ -169,35 +197,35 @@ document.querySelector(".btn-agregar-descripcion-producto-servico").addEventList
                          <textarea spellcheck="false" class="caracteristicas form-control" rows="4"></textarea>
                      </td>
                      <td style="text-align: center; vertical-align: middle;">
-                         <button onclick="eliminarFilaTablaTipo1(this)" type="text" id="" class="btn btn-danger btn-eliminar-descripcion-producto-servico">
+                         <button onclick="eliminarFilaDescripcionProductoServicio(this)" type="button" id="" class="btn btn-danger btn-eliminar-descripcion-producto-servico">
                              <i class="fa fa-trash" aria-hidden="true"></i>
                          </button>
                      </td>`;
     tbody.appendChild(tr);
-});
+}
+
+function eliminarFilaDescripcionProductoServicio(btn) {
+    try {
+        let fila = btn.closest('.fila-descripcion-producto-servico');
+        fila.remove();
+    } catch (error) {
+        console.log("no se pudo eliminar la fila")
+    }
+}
 
 
 
-var inputsMontoEmprendimiento = document.querySelectorAll(".monto-presupuesto-emprendimiento");
-inputsMontoEmprendimiento.forEach(element => {
-    element.addEventListener("input", function (e) {
-        actualizarSubTolaMontoEmprendimiento();
-        let datos = {
-            efectivo: cotroladorPresupuesto.getTotalEfectivo(),
-            manoObraEmprendedor: cotroladorPresupuesto.getTotalManoObraEmprendedor(),
-            costosOperativos: cotroladorPresupuesto.getTotalTabla('.tabla-gastos-operativos'),
-            materiaPrima: cotroladorPresupuesto.getTotalTabla('.tabla-materia-prima'),
-            requePromocinales: cotroladorPresupuesto.getTotalTabla('.tabla-requerimientos-promocionales'),
-            infraestructura: cotroladorPresupuesto.getTotalTabla('.tabla-infraestructura'),
-            maquinaria: cotroladorPresupuesto.getTotalTabla('.tabla-Maquinaria'),
-            requeLegales: cotroladorPresupuesto.getTotalTabla('.tabla-requerimientos-legales'),
-        }
+function validarInputNumber(event) {
+    var input = event.target;
+    if (input.value < 0) {
+        input.value = 0;
+    }
+}
+/*------------------------------------------------  Codigo  presupuesto --------------------------------------------------- */
 
-        controladorPresupuestoTotal.presupuestoModificado(datos);
-    });
-});
 
-function actualizarSubTolaMontoEmprendimiento() {
+function actualizarSubTotalMontoEmprendimiento() {
+    let inputsMontoEmprendimiento = document.querySelectorAll(".monto-presupuesto-emprendimiento");
     let monto = 0;
     let m = document.querySelector('.subTotalMontoEmprendimiento');
     inputsMontoEmprendimiento.forEach(element => {
@@ -210,6 +238,9 @@ function actualizarSubTolaMontoEmprendimiento() {
         }
     });
     m.textContent = monto.toFixed(2);
+
+    let datos = cotroladorPresupuesto.getTablasTotales();
+    controladorPresupuestoTotal.presupuestoModificado(datos);
 }
 
 function actualizarTotalOperativoInversion() {
@@ -264,20 +295,7 @@ function actualizarTotalOperativoInversion() {
     document.querySelector('.total-aporte-propio-inversion').textContent = montoAporteInversion.toFixed(2);
     document.querySelector('.total-inversion-inversion').textContent = montoInversionInversion.toFixed(2);
 
-
-    //efectivo,manoObraEmprendedor,costosOperativos,materiaPrima,requePromocinales,infraestructura,maquinaria,requeLegales
-
-    let datos = {
-        efectivo: cotroladorPresupuesto.getTotalEfectivo(),
-        manoObraEmprendedor: cotroladorPresupuesto.getTotalManoObraEmprendedor(),
-        costosOperativos: cotroladorPresupuesto.getTotalTabla('.tabla-gastos-operativos'),
-        materiaPrima: cotroladorPresupuesto.getTotalTabla('.tabla-materia-prima'),
-        requePromocinales: cotroladorPresupuesto.getTotalTabla('.tabla-requerimientos-promocionales'),
-        infraestructura: cotroladorPresupuesto.getTotalTabla('.tabla-infraestructura'),
-        maquinaria: cotroladorPresupuesto.getTotalTabla('.tabla-Maquinaria'),
-        requeLegales: cotroladorPresupuesto.getTotalTabla('.tabla-requerimientos-legales'),
-    }
-
+    let datos = cotroladorPresupuesto.getTablasTotales();
     controladorPresupuestoTotal.presupuestoModificado(datos);
 
     return { aporte: montoAporteOperativo, inversion: montoInversionOperativo }
@@ -285,26 +303,9 @@ function actualizarTotalOperativoInversion() {
 
 
 
-function eliminarFilaTablaTipo1(btn) {
-    try {
-        let fila = btn.parentNode.parentNode;
-        fila.parentNode.removeChild(fila);
 
-        let tbody = document.querySelector(".body-table-descripcion-producto-servico");
-        let filasTbody = tbody.querySelectorAll(".fila-descripcion-producto-servico");
 
-        let i = 1;
-        filasTbody.forEach(element => {
-            element.querySelector(".numeracion").innerHTML = i;
-            i++;
-        });
-
-    } catch (error) {
-        console.log("no se pudo eliminar la fila")
-    }
-}
-
-function eliminarFilaTablaTipo2(btn) {
+function eliminarFilaTablaCapital(btn) {
     try {
         let fila = btn.parentNode.parentNode;
         let body = fila.parentNode;
@@ -316,7 +317,7 @@ function eliminarFilaTablaTipo2(btn) {
     }
 }
 
-function agregarFilaTablaTipo2(btn, tipo) {
+function agregarFilaTablaCapital(btn, tipo) {  // se agrega una fila a algunas de la tablas del capital Operativo o De Inversion (dependiendo del tipo)
     try {
         let tabla = btn.closest('table');
         let body = tabla.querySelector("tbody");
@@ -343,7 +344,7 @@ function agregarFilaTablaTipo2(btn, tipo) {
                                 class="form-control input-inversion" value="0" >
                         </td>
                         <th>
-                            <button onclick="eliminarFilaTablaTipo2(this)" type="text" id=""
+                            <button onclick="eliminarFilaTablaCapital(this)" type="text" id=""
                                 class="btn btn-danger ">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
@@ -360,16 +361,56 @@ function agregarFilaTablaTipo2(btn, tipo) {
 
 
 
-function validarInputNumber(event) {
-    var input = event.target;
-    if (input.value < 0) {
-        input.value = 0; // Si el valor es negativo, se establece en cero
-    }
-}
-/*------------------------------------------------  codigo  presupuesto --------------------------------------------------- */
-
 /*------------------------------------------------  codigo  presupuesto total--------------------------------------------------- */
 
+function actualizaSubTotalPlaInversionApPropio() {
+    let inputsTabla = document.querySelectorAll('.tabla-presupuesto-resumen-plan-inversion input');
+    let suma = 0;
+
+    let regexEntero = /^\d+$/;
+    let regexDecimal = /^\d+(\.\d+)?$/;
+
+    inputsTabla.forEach(element => {
+        let aux = element.value;
+        if (regexEntero.test(aux) || regexDecimal.test(aux)) {
+            suma = parseFloat(suma) + parseFloat(aux);
+        }
+    });
+
+    document.querySelector('.tabla-presupuesto-resumen-plan-inversion .efectivo-total').textContent = suma;
+}
+
+function actualizarDesembolso() {
+    let datos = cotroladorPresupuesto.getTablasTotales();
+    let motonFinanciar = controladorPresupuestoTotal.getMontoAfinanciar(datos);
+
+    let mensaje = document.querySelector('.table-desembolsos .mensaje');
+    let inputs = document.querySelectorAll('.table-desembolsos input');
+
+    let regexEntero = /^\d+$/;
+    let regexDecimal = /^\d+(\.\d+)?$/;
+
+    let totalMonto = 0;
+
+    inputs.forEach(element => {
+        let aux = element.value;
+        if (regexEntero.test(aux) || regexDecimal.test(aux)) {
+            totalMonto = parseFloat(totalMonto) + parseFloat(aux);
+        }
+    });
+
+    if(totalMonto == motonFinanciar){
+        mensaje.textContent = "DESEMBOLSO CORRECTO";
+        mensaje.style.backgroundColor = "#5affa2";
+    }else{
+        mensaje.textContent = "REVISAR 1ER Y 2DO DESEMBOLSO";
+        mensaje.style.backgroundColor = "#ff8985";
+
+    }
+
+
+
+}
 
 /*------------------------------------------------  codigo plantilla  costos --------------------------------------------------- */
 
@@ -405,9 +446,9 @@ function agregarFilaCostoProductoServico() {
                                     oninput="calcularManufactura()"></td>
                             <td><input type="number" min="0" class="form-control precionVenta " value="0"
                                     oninput="calcularManufactura()"></td>
-                            <td><input type="text" class="form-control totalCompra"></td>
-                            <td><input type="text" class="form-control totalVenta"></td>
-                            <td><input type="text" class="form-control mub"></td>
+                            <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalCompra"></td>
+                            <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control totalVenta"></td>
+                            <td><input style="border: none; padding: 0px; text-overflow: ellipsis;" readonly type="text" class="form-control mub"></td>
                               `;
 
     let totales = tbodyTabla.querySelector('.totales-manofactura-producto-servicios');
@@ -416,9 +457,9 @@ function agregarFilaCostoProductoServico() {
 
 }
 function eliminarFilaCostoProductoServico(btn) {
-
     let fila = btn.closest('.fila-costo-produto-servicio');
     fila.remove();
+    calcularManufactura();
 
 }
 
@@ -427,45 +468,3 @@ function eliminarFilaCostoProductoServico(btn) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-/*
- <tr class="fila-costo-produto-servicio">
-                    <td>
-                        <button type="button" onclick="" class="btn btn-danger ">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
-                    </td>
-                    <td><input type="text" class="form-control productoServicio"></td>
-                    <td><input type="text" class="form-control tipoProductoServico"></td>
-                    <td><input type="number" class="form-control cantidadProductoServicio" value="0"
-                            oninput="calcularManufactura()"></td>
-                    <td><input type="text" class="form-control unidadProductoServicio"></td>
-                    <td>
-                        <select class="form-select frecuenciaProductoServicio" onchange="calcularManufactura()">
-                            <option value="25">Diario</option>
-                            <option value="4">Semanal</option>
-                            <option value="2">Quincenal</option>
-                            <option value="1">Mensual</option>
-                            <option value="0.5">Bimestral</option>
-                            <option value="3">Trimestral</option>
-                            <option value="6">Semestral</option>
-                        </select>
-                    </td>
-                    <td><input type="number" min="0" class="form-control  precioCompra" value="0"
-                            oninput="calcularManufactura()"></td>
-                    <td><input type="number" min="0" class="form-control precionVenta " value="0"
-                            oninput="calcularManufactura()"></td>
-                    <td><input type="text" class="form-control totalCompra"></td>
-                    <td><input type="text" class="form-control totalVenta"></td>
-                    <td><input type="text" class="form-control mub"></td>
-                </tr>
- */

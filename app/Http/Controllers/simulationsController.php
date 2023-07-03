@@ -71,6 +71,12 @@ class simulationsController extends Controller
          ->orderBy('created_at', 'desc')
          ->get();
 
+      if ($simulacion->isEmpty()) {
+         $simulaciones = $tabla->where('idUser', $usuario->id)->orderBy('created_at', 'desc')->get();
+         return view("newRoutes.simulations", compact('usuario', 'simulaciones'));
+      }
+
+
       $tablaEmprendedor = new emprendedorModel();
       $simulationEmprendedores = $tablaEmprendedor->where('idSimulation', $idSimulacion)
          ->get();

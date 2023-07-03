@@ -20,7 +20,10 @@
                 <option value="4">Flujo</option>
             </select>
 
-            <button class="btn-guardar-simulacion">Guardar</button>
+            <button class="btn-guardar-simulacion">
+                <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-guardar-simulacion oculto"></i> Guardar
+            </button>
+            <button class="btn-exportar-simulacion">Exportar</button>
         </div>
 
 

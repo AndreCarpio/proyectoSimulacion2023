@@ -67,7 +67,7 @@
             <td>Gastos Operativos</td>
             <td class="gastos-operativos" style="text-align: center">0.00</td>
             <td class="efectivo-gastos-operativos ">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control "
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control "
                     name="apGastosOperativos" value="{{ $presupuestoTotal ->apGastosOperativos ?? '0' }}">
             </td>
         </tr>
@@ -75,7 +75,7 @@
             <td>Materia Prima, Insumos y/o Animales de Engorder</td>
             <td class="materia-prima" style="text-align: center">0.00</td>
             <td class="efectivo-materia-prima">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control " name="apMateriaPrima"
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control " name="apMateriaPrima"
                 value="{{ $presupuestoTotal ->apMateriaPrima ?? '0' }}">
             </td>
         </tr>
@@ -84,7 +84,7 @@
             <td>Requerimientos Promocionales</td>
             <td class="requerimiento-promocionales" style="text-align: center">0.00</td>
             <td class="efectivo-requerimiento-promocionales">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control "
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control "
                     name="apRquePromocionales" value="{{ $presupuestoTotal ->apRquePromocionales ?? '0' }}">
             </td>
         </tr>
@@ -94,7 +94,7 @@
             <td>Infraestructura, Terrenos y/o Plantines</td>
             <td class="infraestructura" style="text-align: center">0.00</td>
             <td class="efectivo-infraestructura">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control " name="apInfraestructura"
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control " name="apInfraestructura"
                 value="{{ $presupuestoTotal ->apInfraestructura ?? '0' }}">
             </td>
         </tr>
@@ -103,7 +103,7 @@
             <td>Maquinaria, Equipos, Vehículos y/o Ganado</td>
             <td class="maquinaria" style="text-align: center">0.00</td>
             <td class="efectivo-maquinaria">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control " name="apMaquinaria"
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control " name="apMaquinaria"
                 value="{{ $presupuestoTotal ->apMaquinaria ?? '0' }}">
             </td>
         </tr>
@@ -112,7 +112,7 @@
             <td>Requerimientos Legales</td>
             <td class="requerimientos-legales" style="text-align: center">0.00</td>
             <td class="efectivo-requerimientos-legales">
-                <input type="number" oninput="validarInputNumber(event)" class="form-control " name="apRequeLegales"
+                <input type="number" oninput="validarInputNumber(event);actualizaSubTotalPlaInversionApPropio();" class="form-control " name="apRequeLegales"
                 value="{{ $presupuestoTotal ->apRequeLegales ?? '0' }}">
             </td>
         </tr>
@@ -163,7 +163,7 @@
             <th style="width: 50%">Primer Desembolso</th>
             <td style="width: 50%">
                 <input class="input-primer-desembolso form-control" type="number"
-                    oninput="validarInputNumber(event)" name="primerDesembolso" value="{{ $presupuestoTotal ->primerDesembolso ?? '0' }}">
+                    oninput="validarInputNumber(event);actualizarDesembolso();" name="primerDesembolso" value="{{ $presupuestoTotal ->primerDesembolso ?? '0' }}">
             </td>
         </tr>
 
@@ -171,7 +171,7 @@
             <th style="width: 50%">Segundo Desembolso</th>
             <td style="width: 50%">
                 <input class="input-segundo-desembolso form-control" type="number"
-                    oninput="validarInputNumber(event)" name="segundoDesembolso" value="{{ $presupuestoTotal ->segundoDesembolso ?? '0' }}">
+                    oninput="validarInputNumber(event);actualizarDesembolso();" name="segundoDesembolso" value="{{ $presupuestoTotal ->segundoDesembolso ?? '0' }}">
             </td>
         </tr>
         <tr>
