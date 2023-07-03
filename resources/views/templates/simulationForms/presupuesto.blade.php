@@ -73,9 +73,10 @@
                     <td><input type="number" oninput="validarInputNumber(event); actualizarTotalOperativoInversion();"
                             class="form-control input-aporte-propio mano-obra-aporte-propio"
                             @foreach ($capital as $item)
-                                 @if ($item->tipo == 'manoObra')
-                                     value="{{ $item->aportePropio ?? '0' }}"
-                                 @endif @endforeach>
+                            @if ($item->tipo == 'manoObra')
+                                value="{{ $item->aportePropio }}"
+                            @endif @endforeach
+                            @if (!collect($capital)->firstWhere('tipo', 'manoObra')) value="0" @endif>
                     </td>
                 </tr>
             </tbody>

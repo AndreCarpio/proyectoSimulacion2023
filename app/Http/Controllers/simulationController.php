@@ -10,6 +10,7 @@ use App\Models\descripcionPlanNegociosModel;
 use App\Models\descripcionProductoServicioModel;
 use App\Models\emprendedorModel;
 use App\Models\emprendimientoModel;
+use App\Models\mercadoCompetenciaEstrategiasModel;
 use App\Models\personaJuridicaModel;
 use App\Models\presupuestoModel;
 use App\Models\presupuestoTotalModel;
@@ -94,6 +95,26 @@ class simulationController extends Controller
                'mesesFuncionando' => $request->input('hace_cuanto_inicio'),
                'descripcionInversiones' => $request->input('que_inversiones_necesita'),
                'descripcionRentabilidades' => $request->input('porque_sera_rentable')
+            ]
+         );
+
+         $mercadoCompetenciaEstrategias = mercadoCompetenciaEstrategiasModel::updateOrCreate(
+            ['idSimulation' => $request->input('idSimulation')],
+            [
+               'clientes' =>  $request->input('clientes'),
+               'potencialesClientes' =>  $request->input('potencialesClientes'),
+               'relacionClientesPotenciales' =>  $request->input('relacionClientesPotenciales'),
+               'competidoresCercanos' =>  $request->input('competidoresCercanos'),
+               'accionesFrenteCompetencia' =>  $request->input('accionesFrenteCompetencia'),
+               'caracteristicasBenficiosas' =>  $request->input('caracteristicasBenficiosas'),
+               'generaMayorIngreso' =>  $request->input('generaMayorIngreso'),
+               'precioProductoServicio' =>  $request->input('precioProductoServicio'),
+               'comoDeterminaPrecio' =>  $request->input('comoDeterminaPrecio'),
+               'lugarVenta' =>  $request->input('lugarVenta'),
+               'intermediarios' =>  $request->input('intermediarios'),
+               'otraFormaVenta' =>  $request->input('otraFormaVenta'),
+               'comunicarExistencia' =>  $request->input('comunicarExistencia'),
+               'accionesAtraerCliente' =>   $request->input('accionesAtraerCliente')
             ]
          );
 
@@ -215,16 +236,14 @@ class simulationController extends Controller
             $registro->idSimulation = $request->input('idSimulation');
             $registro->save();
          }
-         
       } catch (Exception $e) {
          return response()->json([
             "Error" => $e->getMessage()
          ]);
       }
-
-      return response()->json([
-         "Exito" => $request 
-      ]);
-
+      return  $request;
+      /*return response()->json([
+         "Exito" => $request
+      ]);*/
    }
 }

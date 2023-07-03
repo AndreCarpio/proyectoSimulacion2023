@@ -13,15 +13,18 @@
 
         <div class="pestaniaSimulacion">
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option value="0" selected>Informacion</option>
-                <option value="1">Presupuesto</option>
-                <option value="2">Presupuesto Total</option>
-                <option value="3">Costos</option>
-                <option value="4">Flujo</option>
+                <option value="0" selected>Informacion 1</option>
+                <option value="1">Informacion 2</option>
+                <option value="2">Informacion 3</option>
+                <option value="3">Presupuesto</option>
+                <option value="4">Presupuesto Total</option>
+                <option value="5">Costos</option>
+                <option value="6">Flujo</option>
             </select>
 
             <button class="btn-guardar-simulacion">
-                <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-guardar-simulacion oculto"></i> Guardar
+                <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-guardar-simulacion oculto"></i>
+                Guardar
             </button>
             <button class="btn-exportar-simulacion">Exportar</button>
         </div>
@@ -34,6 +37,14 @@
             @csrf
             <div class="seccion-informacion">
                 @include('templates.simulationForms.informacion')
+            </div>
+
+            <div class="seccion-informacion2 oculto">
+                @include('templates.simulationForms.informacion2')
+            </div>
+
+            <div class="seccion-informacion3 oculto">
+                @include('templates.simulationForms.informacion3')
             </div>
 
             <div class="seccion-presupuesto oculto">

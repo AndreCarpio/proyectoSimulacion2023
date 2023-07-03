@@ -7,6 +7,8 @@ class ControladorTab {
 
     constructor(cotenedorSecciones, tab) {
         this.lista.push(cotenedorSecciones.querySelector('.seccion-informacion'));
+        this.lista.push(cotenedorSecciones.querySelector('.seccion-informacion2'));
+        this.lista.push(cotenedorSecciones.querySelector('.seccion-informacion3'));
         this.lista.push(cotenedorSecciones.querySelector('.seccion-presupuesto'));
         this.lista.push(cotenedorSecciones.querySelector('.seccion-presupuesto-total'));
         this.lista.push(cotenedorSecciones.querySelector('.seccion-costos'));

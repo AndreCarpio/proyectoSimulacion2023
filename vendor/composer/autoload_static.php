@@ -579,6 +579,7 @@ class ComposerStaticInit2538beea6130182bc325dcdc991a7ec7
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\capitalModel' => __DIR__ . '/../..' . '/app/Models/capitalModel.php',
         'App\\Models\\comportamientoVentasModel' => __DIR__ . '/../..' . '/app/Models/comportamientoVentasModel.php',
+        'App\\Models\\costoProductoServicioModel' => __DIR__ . '/../..' . '/app/Models/costoProductoServicioModel.php',
         'App\\Models\\descripcionPlanNegociosModel' => __DIR__ . '/../..' . '/app/Models/descripcionPlanNegociosModel.php',
         'App\\Models\\descripcionProductoServicioModel' => __DIR__ . '/../..' . '/app/Models/descripcionProductoServicioModel.php',
         'App\\Models\\emprendedorModel' => __DIR__ . '/../..' . '/app/Models/emprendedorModel.php',

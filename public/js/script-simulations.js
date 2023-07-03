@@ -36,7 +36,7 @@ btn.addEventListener("click", (e) => {
     if (auxError == '') {
         (document.querySelector('.loader-btn-aceptar')).classList.remove('oculto');
         (document.querySelector('#btn-enviar')).disabled = true;
-        
+
         console.log(datos);
         fetch('simulations/create', {
             method: 'post',

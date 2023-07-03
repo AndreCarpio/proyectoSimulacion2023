@@ -9,6 +9,7 @@ use App\Models\descripcionPlanNegociosModel;
 use App\Models\descripcionProductoServicioModel;
 use App\Models\emprendedorModel;
 use App\Models\emprendimientoModel;
+use App\Models\mercadoCompetenciaEstrategiasModel;
 use App\Models\personaJuridicaModel;
 use App\Models\presupuestoModel;
 use App\Models\presupuestoTotalModel;
@@ -64,6 +65,7 @@ class simulationsController extends Controller
          personaJuridicaModel::where('idSimulation', $request->input('idSimulation'))->delete();
          presupuestoModel::where('idSimulation', $request->input('idSimulation'))->delete();
          presupuestoTotalModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         mercadoCompetenciaEstrategiasModel::where('idSimulation', $request->input('idSimulation'))->delete();
 
          $elemento->delete();
       } else {
@@ -84,8 +86,7 @@ class simulationsController extends Controller
          ->get();
 
       if ($simulacion->isEmpty()) {
-         $simulaciones = $tabla->where('idUser', $usuario->id)->orderBy('created_at', 'desc')->get();
-         return view("newRoutes.simulations", compact('usuario', 'simulaciones'));
+         return redirect(route('simulations'));
       }
 
 
@@ -110,6 +111,12 @@ class simulationsController extends Controller
 
       $descripcionPlanNegocios = $tablaPlanNegocion->where('idSimulation', $idSimulacion)
          ->first();
+
+      $tablaMercadoCompetenciaEstrategias = new mercadoCompetenciaEstrategiasModel();
+
+      $mercadoCompetenciaEstrategias = $tablaMercadoCompetenciaEstrategias->where('idSimulation', $idSimulacion)
+         ->first();
+
 
       $tablaPresupuesto = new presupuestoModel();
 
@@ -170,7 +177,8 @@ class simulationsController extends Controller
          'descripcionProductoServicio',
          'presupuestoTotal',
          'comportamientoVentas',
-         'costoProdutoServico'
+         'costoProdutoServico',
+         'mercadoCompetenciaEstrategias'
       ));
    }
 

@@ -29,6 +29,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\capitalModel' => $baseDir . '/app/Models/capitalModel.php',
     'App\\Models\\comportamientoVentasModel' => $baseDir . '/app/Models/comportamientoVentasModel.php',
+    'App\\Models\\costoProductoServicioModel' => $baseDir . '/app/Models/costoProductoServicioModel.php',
     'App\\Models\\descripcionPlanNegociosModel' => $baseDir . '/app/Models/descripcionPlanNegociosModel.php',
     'App\\Models\\descripcionProductoServicioModel' => $baseDir . '/app/Models/descripcionProductoServicioModel.php',
     'App\\Models\\emprendedorModel' => $baseDir . '/app/Models/emprendedorModel.php',

@@ -169,7 +169,8 @@
 <p class="titulo-seccion">▶ Descripcion del plan de negocios</p>
 <div class="mb-3">
     <label class="form-label" for="descripcion_actividad">Describa la actividad que quiere emprender</label>
-    <textarea maxlength="500" class="form-control" id="descripcion_actividad" rows="2" name="descripcion_actividad">{{ $descripcionPlanNegocios->descripcion ?? '' }}</textarea>
+    <textarea maxlength="500" class="form-control" id="descripcion_actividad" rows="2"
+        name="descripcion_actividad">{{ $descripcionPlanNegocios->descripcion ?? '' }}</textarea>
 </div>
 <div class="row g-3 mb-3">
     <div class="col">
@@ -193,7 +194,7 @@
     <div class="col">
         <label for="hace_cuanto_inicio" class="form-label">¿Hace cuántos meses inició ?</label>
         <input type="number" min="0" class="form-control input-mediano" id="hace_cuanto_inicio"
-        oninput="validarInputNumber(event);"  name="hace_cuanto_inicio"
+            oninput="validarInputNumber(event);" name="hace_cuanto_inicio"
             @if ($descripcionPlanNegocios != null && $descripcionPlanNegocios->mesesFuncionando != null) value = "{{ $descripcionPlanNegocios->mesesFuncionando ?? '' }}"
             @else
                 value = "0" @endif>
@@ -202,12 +203,14 @@
 <div class="mb-3">
     <label class="form-label" for="que_inversiones_necesita">¿Qué inversiones necesita para la
         actividad?</label>
-    <textarea maxlength="500" class="form-control" id="que_inversiones_necesita" name="que_inversiones_necesita" rows="2">{{ $descripcionPlanNegocios->descripcionInversiones ?? '' }}</textarea>
+    <textarea maxlength="500" class="form-control" id="que_inversiones_necesita" name="que_inversiones_necesita"
+        rows="2">{{ $descripcionPlanNegocios->descripcionInversiones ?? '' }}</textarea>
 </div>
 <div class="mb-3">
     <label class="form-label" for="porque_sera_rentable">Describa los motivos por la que el proyecto será
         rentable</label>
-    <textarea maxlength="500" class="form-control" id="porque_sera_rentable" name="porque_sera_rentable" rows="2">{{ $descripcionPlanNegocios->descripcionRentabilidades ?? '' }}</textarea>
+    <textarea maxlength="500" class="form-control" id="porque_sera_rentable" name="porque_sera_rentable"
+        rows="2">{{ $descripcionPlanNegocios->descripcionRentabilidades ?? '' }}</textarea>
 </div>
 
 <p class="titulo-seccion">▶ Descripcion del producto o servicio</p>
@@ -262,3 +265,5 @@
     </div>
 
 </div>
+
+
