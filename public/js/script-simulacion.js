@@ -401,10 +401,10 @@ function actualizarDesembolso() {
         }
     });
 
-    if(totalMonto == motonFinanciar){
+    if (totalMonto == motonFinanciar) {
         mensaje.textContent = "DESEMBOLSO CORRECTO";
         mensaje.style.backgroundColor = "#5affa2";
-    }else{
+    } else {
         mensaje.textContent = "REVISAR 1ER Y 2DO DESEMBOLSO";
         mensaje.style.backgroundColor = "#ff8985";
 
@@ -465,8 +465,44 @@ function eliminarFilaCostoProductoServico(btn) {
 
 }
 
-/*------------------------------------------------  codigo plantilla form 5--------------------------------------------------- */
+/*------------------------------------------------  codigo creacion PDF --------------------------------------------------- */
 
 
 
 
+function exportarPDF() {
+    var doc = new jsPDF('p', 'px', [1450, 1700]);
+    var margin = 5;
+    var pageWidth = doc.internal.pageSize.width - margin * 2;
+
+    var elemento = document.createElement('main');
+    elemento.innerHTML = document.querySelector('.contenido-main').innerHTML;
+    elemento.querySelector('.contenedor-formulario-simulacion').style.margin = '0px';
+    elemento.querySelector('.contenedor-formulario-simulacion').style.width = '1200px';
+    elemento.style.padding = "0px"
+
+    var secciones = elemento.querySelectorAll('.seccion');
+    var btns = elemento.querySelectorAll('button');
+
+    elemento.querySelector('.pestaniaSimulacion').remove();
+
+    secciones.forEach(function (element) {
+        element.classList.remove('oculto');
+    });
+    btns.forEach(function (element) {
+        element.remove();
+    });
+
+    var options = {
+        x: margin,
+        y: margin,
+        html2canvas: {
+            useCORS: true // Agregar esta opción si estás obteniendo contenido de otros dominios
+        },
+        callback: function (pdf) {
+            doc.save('prueba.pdf'); // Descargar el archivo PDF
+        }
+    };
+
+    doc.html(elemento, options);
+}

@@ -26,7 +26,7 @@
                 <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-guardar-simulacion oculto"></i>
                 Guardar
             </button>
-            <button class="btn-exportar-simulacion">Exportar</button>
+            <button class="btn-exportar-simulacion" onclick="exportarPDF()">Exportar</button>
         </div>
 
 
@@ -35,31 +35,31 @@
 
         <form class="formulario-guardar-simulacion" method="post">
             @csrf
-            <div class="seccion-informacion">
+            <div class="seccion seccion-informacion">
                 @include('templates.simulationForms.informacion')
             </div>
 
-            <div class="seccion-informacion2 oculto">
+            <div class="seccion seccion-informacion2 oculto">
                 @include('templates.simulationForms.informacion2')
             </div>
 
-            <div class="seccion-informacion3 oculto">
+            <div class="seccion seccion-informacion3 oculto">
                 @include('templates.simulationForms.informacion3')
             </div>
 
-            <div class="seccion-presupuesto oculto">
+            <div class="seccion seccion-presupuesto oculto">
                 @include('templates.simulationForms.presupuesto')
             </div>
 
-            <div class="seccion-presupuesto-total oculto">
+            <div class="seccion seccion-presupuesto-total oculto">
                 @include('templates.simulationForms.presupuestoTotal')
             </div>
 
-            <div class="seccion-costos oculto">
+            <div class="seccion seccion-costos oculto">
                 @include('templates.simulationForms.costos')
             </div>
 
-            <div class="seccion-flujo oculto">
+            <div class="seccion seccion-flujo oculto">
                 @include('templates.simulationForms.flujo')
             </div>
         </form>
@@ -70,6 +70,9 @@
 
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js"></script>
+    
     <script src='{{ asset('js/script-simulacion.js') }}'></script>
     <script src='{{ asset('js/script-guardar-simulacion.js') }}'></script>
 @endsection
