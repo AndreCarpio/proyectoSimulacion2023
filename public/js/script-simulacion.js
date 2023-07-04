@@ -497,7 +497,7 @@ function exportarPDF() {
         x: margin,
         y: margin,
         html2canvas: {
-            useCORS: true // Agregar esta opción si estás obteniendo contenido de otros dominios
+            useCORS: true
         },
         callback: function (pdf) {
             doc.save('prueba.pdf'); // Descargar el archivo PDF
@@ -505,4 +505,258 @@ function exportarPDF() {
     };
 
     doc.html(elemento, options);
+}
+
+
+/*------------------------------------------------  codigo plantilla FLUJO --------------------------------------------------- */
+
+calcularManufactura();
+var mubTotal;
+
+function calcularManufactura() {
+    let defaultValue = 0.00;
+    let filas = document.querySelectorAll('.fila-costo-produto-servicio');
+    let sumaCom = 0;
+    let sumaVen = 0;
+    let sumaMUB = 0;
+
+    filas.forEach(element => {
+        let cantidad = element.querySelector('.cantidadProductoServicio').value || defaultValue;
+        let frecuencia = element.querySelector('.frecuenciaProductoServicio').value || defaultValue;
+        let precioCompra = element.querySelector('.precioCompra').value || defaultValue;
+        let precioVenta = element.querySelector('.precionVenta').value || defaultValue;
+
+        let totalCompraMensual = cantidad * frecuencia * precioCompra || defaultValue;
+        let totalVentaMensual = cantidad * frecuencia * precioVenta || defaultValue;
+        let mub = (totalVentaMensual == 0 || totalVentaMensual == '') ? defaultValue : (totalVentaMensual -
+            totalCompraMensual) / totalVentaMensual;
+
+
+        sumaCom += totalCompraMensual;
+        sumaVen += totalVentaMensual;
+
+        element.querySelector('.totalCompra').value = totalCompraMensual;
+        element.querySelector('.totalVenta').value = totalVentaMensual;
+        element.querySelector('.mub').value = (mub * 100).toFixed(2);
+    });
+
+    sumaMUB = (sumaVen == 0 || sumaVen == '') ? defaultValue : (sumaVen - sumaCom) / sumaVen;
+
+
+    mubTotal = sumaMUB;
+
+    document.getElementById('totCom').value = sumaCom.toFixed(2);
+    document.getElementById('totVen').value = sumaVen.toFixed(2);
+    document.getElementById('mubTotal').value = (mubTotal * 100).toFixed(2);
+
+    calcularTotal();
+}
+
+function calcularTotal() {
+    let aux = 0.00;
+    let sumaAnuVen = 0;
+    let sumaAnuCom = 0;
+    for (let i = 1; i <= 12; i++) {
+        if (document.getElementById('mes' + i).value == 'alta') {
+            document.getElementById('venMen' + i).value = document.getElementById('alto').value;
+        } else if (document.getElementById('mes' + i).value == 'media') {
+            document.getElementById('venMen' + i).value = document.getElementById('medio').value;
+        } else if (document.getElementById('mes' + i).value == 'baja') {
+            document.getElementById('venMen' + i).value = document.getElementById('bajo').value;
+        }
+    }
+    let sumaCosto = 0;
+    for (let i = 1; i <= 12; i++) {
+        aux = (1 - mubTotal);
+        sumaCosto += (document.getElementById('venMen' + i).value * aux);
+        document.getElementById('comMen' + i).value = (document.getElementById('venMen' + i).value * aux).toFixed(0);
+
+    }
+    sumaAnuCom = sumaCosto;
+    for (let i = 1; i <= 12; i++) {
+        sumaAnuVen = sumaAnuVen + Number(document.getElementById('venMen' + i).value);
+        //sumaAnuCom = sumaAnuCom + Number(document.getElementById('comMen' + i).value);
+    }
+    document.getElementById('venAnu').value = sumaAnuVen.toFixed(0);
+    document.getElementById('comAnu').value = sumaAnuCom.toFixed(0);
+}
+
+function cambiarActividad() {
+    document.getElementById("interes").value = document.getElementById("actividad").value;
+}
+
+
+function sumarOperativo() {
+    document.getElementById("totalOperativo").value =
+        parseFloat(document.getElementById("impuestos").value) +
+        parseFloat(document.getElementById("alimentacion").value) +
+        parseFloat(document.getElementById("servicioLuz").value) +
+        parseFloat(document.getElementById("servicioAgua").value) +
+        parseFloat(document.getElementById("servicioGas").value) +
+        parseFloat(document.getElementById("servicioTel").value) +
+        parseFloat(document.getElementById("servicioInt").value) +
+        parseFloat(document.getElementById("servicioAlq").value) +
+        parseFloat(document.getElementById("servicioTra").value) +
+        parseFloat(document.getElementById("escritorio").value) +
+        parseFloat(document.getElementById("empleados").value) +
+        parseFloat(document.getElementById("promocion").value) +
+        parseFloat(document.getElementById("vestimenta").value) +
+        parseFloat(document.getElementById("salud").value) +
+        parseFloat(document.getElementById("otros").value);
+}
+
+function calcularFlujo() {
+    //plan coutas
+    let tasaEscogida = document.getElementById("interes").value;
+    let frecuenciaEscogida = document.getElementById("frecuenciaCredito").value;
+    let plazoEscogido = document.getElementById("plazo").value;
+    let montoEscogido = document.getElementById("monto").value;
+    let polizaEscogida = document.getElementById("poliza").value;
+    let auxPoliza = (polizaEscogida / 1000) * 12;
+    let amortizaciones = [];
+    let saldosCapitales = [];
+    let interesesPlanes = [];
+    let cuotaCreditos = [];
+    let polizas = [];
+    let cuotasFinales = [];
+    saldosCapitales[0] = montoEscogido;
+    if (document.getElementById("tipoCuota").value == 0) {
+        for (let i = 0; i < 12; i++) {
+            interesesPlanes[i] = (tasaEscogida * saldosCapitales[i]) / (360 / frecuenciaEscogida);
+            cuotaCreditos[i] = montoEscogido * ((tasaEscogida / (360 / frecuenciaEscogida) / (1 - Math.pow((1 + (tasaEscogida / (360 / frecuenciaEscogida))), (-(360 / frecuenciaEscogida) * (plazoEscogido / 12))))));
+            amortizaciones[i] = cuotaCreditos[i] - interesesPlanes[i];
+            polizas[i] = (auxPoliza * saldosCapitales[i]) * (frecuenciaEscogida / 30) / 12;
+            cuotasFinales[i] = polizas[i] + cuotaCreditos[i];
+            saldosCapitales[i + 1] = saldosCapitales[i] - amortizaciones[i];
+        }
+    } else {
+        for (let i = 0; i < 12; i++) {
+            interesesPlanes[i] = (tasaEscogida * saldosCapitales[i]) / (360 / frecuenciaEscogida);
+            amortizaciones[i] = montoEscogido / ((360 / frecuenciaEscogida) * (plazoEscogido / 12));
+            cuotaCreditos[i] = interesesPlanes[i] + amortizaciones[i];
+            polizas[i] = (auxPoliza * saldosCapitales[i]) * (frecuenciaEscogida / 30) / 12;
+            cuotasFinales[i] = polizas[i] + cuotaCreditos[i];
+            saldosCapitales[i + 1] = saldosCapitales[i] - amortizaciones[i];
+        }
+    }
+
+    //flujo de caja
+    cambiarActividad();
+    let sumaIngresos = 0;
+    let sumaCostoProduccion = 0;
+    let sumaCostosFijos = 0;
+    let sumaUtilidadNeta = 0;
+    let sumaCuota = 0;
+    //presupuesto
+    let auxMontoAfinancioar = controladorPresupuestoTotal.getMontoAfinanciar(cotroladorPresupuesto.getTablasTotales());
+    document.getElementById("inversion0").value = auxMontoAfinancioar;
+    document.getElementById("saldoInicial0").value = auxMontoAfinancioar;
+   // document.getElementById("inversion0").value = 55710.00;
+   // document.getElementById("saldoInicial0").value = 55710;
+    for (let i = 1; i <= 12; i++) {
+        document.getElementById("ingresos" + i).value = document.getElementById("venMen" + i).value;
+        document.getElementById("costosProduccion" + i).value = document.getElementById("comMen" + i).value;
+    }
+    for (let i = 1; i <= 12; i++) {
+        document.getElementById("utilidadBruta" + i).value = parseFloat(document.getElementById("ingresos" + i).value) - parseFloat(document.getElementById("costosProduccion" + i).value);
+        document.getElementById("costosFijos" + i).value = document.getElementById("totalOperativo").value;
+    }
+    for (let i = 1; i <= 12; i++) {
+        document.getElementById("utilidadNeta" + i).value = parseFloat(document.getElementById("utilidadBruta" + i).value) - parseFloat(document.getElementById("costosFijos" + i).value);
+        document.getElementById("cuota" + i).value = cuotasFinales[i - 1].toFixed(0);
+    }
+    for (let i = 1; i <= 12; i++) {
+        if (document.getElementById("saldoInicial" + i).value == "") {
+            document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value);
+        } else {
+            document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value) + parseFloat(document.getElementById("saldoInicial" + i).value);
+        }
+    }
+    for (let i = 2; i <= 12; i++) {
+        document.getElementById("saldoInicial" + i).value = parseFloat(document.getElementById("flujoAcumulado" + (i - 1)).value);
+    }
+    for (let i = 1; i <= 12; i++) {
+        sumaIngresos = sumaIngresos + parseFloat(document.getElementById("ingresos" + i).value);
+        sumaCostoProduccion = sumaCostoProduccion + parseFloat(document.getElementById("costosProduccion" + i).value);
+        sumaCostosFijos = sumaCostosFijos + parseFloat(document.getElementById("costosFijos" + i).value);
+        sumaUtilidadNeta = sumaUtilidadNeta + parseFloat(document.getElementById("utilidadNeta" + i).value);
+        sumaCuota = sumaCuota + parseFloat(document.getElementById("cuota" + i).value);
+    }
+    document.getElementById('saldoInicial13').value = document.getElementById('saldoInicial12').value;
+    document.getElementById('ingresos13').value = sumaIngresos;
+    document.getElementById('costosProduccion13').value = sumaCostoProduccion;
+    document.getElementById('utilidadBruta13').value = sumaIngresos - sumaCostoProduccion;
+    document.getElementById('costosFijos13').value = sumaCostosFijos;
+    document.getElementById('utilidadNeta13').value = sumaUtilidadNeta;
+    document.getElementById('cuota13').value = sumaCuota;
+    document.getElementById('flujoAcumulado13').value = document.getElementById('flujoAcumulado12').value;
+
+    //flujos
+    let flujos = [];
+    flujos[0] = parseFloat(document.getElementById("monto").value) * (-1);
+    for (let i = 1; i <= plazoEscogido; i++) {
+        flujos[i] = (document.getElementById("flujoAcumulado13").value / 12).toFixed(0);
+        //flujos[i] = 2556;
+        //console.log(flujos[i]);
+    }
+    console.log(flujos[0]);
+    let tasa = parseFloat(document.getElementById("interes").value) / 12;
+    let van = calcularVAN(flujos, tasa);
+    let tir = calculateTIR(flujos);
+    document.getElementById("van").value = van;
+    document.getElementById("tir").value = tir * 12;
+    if (document.getElementById("van").value >= 0) {
+        document.getElementById('respuestaVAN').innerHTML = "La inversión puede ser interesante";
+    } else {
+        document.getElementById('respuestaVAN').innerHTML = "No se debe invertir";
+    }
+    if (document.getElementById("tir").value >= document.getElementById("interes").value) {
+        document.getElementById('respuestaTIR').innerHTML = "La inversión es factible";
+    } else {
+        document.getElementById('respuestaTIR').innerHTML = "No se debe invertir";
+    }
+
+    function calcularVAN(flujosEfectivo, tasaDescuento) {
+        let van = 0;
+        for (let i = 0; i < flujosEfectivo.length; i++) {
+            van += flujosEfectivo[i] / Math.pow(1 + tasaDescuento, i + 1);
+        }
+        return van;
+    }
+
+    function calculateTIR(cashFlow) {
+        let epsilon = 0.00001; // Tolerancia para el cálculo
+        let maxIterations = 1000; // Número máximo de iteraciones
+        let guess = 0.1; // Suposición inicial de la TIR
+        let npv;
+        let oldGuess;
+
+        for (let i = 0; i < maxIterations; i++) {
+            npv = 0;
+            for (let j = 0; j < cashFlow.length; j++) {
+                npv += cashFlow[j] / Math.pow(1 + guess, j);
+            }
+
+            if (Math.abs(npv) < epsilon) {
+                return guess;
+            }
+
+            oldGuess = guess;
+            guess = guess - npv / calculateDerivative(cashFlow, guess);
+
+            if (Math.abs(oldGuess - guess) < epsilon) {
+                return guess;
+            }
+        }
+        return null; // La TIR no converge en el número máximo de iteraciones
+    }
+
+    // Función para calcular la derivada de la función NPV en un punto dado
+    function calculateDerivative(cashFlow, rate) {
+        var derivative = 0;
+        for (let i = 0; i < cashFlow.length; i++) {
+            derivative -= (i * cashFlow[i]) / Math.pow(1 + rate, i + 1);
+        }
+        return derivative;
+    }
 }

@@ -1,6 +1,3 @@
-
-
-
 var btnGuardarSimulacion = document.querySelector(".btn-guardar-simulacion");
 var formGuardarSimulacion = document.querySelector(".formulario-guardar-simulacion");
 

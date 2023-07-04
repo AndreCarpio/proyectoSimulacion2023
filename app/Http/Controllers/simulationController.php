@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\analisisFinancieroModel;
 use App\Models\capitalModel;
 use App\Models\comportamientoVentasModel;
 use App\Models\costoProductoServicioModel;
@@ -236,6 +237,36 @@ class simulationController extends Controller
             $registro->idSimulation = $request->input('idSimulation');
             $registro->save();
          }
+
+
+         $analisisFinanciero = analisisFinancieroModel::updateOrCreate(
+            [
+               'idSimulation' => $request->input('idSimulation')
+            ],
+            [
+               'impuestos' => $request->input('impuestos'),
+               'alimentacion' => $request->input('alimentacion'),
+               'servicioLuz' => $request->input('servicioLuz'),
+               'servicioAgua' => $request->input('servicioAgua'),
+               'servicioGas' => $request->input('servicioGas'),
+               'servicioTelefono' => $request->input('servicioTelefono'),
+               'servicioInternet' => $request->input('servicioInternet'),
+               'servicioAlquiler' => $request->input('servicioAlquiler'),
+               'ServicioTransporte' => $request->input('ServicioTransporte'),
+               'materialEscritorio' => $request->input('materialEscritorio'),
+               'pagoEmpleados' => $request->input('pagoEmpleados'),
+               'promocion' => $request->input('promocion'),
+               'vestimenta' => $request->input('vestimenta'),
+               'salud' => $request->input('salud'),
+               'otros' => $request->input('otros'),
+               'frecuencia' => $request->input('frecuencia'),
+               'poliza' => $request->input('poliza'),
+               'monto' => $request->input('montoAnlisisFinanciero'),
+               'plazoMeses' => $request->input('plazoMeses'),
+               'tipoCuota' => $request->input('tipoCuota'),
+               'actividad' => $request->input('actividad')
+            ]
+         );
       } catch (Exception $e) {
          return response()->json([
             "Error" => $e->getMessage()

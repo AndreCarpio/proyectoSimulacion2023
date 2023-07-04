@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\analisisFinancieroModel;
 use App\Models\capitalModel;
 use App\Models\comportamientoVentasModel;
 use App\Models\costoProductoServicioModel;
@@ -66,6 +67,7 @@ class simulationsController extends Controller
          presupuestoModel::where('idSimulation', $request->input('idSimulation'))->delete();
          presupuestoTotalModel::where('idSimulation', $request->input('idSimulation'))->delete();
          mercadoCompetenciaEstrategiasModel::where('idSimulation', $request->input('idSimulation'))->delete();
+         analisisFinancieroModel::where('idSimulation', $request->input('idSimulation'))->delete();
 
          $elemento->delete();
       } else {
@@ -86,7 +88,7 @@ class simulationsController extends Controller
          ->get();
 
       if ($simulacion->isEmpty()) {
-         return redirect(route('simulations'));
+         return redirect(route('simulations')); // si no existe la simulacion
       }
 
 
@@ -155,9 +157,9 @@ class simulationsController extends Controller
       $costoProdutoServico = $tablaCostoProductoServico->where('idSimulation', $idSimulacion)
          ->get();
 
-
-
-
+      $tablaAnalisisFinancieroModel = new analisisFinancieroModel();
+      $analisisFinancieroModel = $tablaAnalisisFinancieroModel->where('idSimulation', $idSimulacion)
+         ->first();
 
       // obtener todo los datos de la simulacion de la bade de datos
       return view('newRoutes.simulation', compact(
@@ -178,7 +180,8 @@ class simulationsController extends Controller
          'presupuestoTotal',
          'comportamientoVentas',
          'costoProdutoServico',
-         'mercadoCompetenciaEstrategias'
+         'mercadoCompetenciaEstrategias',
+         'analisisFinancieroModel'
       ));
    }
 

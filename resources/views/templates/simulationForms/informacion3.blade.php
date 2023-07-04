@@ -1,5 +1,5 @@
 
-<p class="titulo-seccion">▶ Estrategia De Mercado (4P`s: Producto , Precio, Plaza y Promoción)</p>
+<p class="titulo-seccion"> Estrategia De Mercado (4P`s: Producto , Precio, Plaza y Promoción)</p>
 <label class="form-label"> - Producto o Servicio</label>
 <div class="mb-3">
     <label class="form-label" for="caracteristicasBenficiosas">¿Qué características del Producto o Servicio son

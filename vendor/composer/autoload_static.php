@@ -584,6 +584,7 @@ class ComposerStaticInit2538beea6130182bc325dcdc991a7ec7
         'App\\Models\\descripcionProductoServicioModel' => __DIR__ . '/../..' . '/app/Models/descripcionProductoServicioModel.php',
         'App\\Models\\emprendedorModel' => __DIR__ . '/../..' . '/app/Models/emprendedorModel.php',
         'App\\Models\\emprendimientoModel' => __DIR__ . '/../..' . '/app/Models/emprendimientoModel.php',
+        'App\\Models\\mercadoCompetenciaEstrategiasModel' => __DIR__ . '/../..' . '/app/Models/mercadoCompetenciaEstrategiasModel.php',
         'App\\Models\\personaJuridicaModel' => __DIR__ . '/../..' . '/app/Models/personaJuridicaModel.php',
         'App\\Models\\presupuestoModel' => __DIR__ . '/../..' . '/app/Models/presupuestoModel.php',
         'App\\Models\\presupuestoTotalModel' => __DIR__ . '/../..' . '/app/Models/presupuestoTotalModel.php',

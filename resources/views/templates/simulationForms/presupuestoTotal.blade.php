@@ -1,4 +1,4 @@
-<p class="titulo-seccion">▶ Presupuesto Resumen</p>
+<p class="titulo-seccion"> Presupuesto Resumen</p>
 
 <table class="table table-bordered tabla-presupuesto-resumen-ap-propio  ">
     <thead>

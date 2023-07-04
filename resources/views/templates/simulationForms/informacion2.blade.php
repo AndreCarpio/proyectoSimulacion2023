@@ -1,6 +1,6 @@
 
 
-<p class="titulo-seccion">▶ Analisis De Mercado</p>
+<p class="titulo-seccion"> Analisis De Mercado</p>
 
 <div class="mb-3">
     <label class="form-label" for="clientes">¿Quiénes serán los clientes que compraran su Producto o Servicio?
@@ -21,7 +21,7 @@
         name="relacionClientesPotenciales">{{$mercadoCompetenciaEstrategias ->relacionClientesPotenciales ?? '' }}</textarea>
 </div>
 
-<p class="titulo-seccion">▶ Analisis De La Competencia</p>
+<p class="titulo-seccion"> Analisis De La Competencia</p>
 
 <div class="mb-3">
     <label class="form-label" for="competidoresCercanos">¿Existen competidores cercanos al lugar donde se aperturará

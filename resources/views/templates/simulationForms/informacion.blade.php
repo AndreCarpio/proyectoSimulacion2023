@@ -1,4 +1,4 @@
-<p class="titulo-seccion">▶ Datos personales</p>
+<p class="titulo-seccion"> Datos personales</p>
 <div class="row">
     <div class="col cotenedor-fieldset">
         <p class="cotenedor-legenda"> Deudor </p>
@@ -166,7 +166,7 @@
 
 </div>
 
-<p class="titulo-seccion">▶ Descripcion del plan de negocios</p>
+<p class="titulo-seccion"> Descripcion del plan de negocios</p>
 <div class="mb-3">
     <label class="form-label" for="descripcion_actividad">Describa la actividad que quiere emprender</label>
     <textarea maxlength="500" class="form-control" id="descripcion_actividad" rows="2"
@@ -213,7 +213,7 @@
         rows="2">{{ $descripcionPlanNegocios->descripcionRentabilidades ?? '' }}</textarea>
 </div>
 
-<p class="titulo-seccion">▶ Descripcion del producto o servicio</p>
+<p class="titulo-seccion"> Descripcion del producto o servicio</p>
 
 <div class="mb-3">
     <label class="form-label">Descripción detallada del Producto o Servicio</label>

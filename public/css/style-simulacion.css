@@ -42,7 +42,7 @@ body {
     height: 42px;
     min-width: 120px;
     padding: 0px 10px;
-    border:  1px solid #dee2e6;
+    border: 1px solid #dee2e6;
     background: #fff;
     border-radius: 0.5rem;
     color: #212529;
@@ -53,13 +53,13 @@ body {
 }
 
 
-.pestaniaSimulacion .btn-exportar-simulacion{
+.pestaniaSimulacion .btn-exportar-simulacion {
     font-size: 1rem !important;
     outline: none;
     cursor: pointer;
     height: 42px;
     padding: 0px 15px;
-    border:  1px solid #dee2e6;
+    border: 1px solid #dee2e6;
     background: #fff;
     border-radius: 0.5rem;
     color: #212529;
@@ -200,7 +200,7 @@ input {
     width: 60px;
 }
 
-.oculto{
+.oculto {
     display: none;
 }
 
@@ -208,41 +208,43 @@ input {
 /*------------------------------------------------  codigo plantilla form 2--------------------------------------------------- */
 /*------------------------------------------------  codigo plantilla form Presupuesto Total --------------------------------------------------- */
 
-.table-resumen-total-proyecto ,
-.table-desembolsos th{
+.table-resumen-total-proyecto,
+.table-desembolsos th {
     text-align: center;
     vertical-align: middle;
 }
 
-.table-resumen-total-proyecto ,
-.table-desembolsos td{
+.table-resumen-total-proyecto,
+.table-desembolsos td {
     text-align: center;
     vertical-align: middle;
 }
 
 .table-resumen-total-proyecto .mensaje,
-.table-desembolsos .mensaje{
+.table-desembolsos .mensaje {
     background-color: #FFFB69;
 }
+
 /*------------------------------------------------  codigo plantilla costos --------------------------------------------------- */
 
-.formulario-costos{
+.formulario-costos {
     display: flex;
     flex-direction: column;
 }
-.rango-venta-mes{
+
+.rango-venta-mes {
     display: flex;
     flex-direction: column;
- 
+
 }
 
 
-.rango-venta-mes input{
+.rango-venta-mes input {
     margin-bottom: 8px;
     text-align: left;
 }
 
-.comportamiento-ventas-mes{
+.comportamiento-ventas-mes {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -250,7 +252,7 @@ input {
 
 }
 
-.comportamiento-mes{
+.comportamiento-mes {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -260,26 +262,29 @@ input {
 
 
 
-.comportamiento-mes select{
+.comportamiento-mes select {
     width: 95px;
     margin-bottom: 8px;
 }
-.tabla-manofactura-producto-servicios{
+
+.tabla-manofactura-producto-servicios {
     width: 100%;
     overflow: hidden;
     overflow-x: scroll;
     padding: 10px 0px;
     margin-bottom: 25px;
 }
-.tabla-manofactura-producto-servicios input{
+
+.tabla-manofactura-producto-servicios input {
     min-width: 120px;
     text-overflow: ellipsis;
 }
 
-.tabla-manofactura-producto-servicios select{
+.tabla-manofactura-producto-servicios select {
     min-width: 150px;
     text-overflow: ellipsis;
 }
+
 .tabla-manofactura-producto-servicios::-webkit-scrollbar {
     width: 13px;
     height: 13px;
@@ -296,19 +301,107 @@ input {
     cursor: pointer;
 }
 
-.tabla-ventas-costos-mensuales input{
+.tabla-ventas-costos-mensuales input {
     border: none;
     padding: 0px;
     text-overflow: ellipsis;
 
 }
 
-.tabla-ventas-costos-mensuales td{
+.tabla-ventas-costos-mensuales td {
     text-align: center;
 
 }
-/*------------------------------------------------  codigo plantilla form 5--------------------------------------------------- */
 
+/*------------------------------------------------  codigo plantilla FLUJO --------------------------------------------------- */
+
+.seccion-costos-operativos {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.seccion-analisis-finaciero {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+.seccion-utilidad-credito {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-dato-costos-opetativos {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.contenedor-dato-costos-opetativos label {
+    min-width: 175px;
+    vertical-align: middle !important;
+    margin: auto;
+
+}
+
+.seccion-credito {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.contenedor-dato-credito {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.contenedor-dato-credito label {
+    min-width: 175px;
+    vertical-align: middle !important;
+    margin: auto;
+
+}
+
+
+.contenedor-tabla-flujo {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.contenedor-tabla-flujo::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+    border-radius: 20px;
+}
+
+.contenedor-tabla-flujo::-webkit-scrollbar-thumb {
+    background: #a1a1a1;
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+.contenedor-tabla-flujo::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}
+
+.input-tabla-flujo {
+    min-width: 150px;
+    text-overflow: ellipsis;
+}
+
+.contenedor-tabla-flujo td {
+    text-wrap: nowrap;
+    vertical-align: middle;
+}
 
 /*------------------------------------------------   reponsive  --------------------------------------------------- */
 

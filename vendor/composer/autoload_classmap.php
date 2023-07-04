@@ -34,6 +34,7 @@ return array(
     'App\\Models\\descripcionProductoServicioModel' => $baseDir . '/app/Models/descripcionProductoServicioModel.php',
     'App\\Models\\emprendedorModel' => $baseDir . '/app/Models/emprendedorModel.php',
     'App\\Models\\emprendimientoModel' => $baseDir . '/app/Models/emprendimientoModel.php',
+    'App\\Models\\mercadoCompetenciaEstrategiasModel' => $baseDir . '/app/Models/mercadoCompetenciaEstrategiasModel.php',
     'App\\Models\\personaJuridicaModel' => $baseDir . '/app/Models/personaJuridicaModel.php',
     'App\\Models\\presupuestoModel' => $baseDir . '/app/Models/presupuestoModel.php',
     'App\\Models\\presupuestoTotalModel' => $baseDir . '/app/Models/presupuestoTotalModel.php',

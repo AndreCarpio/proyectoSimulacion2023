@@ -1,4 +1,4 @@
-<p class="titulo-seccion">▶ Presupuesto Del Emprendimiento</p>
+<p class="titulo-seccion"> Presupuesto Del Emprendimiento</p>
 
 <div class="mb-3">
     <label class="form-label">¿Con que Efectivo cuenta para realizar el emprendimiento?</label>

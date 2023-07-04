@@ -62,6 +62,9 @@
             <div class="seccion seccion-flujo oculto">
                 @include('templates.simulationForms.flujo')
             </div>
+
+
+            
         </form>
 
 
@@ -72,7 +75,7 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js"></script>
-    
+
     <script src='{{ asset('js/script-simulacion.js') }}'></script>
     <script src='{{ asset('js/script-guardar-simulacion.js') }}'></script>
 @endsection
