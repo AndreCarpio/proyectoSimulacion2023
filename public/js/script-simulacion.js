@@ -22,6 +22,8 @@ class ControladorTab {
     }
 
     mostrarSeccion(seccion) {
+        actualizarUtilidad();
+        actualizarDatosDelCredito();
 
         this.lista.forEach(element => {
             element.classList.add('oculto');
@@ -104,6 +106,16 @@ class ControladorPresupuestoTotal {
         return totalPlanInversion - datos.efectivo.aporte;
     }
 
+    getTotalPlaInversion(datos) {
+        let totalPlanInversion = (datos.costosOperativos.inversion +
+            datos.materiaPrima.inversion +
+            datos.requePromocinales.inversion +
+            datos.infraestructura.inversion +
+            datos.maquinaria.inversion +
+            datos.requeLegales.inversion);
+        return totalPlanInversion;
+    }
+
 }
 
 class ControladorPresupuesto {
@@ -178,6 +190,10 @@ actualizarSubTotalMontoEmprendimiento();
 actualizarTotalOperativoInversion();
 actualizaSubTotalPlaInversionApPropio();
 actualizarDesembolso();
+calcularManufactura();
+sumarOperativo();
+actualizarUtilidad();
+actualizarDatosDelCredito();
 
 
 /*------------------------------------------------   Codigo Informacion --------------------------------------------------- */
@@ -299,6 +315,7 @@ function actualizarTotalOperativoInversion() {
 
     let datos = cotroladorPresupuesto.getTablasTotales();
     controladorPresupuestoTotal.presupuestoModificado(datos);
+
 
     return { aporte: montoAporteOperativo, inversion: montoInversionOperativo }
 }
@@ -510,7 +527,7 @@ function exportarPDF() {
 
 /*------------------------------------------------  codigo plantilla FLUJO --------------------------------------------------- */
 
-calcularManufactura();
+
 var mubTotal;
 
 function calcularManufactura() {
@@ -579,6 +596,8 @@ function calcularTotal() {
     }
     document.getElementById('venAnu').value = sumaAnuVen.toFixed(0);
     document.getElementById('comAnu').value = sumaAnuCom.toFixed(0);
+
+    return { totalVentasAnual: sumaAnuVen, totalCostosAnual: sumaAnuCom }
 }
 
 function cambiarActividad() {
@@ -603,6 +622,28 @@ function sumarOperativo() {
         parseFloat(document.getElementById("vestimenta").value) +
         parseFloat(document.getElementById("salud").value) +
         parseFloat(document.getElementById("otros").value);
+    actualizarUtilidad();
+}
+
+function getSumaOpertivo() {
+    let res = parseFloat(document.getElementById("impuestos").value) +
+        parseFloat(document.getElementById("alimentacion").value) +
+        parseFloat(document.getElementById("servicioLuz").value) +
+        parseFloat(document.getElementById("servicioAgua").value) +
+        parseFloat(document.getElementById("servicioGas").value) +
+        parseFloat(document.getElementById("servicioTel").value) +
+        parseFloat(document.getElementById("servicioInt").value) +
+        parseFloat(document.getElementById("servicioAlq").value) +
+        parseFloat(document.getElementById("servicioTra").value) +
+        parseFloat(document.getElementById("escritorio").value) +
+        parseFloat(document.getElementById("empleados").value) +
+        parseFloat(document.getElementById("promocion").value) +
+        parseFloat(document.getElementById("vestimenta").value) +
+        parseFloat(document.getElementById("salud").value) +
+        parseFloat(document.getElementById("otros").value);
+
+
+    return res;
 }
 
 function calcularFlujo() {
@@ -648,11 +689,11 @@ function calcularFlujo() {
     let sumaUtilidadNeta = 0;
     let sumaCuota = 0;
     //presupuesto
-    let auxMontoAfinancioar = controladorPresupuestoTotal.getMontoAfinanciar(cotroladorPresupuesto.getTablasTotales());
-    document.getElementById("inversion0").value = auxMontoAfinancioar;
-    document.getElementById("saldoInicial0").value = auxMontoAfinancioar;
-   // document.getElementById("inversion0").value = 55710.00;
-   // document.getElementById("saldoInicial0").value = 55710;
+    let auxTotalPlanInversion = controladorPresupuestoTotal.getTotalPlaInversion(cotroladorPresupuesto.getTablasTotales());
+    document.getElementById("inversion0").value = auxTotalPlanInversion;
+    document.getElementById("saldoInicial0").value = auxTotalPlanInversion;
+    //document.getElementById("inversion0").value = 55710.00;
+    //document.getElementById("saldoInicial0").value = 55710;
     for (let i = 1; i <= 12; i++) {
         document.getElementById("ingresos" + i).value = document.getElementById("venMen" + i).value;
         document.getElementById("costosProduccion" + i).value = document.getElementById("comMen" + i).value;
@@ -715,48 +756,71 @@ function calcularFlujo() {
     } else {
         document.getElementById('respuestaTIR').innerHTML = "No se debe invertir";
     }
+}
 
-    function calcularVAN(flujosEfectivo, tasaDescuento) {
-        let van = 0;
-        for (let i = 0; i < flujosEfectivo.length; i++) {
-            van += flujosEfectivo[i] / Math.pow(1 + tasaDescuento, i + 1);
-        }
-        return van;
+function calcularVAN(flujosEfectivo, tasaDescuento) {
+    let van = 0;
+    for (let i = 0; i < flujosEfectivo.length; i++) {
+        van += flujosEfectivo[i] / Math.pow(1 + tasaDescuento, i + 1);
     }
+    return van;
+}
 
-    function calculateTIR(cashFlow) {
-        let epsilon = 0.00001; // Tolerancia para el cálculo
-        let maxIterations = 1000; // Número máximo de iteraciones
-        let guess = 0.1; // Suposición inicial de la TIR
-        let npv;
-        let oldGuess;
+function calculateTIR(cashFlow) {
+    let epsilon = 0.00001; // Tolerancia para el cálculo
+    let maxIterations = 1000; // Número máximo de iteraciones
+    let guess = 0.1; // Suposición inicial de la TIR
+    let npv;
+    let oldGuess;
 
-        for (let i = 0; i < maxIterations; i++) {
-            npv = 0;
-            for (let j = 0; j < cashFlow.length; j++) {
-                npv += cashFlow[j] / Math.pow(1 + guess, j);
-            }
-
-            if (Math.abs(npv) < epsilon) {
-                return guess;
-            }
-
-            oldGuess = guess;
-            guess = guess - npv / calculateDerivative(cashFlow, guess);
-
-            if (Math.abs(oldGuess - guess) < epsilon) {
-                return guess;
-            }
+    for (let i = 0; i < maxIterations; i++) {
+        npv = 0;
+        for (let j = 0; j < cashFlow.length; j++) {
+            npv += cashFlow[j] / Math.pow(1 + guess, j);
         }
-        return null; // La TIR no converge en el número máximo de iteraciones
-    }
 
-    // Función para calcular la derivada de la función NPV en un punto dado
-    function calculateDerivative(cashFlow, rate) {
-        var derivative = 0;
-        for (let i = 0; i < cashFlow.length; i++) {
-            derivative -= (i * cashFlow[i]) / Math.pow(1 + rate, i + 1);
+        if (Math.abs(npv) < epsilon) {
+            return guess;
         }
-        return derivative;
+
+        oldGuess = guess;
+        guess = guess - npv / calculateDerivative(cashFlow, guess);
+
+        if (Math.abs(oldGuess - guess) < epsilon) {
+            return guess;
+        }
     }
+    return null; // La TIR no converge en el número máximo de iteraciones
+}
+
+// Función para calcular la derivada de la función NPV en un punto dado
+function calculateDerivative(cashFlow, rate) {
+    var derivative = 0;
+    for (let i = 0; i < cashFlow.length; i++) {
+        derivative -= (i * cashFlow[i]) / Math.pow(1 + rate, i + 1);
+    }
+    return derivative;
+}
+
+function actualizarUtilidad() {
+
+    let auxVentasCostos = calcularTotal();
+    let auxCostoOperativo = getSumaOpertivo() * 12;
+    let auxUtilidadBruta = auxVentasCostos.totalVentasAnual - auxVentasCostos.totalCostosAnual;
+    let auxUtilidadOperativa = auxUtilidadBruta - auxCostoOperativo;
+
+    document.getElementById('ingresosTotales').value = auxVentasCostos.totalVentasAnual.toFixed(0);
+    document.getElementById('costosDirectos').value = auxVentasCostos.totalCostosAnual.toFixed(0);
+    document.getElementById('utilidadBruta').value = auxUtilidadBruta.toFixed(0);
+    document.getElementById('costoOperativo').value = auxCostoOperativo;
+    document.getElementById('utilidadOperativa').value = auxUtilidadOperativa.toFixed(0);
+
+}
+
+
+function actualizarDatosDelCredito(){
+
+    document.getElementById('monto').value = controladorPresupuestoTotal.getMontoAfinanciar(cotroladorPresupuesto.getTablasTotales());
+    document.getElementById('interes').value = document.getElementById('actividad').value;
+
 }

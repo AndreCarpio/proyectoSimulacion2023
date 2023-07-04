@@ -305,35 +305,50 @@
         <h2>ANALISIS FINANCIERO</h2>
         <h6> <b> Costos Operativos</b></h6>
         <label>Impuestos (Bs):</label>
-        <input type="number" id="impuestos" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="impuestos" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Alimentación (Bs):</label>
-        <input type="number" id="alimentacion" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="alimentacion" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Luz (Bs):</label>
-        <input type="number" id="servicioLuz" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioLuz" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Agua (Bs):</label>
-        <input type="number" id="servicioAgua" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioAgua" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Gas (Bs):</label>
-        <input type="number" id="servicioGas" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioGas" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Telefono (Bs):</label>
-        <input type="number" id="servicioTel" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioTel" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Internet (Bs):</label>
-        <input type="number" id="servicioInt" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioInt" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de Alquiler (Bs):</label>
-        <input type="number" id="servicioAlq" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioAlq" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Servicio de transporte (Bs):</label>
-        <input type="number" id="servicioTra" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="servicioTra" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Material de Escritorio (Bs):</label>
-        <input type="number" id="escritorio" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="escritorio" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Pago a Empleados (Bs):</label>
-        <input type="number" id="empleados" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="empleados" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Promoción (Bs):</label>
-        <input type="number" id="promocion" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="promocion" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Vestimenta (Bs):</label>
-        <input type="number" id="vestimenta" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="vestimenta" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Salud (Bs):</label>
-        <input type="number" id="salud" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="salud" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>Otros (Bs):</label>
-        <input type="number" id="otros" min="0" value="0" onchange="sumarOperativo()" onkeyup="sumarOperativo()"><br>
+        <input type="number" id="otros" min="0" value="0" onchange="sumarOperativo()"
+            onkeyup="sumarOperativo()"><br>
         <label>TOTAL (Bs):</label>
         <input type="number" id="totalOperativo" min="0"><br>
         <br>
@@ -375,7 +390,8 @@
             <option value="360">Anual</option>
         </select>
         <label>Poliza: </label>
-        <input type="number" id="poliza" min="0" value="0.395" onchange="calcularFlujo()" onkeyup="calcularFlujo()">
+        <input type="number" id="poliza" min="0" value="0.395" onchange="calcularFlujo()"
+            onkeyup="calcularFlujo()">
         <br>
         <label>Monto (Bs): </label>
         <input type="number" id="monto" min="0" onchange="calcularFlujo()" onkeyup="calcularFlujo()">
@@ -573,7 +589,8 @@
         </table>
         <br>
         <label>VAN: </label>
-        <input type="text" id="van" value="">&nbsp;&nbsp;<b id="respuestaVAN" style="color:red"></b><br>
+        <input type="text" id="van" value="">&nbsp;&nbsp;<b id="respuestaVAN"
+            style="color:red"></b><br>
         <label>TIR %: </label>
         <input type="text" id="tir" value="">&nbsp;&nbsp;<b id="respuestaTIR"></b>
         <br>
@@ -586,14 +603,22 @@
 
     function calcularManufactura() {
         let defaultValue = 0.00;
-        let com1 = parseFloat(document.getElementById('can1').value) * parseFloat(document.getElementById('preCom1').value) * parseFloat(document.getElementById('frecuencia1').value);
-        let com2 = parseFloat(document.getElementById('can2').value) * parseFloat(document.getElementById('preCom2').value) * parseFloat(document.getElementById('frecuencia2').value);
-        let com3 = parseFloat(document.getElementById('can3').value) * parseFloat(document.getElementById('preCom3').value) * parseFloat(document.getElementById('frecuencia3').value);
-        let com4 = parseFloat(document.getElementById('can4').value) * parseFloat(document.getElementById('preCom4').value) * parseFloat(document.getElementById('frecuencia4').value);
-        let ven1 = parseFloat(document.getElementById('can1').value) * parseFloat(document.getElementById('preVen1').value) * parseFloat(document.getElementById('frecuencia1').value);
-        let ven2 = parseFloat(document.getElementById('can2').value) * parseFloat(document.getElementById('preVen2').value) * parseFloat(document.getElementById('frecuencia2').value);
-        let ven3 = parseFloat(document.getElementById('can3').value) * parseFloat(document.getElementById('preVen3').value) * parseFloat(document.getElementById('frecuencia3').value);
-        let ven4 = parseFloat(document.getElementById('can4').value) * parseFloat(document.getElementById('preVen4').value) * parseFloat(document.getElementById('frecuencia4').value);
+        let com1 = parseFloat(document.getElementById('can1').value) * parseFloat(document.getElementById('preCom1')
+            .value) * parseFloat(document.getElementById('frecuencia1').value);
+        let com2 = parseFloat(document.getElementById('can2').value) * parseFloat(document.getElementById('preCom2')
+            .value) * parseFloat(document.getElementById('frecuencia2').value);
+        let com3 = parseFloat(document.getElementById('can3').value) * parseFloat(document.getElementById('preCom3')
+            .value) * parseFloat(document.getElementById('frecuencia3').value);
+        let com4 = parseFloat(document.getElementById('can4').value) * parseFloat(document.getElementById('preCom4')
+            .value) * parseFloat(document.getElementById('frecuencia4').value);
+        let ven1 = parseFloat(document.getElementById('can1').value) * parseFloat(document.getElementById('preVen1')
+            .value) * parseFloat(document.getElementById('frecuencia1').value);
+        let ven2 = parseFloat(document.getElementById('can2').value) * parseFloat(document.getElementById('preVen2')
+            .value) * parseFloat(document.getElementById('frecuencia2').value);
+        let ven3 = parseFloat(document.getElementById('can3').value) * parseFloat(document.getElementById('preVen3')
+            .value) * parseFloat(document.getElementById('frecuencia3').value);
+        let ven4 = parseFloat(document.getElementById('can4').value) * parseFloat(document.getElementById('preVen4')
+            .value) * parseFloat(document.getElementById('frecuencia4').value);
         let mub1 = isNaN((ven1 - com1) / ven1) ? defaultValue : ((ven1 - com1) / ven1);
         let mub2 = isNaN((ven2 - com2) / ven2) ? defaultValue : ((ven2 - com2) / ven2)
         let mub3 = isNaN((ven3 - com3) / ven3) ? defaultValue : ((ven3 - com3) / ven3)
@@ -606,10 +631,14 @@
         document.getElementById('totVen2').value = isNaN(ven2.toFixed(2)) ? defaultValue : ven2.toFixed(2);
         document.getElementById('totVen3').value = isNaN(ven3.toFixed(2)) ? defaultValue : ven3.toFixed(2);
         document.getElementById('totVen4').value = isNaN(ven4.toFixed(2)) ? defaultValue : ven4.toFixed(2);
-        document.getElementById('mub1').value = isNaN((mub1 * 100).toFixed(2)) ? defaultValue : ((mub1 * 100).toFixed(2));
-        document.getElementById('mub2').value = isNaN((mub2 * 100).toFixed(2)) ? defaultValue : ((mub2 * 100).toFixed(2));
-        document.getElementById('mub3').value = isNaN((mub3 * 100).toFixed(2)) ? defaultValue : ((mub3 * 100).toFixed(2));
-        document.getElementById('mub4').value = isNaN((mub4 * 100).toFixed(2)) ? defaultValue : ((mub4 * 100).toFixed(2));
+        document.getElementById('mub1').value = isNaN((mub1 * 100).toFixed(2)) ? defaultValue : ((mub1 * 100).toFixed(
+            2));
+        document.getElementById('mub2').value = isNaN((mub2 * 100).toFixed(2)) ? defaultValue : ((mub2 * 100).toFixed(
+            2));
+        document.getElementById('mub3').value = isNaN((mub3 * 100).toFixed(2)) ? defaultValue : ((mub3 * 100).toFixed(
+            2));
+        document.getElementById('mub4').value = isNaN((mub4 * 100).toFixed(2)) ? defaultValue : ((mub4 * 100).toFixed(
+            2));
         let sumaCom = com1 + com2 + com3 + com4;
         let sumaVen = ven1 + ven2 + ven3 + ven4;
         let sumaMUB = (sumaVen - sumaCom) / sumaVen;
@@ -635,7 +664,8 @@
         }
         for (let i = 1; i <= 12; i++) {
             aux = (1 - mubTotal);
-            document.getElementById('comMen' + i).value = (document.getElementById('venMen' + i).value * aux).toFixed(0);
+            document.getElementById('comMen' + i).value = (document.getElementById('venMen' + i).value * aux).toFixed(
+                0);
 
         }
         for (let i = 1; i <= 12; i++) {
@@ -689,7 +719,9 @@
         if (document.getElementById("tipoCuota").value == 0) {
             for (let i = 0; i < 12; i++) {
                 interesesPlanes[i] = (tasaEscogida * saldosCapitales[i]) / (360 / frecuenciaEscogida);
-                cuotaCreditos[i] = montoEscogido * ((tasaEscogida / (360 / frecuenciaEscogida) / (1 - Math.pow((1 + (tasaEscogida / (360 / frecuenciaEscogida))), (-(360 / frecuenciaEscogida) * (plazoEscogido / 12))))));
+                cuotaCreditos[i] = montoEscogido * ((tasaEscogida / (360 / frecuenciaEscogida) / (1 - Math.pow((1 + (
+                    tasaEscogida / (360 / frecuenciaEscogida))), (-(360 / frecuenciaEscogida) * (
+                    plazoEscogido / 12))))));
                 amortizaciones[i] = cuotaCreditos[i] - interesesPlanes[i];
                 polizas[i] = (auxPoliza * saldosCapitales[i]) * (frecuenciaEscogida / 30) / 12;
                 cuotasFinales[i] = polizas[i] + cuotaCreditos[i];
@@ -723,26 +755,33 @@
             document.getElementById("costosProduccion" + i).value = document.getElementById("comMen" + i).value;
         }
         for (let i = 1; i <= 12; i++) {
-            document.getElementById("utilidadBruta" + i).value = parseFloat(document.getElementById("ingresos" + i).value) - parseFloat(document.getElementById("costosProduccion" + i).value);
+            document.getElementById("utilidadBruta" + i).value = parseFloat(document.getElementById("ingresos" + i)
+                .value) - parseFloat(document.getElementById("costosProduccion" + i).value);
             document.getElementById("costosFijos" + i).value = document.getElementById("totalOperativo").value;
         }
         for (let i = 1; i <= 12; i++) {
-            document.getElementById("utilidadNeta" + i).value = parseFloat(document.getElementById("utilidadBruta" + i).value) - parseFloat(document.getElementById("costosFijos" + i).value);
+            document.getElementById("utilidadNeta" + i).value = parseFloat(document.getElementById("utilidadBruta" + i)
+                .value) - parseFloat(document.getElementById("costosFijos" + i).value);
             document.getElementById("cuota" + i).value = cuotasFinales[i - 1].toFixed(0);
         }
         for (let i = 1; i <= 12; i++) {
             if (document.getElementById("saldoInicial" + i).value == "") {
-                document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value);
+                document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById(
+                    "utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value);
             } else {
-                document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value) + parseFloat(document.getElementById("saldoInicial" + i).value);
+                document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById(
+                        "utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value) +
+                    parseFloat(document.getElementById("saldoInicial" + i).value);
             }
         }
         for (let i = 2; i <= 12; i++) {
-            document.getElementById("saldoInicial" + i).value = parseFloat(document.getElementById("flujoAcumulado" + (i - 1)).value);
+            document.getElementById("saldoInicial" + i).value = parseFloat(document.getElementById("flujoAcumulado" + (
+                i - 1)).value);
         }
         for (let i = 1; i <= 12; i++) {
             sumaIngresos = sumaIngresos + parseFloat(document.getElementById("ingresos" + i).value);
-            sumaCostoProduccion = sumaCostoProduccion + parseFloat(document.getElementById("costosProduccion" + i).value);
+            sumaCostoProduccion = sumaCostoProduccion + parseFloat(document.getElementById("costosProduccion" + i)
+                .value);
             sumaCostosFijos = sumaCostosFijos + parseFloat(document.getElementById("costosFijos" + i).value);
             sumaUtilidadNeta = sumaUtilidadNeta + parseFloat(document.getElementById("utilidadNeta" + i).value);
             sumaCuota = sumaCuota + parseFloat(document.getElementById("cuota" + i).value);
