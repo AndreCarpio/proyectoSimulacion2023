@@ -26,7 +26,10 @@
                 <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-guardar-simulacion oculto"></i>
                 Guardar
             </button>
-            <button class="btn-exportar-simulacion" onclick="exportarPDF()">Exportar</button>
+            <button class="btn-exportar-simulacion" onclick="exportarPDF()">
+                <i style="margin-right: 5px;" class="fa fa-spinner fa-spin loader-btn-exportar-simulacion oculto"></i>
+                Exportar
+            </button>
         </div>
 
 

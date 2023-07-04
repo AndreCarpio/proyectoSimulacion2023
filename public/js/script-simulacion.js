@@ -25,6 +25,7 @@ class ControladorTab {
         actualizarUtilidad();
         actualizarDatosDelCredito();
         actualizarDesembolso();
+        calcularFlujo();
 
         this.lista.forEach(element => {
             element.classList.add('oculto');
@@ -195,6 +196,7 @@ calcularManufactura();
 sumarOperativo();
 actualizarUtilidad();
 actualizarDatosDelCredito();
+calcularFlujo();
 
 
 /*------------------------------------------------   Codigo Informacion --------------------------------------------------- */
@@ -241,12 +243,23 @@ function validarInputNumber(event) {
     }
 }
 
-function actualizarActividadEnFuncionamiento(){
+function validarInputNumberCostos(event) {
+    var input = event.target;
+
+    if (input.value < 0) {
+        input.value = 0;
+    }
+
+    actualizarUtilidad();
+    calcularFlujo();
+}
+
+function actualizarActividadEnFuncionamiento() {
 
     let valor = document.getElementById('actividad_en_funcionamiento').value;
-    if(valor == '0'){
+    if (valor == '0') {
         document.querySelector('.contenedor-meses-en-funcionamiento').classList.add('oculto')
-    }else{
+    } else {
         document.querySelector('.contenedor-meses-en-funcionamiento').classList.remove('oculto')
     }
 
@@ -500,7 +513,18 @@ function eliminarFilaCostoProductoServico(btn) {
 
 
 function exportarPDF() {
-    var doc = new jsPDF('p', 'px', [1850, 2500]);
+
+    actualizarActividadEnFuncionamiento();
+    actualizarSubTotalMontoEmprendimiento();
+    actualizarTotalOperativoInversion();
+    actualizaSubTotalPlaInversionApPropio();
+    actualizarDesembolso();
+    calcularManufactura();
+    sumarOperativo();
+    actualizarUtilidad();
+    actualizarDatosDelCredito();
+    calcularFlujo();
+    var doc = new jsPDF('p', 'px', [2000, 2500]);
     var margin = 5;
 
     console.log(document.getElementById('totalOperativo').innerHTML)
@@ -529,12 +553,12 @@ function exportarPDF() {
         element.style.width = "100%"
     });
 
-    inputs.forEach( element => {
+    inputs.forEach(element => {
         if (element.id != '') {
             element.value = document.getElementById(element.id).value
         }
     });
-    
+
 
     var options = {
         x: margin,
@@ -548,6 +572,7 @@ function exportarPDF() {
     };
 
     doc.html(elemento, options);
+
 }
 
 
@@ -630,49 +655,26 @@ function cambiarActividad() {
     document.getElementById("interes").value = document.getElementById("actividad").value;
 }
 
-
 function sumarOperativo() {
     document.getElementById("totalOperativo").value =
-        parseFloat(document.getElementById("impuestos").value) +
-        parseFloat(document.getElementById("alimentacion").value) +
-        parseFloat(document.getElementById("servicioLuz").value) +
-        parseFloat(document.getElementById("servicioAgua").value) +
-        parseFloat(document.getElementById("servicioGas").value) +
-        parseFloat(document.getElementById("servicioTel").value) +
-        parseFloat(document.getElementById("servicioInt").value) +
-        parseFloat(document.getElementById("servicioAlq").value) +
-        parseFloat(document.getElementById("servicioTra").value) +
-        parseFloat(document.getElementById("escritorio").value) +
-        parseFloat(document.getElementById("empleados").value) +
-        parseFloat(document.getElementById("promocion").value) +
-        parseFloat(document.getElementById("vestimenta").value) +
-        parseFloat(document.getElementById("salud").value) +
-        parseFloat(document.getElementById("otros").value);
-    actualizarUtilidad();
+        (isNaN(parseFloat(document.getElementById("impuestos").value)) ? 0 : parseFloat(document.getElementById("impuestos").value)) +
+        (isNaN(parseFloat(document.getElementById("alimentacion").value)) ? 0 : parseFloat(document.getElementById("alimentacion").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioLuz").value)) ? 0 : parseFloat(document.getElementById("servicioLuz").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioAgua").value)) ? 0 : parseFloat(document.getElementById("servicioAgua").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioGas").value)) ? 0 : parseFloat(document.getElementById("servicioGas").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioTel").value)) ? 0 : parseFloat(document.getElementById("servicioTel").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioInt").value)) ? 0 : parseFloat(document.getElementById("servicioInt").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioAlq").value)) ? 0 : parseFloat(document.getElementById("servicioAlq").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioTra").value)) ? 0 : parseFloat(document.getElementById("servicioTra").value)) +
+        (isNaN(parseFloat(document.getElementById("escritorio").value)) ? 0 : parseFloat(document.getElementById("escritorio").value)) +
+        (isNaN(parseFloat(document.getElementById("empleados").value)) ? 0 : parseFloat(document.getElementById("empleados").value)) +
+        (isNaN(parseFloat(document.getElementById("promocion").value)) ? 0 : parseFloat(document.getElementById("promocion").value)) +
+        (isNaN(parseFloat(document.getElementById("vestimenta").value)) ? 0 : parseFloat(document.getElementById("vestimenta").value)) +
+        (isNaN(parseFloat(document.getElementById("salud").value)) ? 0 : parseFloat(document.getElementById("salud").value)) +
+        (isNaN(parseFloat(document.getElementById("otros").value)) ? 0 : parseFloat(document.getElementById("otros").value));
 }
-
-function getSumaOpertivo() {
-    let res = parseFloat(document.getElementById("impuestos").value) +
-        parseFloat(document.getElementById("alimentacion").value) +
-        parseFloat(document.getElementById("servicioLuz").value) +
-        parseFloat(document.getElementById("servicioAgua").value) +
-        parseFloat(document.getElementById("servicioGas").value) +
-        parseFloat(document.getElementById("servicioTel").value) +
-        parseFloat(document.getElementById("servicioInt").value) +
-        parseFloat(document.getElementById("servicioAlq").value) +
-        parseFloat(document.getElementById("servicioTra").value) +
-        parseFloat(document.getElementById("escritorio").value) +
-        parseFloat(document.getElementById("empleados").value) +
-        parseFloat(document.getElementById("promocion").value) +
-        parseFloat(document.getElementById("vestimenta").value) +
-        parseFloat(document.getElementById("salud").value) +
-        parseFloat(document.getElementById("otros").value);
-
-
-    return res;
-}
-
 function calcularFlujo() {
+    cambiarActividad();
     //plan coutas
     let tasaEscogida = document.getElementById("interes").value;
     let frecuenciaEscogida = document.getElementById("frecuenciaCredito").value;
@@ -706,41 +708,32 @@ function calcularFlujo() {
             saldosCapitales[i + 1] = saldosCapitales[i] - amortizaciones[i];
         }
     }
-
     //flujo de caja
-    cambiarActividad();
     let sumaIngresos = 0;
     let sumaCostoProduccion = 0;
     let sumaCostosFijos = 0;
     let sumaUtilidadNeta = 0;
     let sumaCuota = 0;
     //presupuesto
-    let auxTotalPlanInversion = controladorPresupuestoTotal.getTotalPlaInversion(cotroladorPresupuesto.getTablasTotales());
-    document.getElementById("inversion0").value = auxTotalPlanInversion;
-    document.getElementById("saldoInicial0").value = auxTotalPlanInversion;
-    //document.getElementById("inversion0").value = 55710.00;
-    //document.getElementById("saldoInicial0").value = 55710;
+    //document.getElementById("inversion0").value = document.getElementById("presupuesto").value;
+    //document.getElementById("saldoInicial0").value = document.getElementById("presupuesto").value;
+    document.getElementById("inversion0").value = 55710.00;
+    document.getElementById("saldoInicial0").value = 55710;
     for (let i = 1; i <= 12; i++) {
         document.getElementById("ingresos" + i).value = document.getElementById("venMen" + i).value;
         document.getElementById("costosProduccion" + i).value = document.getElementById("comMen" + i).value;
-    }
-    for (let i = 1; i <= 12; i++) {
         document.getElementById("utilidadBruta" + i).value = parseFloat(document.getElementById("ingresos" + i).value) - parseFloat(document.getElementById("costosProduccion" + i).value);
         document.getElementById("costosFijos" + i).value = document.getElementById("totalOperativo").value;
-    }
-    for (let i = 1; i <= 12; i++) {
         document.getElementById("utilidadNeta" + i).value = parseFloat(document.getElementById("utilidadBruta" + i).value) - parseFloat(document.getElementById("costosFijos" + i).value);
         document.getElementById("cuota" + i).value = cuotasFinales[i - 1].toFixed(0);
-    }
-    for (let i = 1; i <= 12; i++) {
         if (document.getElementById("saldoInicial" + i).value == "") {
             document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value);
         } else {
             document.getElementById("flujoAcumulado" + i).value = parseFloat(document.getElementById("utilidadNeta" + i).value) - parseFloat(document.getElementById("cuota" + i).value) + parseFloat(document.getElementById("saldoInicial" + i).value);
         }
-    }
-    for (let i = 2; i <= 12; i++) {
-        document.getElementById("saldoInicial" + i).value = parseFloat(document.getElementById("flujoAcumulado" + (i - 1)).value);
+        if (i != 12) {
+            document.getElementById("saldoInicial" + (i + 1)).value = parseFloat(document.getElementById("flujoAcumulado" + i).value);
+        }
     }
     for (let i = 1; i <= 12; i++) {
         sumaIngresos = sumaIngresos + parseFloat(document.getElementById("ingresos" + i).value);
@@ -758,7 +751,7 @@ function calcularFlujo() {
     document.getElementById('cuota13').value = sumaCuota;
     document.getElementById('flujoAcumulado13').value = document.getElementById('flujoAcumulado12').value;
 
-    //flujos
+    //flujos van tir
     let flujos = [];
     flujos[0] = parseFloat(document.getElementById("monto").value) * (-1);
     for (let i = 1; i <= plazoEscogido; i++) {
@@ -766,7 +759,7 @@ function calcularFlujo() {
         //flujos[i] = 2556;
         //console.log(flujos[i]);
     }
-    console.log(flujos[0]);
+    //console.log(flujos[0]);
     let tasa = parseFloat(document.getElementById("interes").value) / 12;
     let van = calcularVAN(flujos, tasa);
     let tir = calculateTIR(flujos);
@@ -828,6 +821,12 @@ function calculateDerivative(cashFlow, rate) {
     return derivative;
 }
 
+
+
+/*--------------------------------------------------------------------------------------------------------------- */
+
+
+
 function actualizarUtilidad() {
 
     let auxVentasCostos = calcularTotal();
@@ -844,9 +843,29 @@ function actualizarUtilidad() {
 }
 
 
-function actualizarDatosDelCredito(){
+function actualizarDatosDelCredito() {
 
     document.getElementById('monto').value = controladorPresupuestoTotal.getMontoAfinanciar(cotroladorPresupuesto.getTablasTotales());
     document.getElementById('interes').value = document.getElementById('actividad').value;
 
+}
+
+function getSumaOpertivo() {
+    let res = (isNaN(parseFloat(document.getElementById("impuestos").value)) ? 0 : parseFloat(document.getElementById("impuestos").value)) +
+        (isNaN(parseFloat(document.getElementById("alimentacion").value)) ? 0 : parseFloat(document.getElementById("alimentacion").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioLuz").value)) ? 0 : parseFloat(document.getElementById("servicioLuz").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioAgua").value)) ? 0 : parseFloat(document.getElementById("servicioAgua").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioGas").value)) ? 0 : parseFloat(document.getElementById("servicioGas").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioTel").value)) ? 0 : parseFloat(document.getElementById("servicioTel").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioInt").value)) ? 0 : parseFloat(document.getElementById("servicioInt").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioAlq").value)) ? 0 : parseFloat(document.getElementById("servicioAlq").value)) +
+        (isNaN(parseFloat(document.getElementById("servicioTra").value)) ? 0 : parseFloat(document.getElementById("servicioTra").value)) +
+        (isNaN(parseFloat(document.getElementById("escritorio").value)) ? 0 : parseFloat(document.getElementById("escritorio").value)) +
+        (isNaN(parseFloat(document.getElementById("empleados").value)) ? 0 : parseFloat(document.getElementById("empleados").value)) +
+        (isNaN(parseFloat(document.getElementById("promocion").value)) ? 0 : parseFloat(document.getElementById("promocion").value)) +
+        (isNaN(parseFloat(document.getElementById("vestimenta").value)) ? 0 : parseFloat(document.getElementById("vestimenta").value)) +
+        (isNaN(parseFloat(document.getElementById("salud").value)) ? 0 : parseFloat(document.getElementById("salud").value)) +
+        (isNaN(parseFloat(document.getElementById("otros").value)) ? 0 : parseFloat(document.getElementById("otros").value));
+
+    return res;
 }

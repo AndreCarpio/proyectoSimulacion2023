@@ -6,105 +6,105 @@
             <label class="form-label">Impuestos :</label>
             <input class="form-control" type="number" id="impuestos" min="0"
                 value="{{ $analisisFinancieroModel->impuestos ?? '0' }}" name="impuestos"
-                oninput="validarInputNumber(event); sumarOperativo()">
+                oninput="validarInputNumberCostos(event); sumarOperativo()">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Alimentación :</label>
             <input class="form-control" type="number" id="alimentacion" min="0"
                 value="{{ $analisisFinancieroModel->alimentacion ?? '0' }}" name="alimentacion"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Luz :</label>
             <input class="form-control" type="number" id="servicioLuz" min="0"
                 value="{{ $analisisFinancieroModel->servicioLuz ?? '0' }}" name="servicioLuz"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Agua :</label>
             <input class="form-control" type="number" id="servicioAgua" min="0"
                 value="{{ $analisisFinancieroModel->servicioAgua ?? '0' }}" name="servicioAgua"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Gas :</label>
             <input class="form-control" type="number" id="servicioGas" min="0"
                 value="{{ $analisisFinancieroModel->servicioGas ?? '0' }}" name="servicioGas"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Telefono :</label>
             <input class="form-control" type="number" id="servicioTel" min="0"
                 value="{{ $analisisFinancieroModel->servicioTelefono ?? '0' }}" name="servicioTelefono"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Internet :</label>
             <input class="form-control" type="number" id="servicioInt" min="0"
                 value="{{ $analisisFinancieroModel->servicioInternet ?? '0' }}" name="servicioInternet"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Alquiler :</label>
             <input class="form-control" type="number" id="servicioAlq" min="0"
                 value="{{ $analisisFinancieroModel->servicioAlquiler ?? '0' }}" name="servicioAlquiler"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de transporte :</label>
             <input class="form-control" type="number" id="servicioTra" min="0"
                 value="{{ $analisisFinancieroModel->ServicioTransporte ?? '0' }}" name="ServicioTransporte"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Material de Escritorio :</label>
             <input class="form-control" type="number" id="escritorio" min="0"
                 value="{{ $analisisFinancieroModel->materialEscritorio ?? '0' }}" name="materialEscritorio"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Pago a Empleados :</label>
             <input class="form-control" type="number" id="empleados" min="0"
                 value="{{ $analisisFinancieroModel->pagoEmpleados ?? '0' }}" name="pagoEmpleados"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Promoción :</label>
             <input class="form-control" type="number" id="promocion" min="0"
                 value="{{ $analisisFinancieroModel->promocion ?? '0' }}" name="promocion"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Vestimenta :</label>
             <input class="form-control" type="number" id="vestimenta" min="0"
                 value="{{ $analisisFinancieroModel->vestimenta ?? '0' }}" name="vestimenta"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Salud :</label>
             <input class="form-control" type="number" id="salud" min="0"
                 value="{{ $analisisFinancieroModel->salud ?? '0' }}" name="salud"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Otros :</label>
             <input class="form-control" type="number" id="otros" min="0"
                 value="{{ $analisisFinancieroModel->otros ?? '0' }}" name="otros"
-                oninput="validarInputNumber(event); sumarOperativo();">
+                oninput="validarInputNumberCostos(event); sumarOperativo();">
         </div>
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">TOTAL :</label>
