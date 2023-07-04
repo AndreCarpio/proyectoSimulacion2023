@@ -24,6 +24,7 @@ class ControladorTab {
     mostrarSeccion(seccion) {
         actualizarUtilidad();
         actualizarDatosDelCredito();
+        actualizarDesembolso();
 
         this.lista.forEach(element => {
             element.classList.add('oculto');
@@ -185,7 +186,7 @@ var controladorTab = new ControladorTab(document.querySelector('.contenedor-form
 var cotroladorPresupuesto = new ControladorPresupuesto(document.querySelector('.contenedor-formulario-simulacion'));
 var controladorPresupuestoTotal = new ControladorPresupuestoTotal(document.querySelector('.contenedor-formulario-simulacion'));
 
-
+actualizarActividadEnFuncionamiento();
 actualizarSubTotalMontoEmprendimiento();
 actualizarTotalOperativoInversion();
 actualizaSubTotalPlaInversionApPropio();
@@ -238,6 +239,17 @@ function validarInputNumber(event) {
     if (input.value < 0) {
         input.value = 0;
     }
+}
+
+function actualizarActividadEnFuncionamiento(){
+
+    let valor = document.getElementById('actividad_en_funcionamiento').value;
+    if(valor == '0'){
+        document.querySelector('.contenedor-meses-en-funcionamiento').classList.add('oculto')
+    }else{
+        document.querySelector('.contenedor-meses-en-funcionamiento').classList.remove('oculto')
+    }
+
 }
 /*------------------------------------------------  Codigo  presupuesto --------------------------------------------------- */
 
@@ -488,18 +500,21 @@ function eliminarFilaCostoProductoServico(btn) {
 
 
 function exportarPDF() {
-    var doc = new jsPDF('p', 'px', [1450, 1700]);
+    var doc = new jsPDF('p', 'px', [1850, 2500]);
     var margin = 5;
-    var pageWidth = doc.internal.pageSize.width - margin * 2;
+
+    console.log(document.getElementById('totalOperativo').innerHTML)
 
     var elemento = document.createElement('main');
     elemento.innerHTML = document.querySelector('.contenido-main').innerHTML;
     elemento.querySelector('.contenedor-formulario-simulacion').style.margin = '0px';
-    elemento.querySelector('.contenedor-formulario-simulacion').style.width = '1200px';
+    elemento.querySelector('.contenedor-formulario-simulacion').style.width = '1500px';
     elemento.style.padding = "0px"
 
-    var secciones = elemento.querySelectorAll('.seccion');
-    var btns = elemento.querySelectorAll('button');
+    let secciones = elemento.querySelectorAll('.seccion');
+    let btns = elemento.querySelectorAll('button');
+    let selects = elemento.querySelectorAll('select');
+    let inputs = elemento.querySelectorAll('input');
 
     elemento.querySelector('.pestaniaSimulacion').remove();
 
@@ -509,6 +524,17 @@ function exportarPDF() {
     btns.forEach(function (element) {
         element.remove();
     });
+    selects.forEach(function (element) {
+        element.classList.remove('form-select');
+        element.style.width = "100%"
+    });
+
+    inputs.forEach( element => {
+        if (element.id != '') {
+            element.value = document.getElementById(element.id).value
+        }
+    });
+    
 
     var options = {
         x: margin,

@@ -58,7 +58,7 @@
             </div>
             <div class="col">
                 <label for="codeudor_ci_extension" class="form-label">Extensión</label>
-                <input maxlength="4" type="text" class="form-control input-pequenio" id="codeudor_ci_extension"
+                <input  type="text" class="form-control input-pequenio" id="codeudor_ci_extension"
                     maxlength="100" name="codeudor_extension" value="{{ $codeudor->extension ?? '' }}">
             </div>
         </div>
@@ -176,7 +176,7 @@
     <div class="col">
         <label for="actividad_en_funcionamiento" class="form-label">La actividad ya está funcionando ? </label>
         <select class="form-select" aria-label="Default select example" id="actividad_en_funcionamiento"
-            name="actividad_en_funcionamiento">
+            name="actividad_en_funcionamiento" onchange="actualizarActividadEnFuncionamiento();">
             @if ($descripcionPlanNegocios != null && $descripcionPlanNegocios->enFuncionando != null)
                 @if ($descripcionPlanNegocios->enFuncionando == 1)
                     <option value="1" selected>si</option>
@@ -191,7 +191,7 @@
             @endif
         </select>
     </div>
-    <div class="col">
+    <div class="col contenedor-meses-en-funcionamiento">
         <label for="hace_cuanto_inicio" class="form-label">¿Hace cuántos meses inició ?</label>
         <input type="number" min="0" class="form-control input-mediano" id="hace_cuanto_inicio"
             oninput="validarInputNumber(event);" name="hace_cuanto_inicio"

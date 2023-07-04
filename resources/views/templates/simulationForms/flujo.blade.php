@@ -4,96 +4,111 @@
         <p style="text-align: center" class="titulo-seccion">Costos Operativos</p>
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Impuestos :</label>
-            <input class="form-control" type="number" id="impuestos" min="0" value="{{$analisisFinancieroModel->impuestos ?? '0' }}" name="impuestos"
+            <input class="form-control" type="number" id="impuestos" min="0"
+                value="{{ $analisisFinancieroModel->impuestos ?? '0' }}" name="impuestos"
                 oninput="validarInputNumber(event); sumarOperativo()">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Alimentación :</label>
-            <input class="form-control" type="number" id="alimentacion" min="0" value="{{$analisisFinancieroModel->alimentacion ?? '0' }}" name="alimentacion"
+            <input class="form-control" type="number" id="alimentacion" min="0"
+                value="{{ $analisisFinancieroModel->alimentacion ?? '0' }}" name="alimentacion"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Luz :</label>
-            <input class="form-control" type="number" id="servicioLuz" min="0" value="{{$analisisFinancieroModel->servicioLuz ?? '0' }}" name="servicioLuz"
+            <input class="form-control" type="number" id="servicioLuz" min="0"
+                value="{{ $analisisFinancieroModel->servicioLuz ?? '0' }}" name="servicioLuz"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Agua :</label>
-            <input class="form-control" type="number" id="servicioAgua" min="0" value="{{$analisisFinancieroModel->servicioAgua ?? '0' }}" name="servicioAgua"
+            <input class="form-control" type="number" id="servicioAgua" min="0"
+                value="{{ $analisisFinancieroModel->servicioAgua ?? '0' }}" name="servicioAgua"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Gas :</label>
-            <input class="form-control" type="number" id="servicioGas" min="0" value="{{$analisisFinancieroModel->servicioGas ?? '0' }}" name="servicioGas"
+            <input class="form-control" type="number" id="servicioGas" min="0"
+                value="{{ $analisisFinancieroModel->servicioGas ?? '0' }}" name="servicioGas"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Telefono :</label>
-            <input class="form-control" type="number" id="servicioTel" min="0" value="{{$analisisFinancieroModel->servicioTelefono ?? '0' }}" name="servicioTelefono"
+            <input class="form-control" type="number" id="servicioTel" min="0"
+                value="{{ $analisisFinancieroModel->servicioTelefono ?? '0' }}" name="servicioTelefono"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Internet :</label>
-            <input class="form-control" type="number" id="servicioInt" min="0" value="{{$analisisFinancieroModel->servicioInternet ?? '0' }}" name="servicioInternet"
+            <input class="form-control" type="number" id="servicioInt" min="0"
+                value="{{ $analisisFinancieroModel->servicioInternet ?? '0' }}" name="servicioInternet"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de Alquiler :</label>
-            <input class="form-control" type="number" id="servicioAlq" min="0" value="{{$analisisFinancieroModel->servicioAlquiler ?? '0' }}" name="servicioAlquiler"
+            <input class="form-control" type="number" id="servicioAlq" min="0"
+                value="{{ $analisisFinancieroModel->servicioAlquiler ?? '0' }}" name="servicioAlquiler"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Servicio de transporte :</label>
-            <input class="form-control" type="number" id="servicioTra" min="0" value="{{$analisisFinancieroModel->ServicioTransporte ?? '0' }}" name="ServicioTransporte"
+            <input class="form-control" type="number" id="servicioTra" min="0"
+                value="{{ $analisisFinancieroModel->ServicioTransporte ?? '0' }}" name="ServicioTransporte"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Material de Escritorio :</label>
-            <input class="form-control" type="number" id="escritorio" min="0" value="{{$analisisFinancieroModel->materialEscritorio ?? '0' }}" name="materialEscritorio"
+            <input class="form-control" type="number" id="escritorio" min="0"
+                value="{{ $analisisFinancieroModel->materialEscritorio ?? '0' }}" name="materialEscritorio"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Pago a Empleados :</label>
-            <input class="form-control" type="number" id="empleados" min="0" value="{{$analisisFinancieroModel->pagoEmpleados ?? '0' }}" name="pagoEmpleados"
+            <input class="form-control" type="number" id="empleados" min="0"
+                value="{{ $analisisFinancieroModel->pagoEmpleados ?? '0' }}" name="pagoEmpleados"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Promoción :</label>
-            <input class="form-control" type="number" id="promocion" min="0" value="{{$analisisFinancieroModel->promocion ?? '0' }}" name="promocion"
+            <input class="form-control" type="number" id="promocion" min="0"
+                value="{{ $analisisFinancieroModel->promocion ?? '0' }}" name="promocion"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Vestimenta :</label>
-            <input class="form-control" type="number" id="vestimenta" min="0" value="{{$analisisFinancieroModel->vestimenta ?? '0' }}" name="vestimenta"
+            <input class="form-control" type="number" id="vestimenta" min="0"
+                value="{{ $analisisFinancieroModel->vestimenta ?? '0' }}" name="vestimenta"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Salud :</label>
-            <input class="form-control" type="number" id="salud" min="0" value="{{$analisisFinancieroModel->salud ?? '0' }}" name="salud"
+            <input class="form-control" type="number" id="salud" min="0"
+                value="{{ $analisisFinancieroModel->salud ?? '0' }}" name="salud"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
 
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">Otros :</label>
-            <input class="form-control" type="number" id="otros" min="0" value="{{$analisisFinancieroModel->otros ?? '0' }}" name="otros"
+            <input class="form-control" type="number" id="otros" min="0"
+                value="{{ $analisisFinancieroModel->otros ?? '0' }}" name="otros"
                 oninput="validarInputNumber(event); sumarOperativo();">
         </div>
         <div class="contenedor-dato-costos-opetativos">
             <label class="form-label">TOTAL :</label>
-            <input class="form-control" type="number" id="totalOperativo" min="0" readonly>
+            <input class="form-control" style="border: none;" type="number" id="totalOperativo" min="0" readonly>
         </div>
     </div>
 
@@ -106,23 +121,28 @@
                 <tbody>
                     <tr>
                         <td style="vertical-align: middle;padding-left: 15px;">(+)Ingresos Totales:</td>
-                        <td><input class="form-control" type="text" id="ingresosTotales"></td>
+                        <td><input style="border: none;" readonly class="form-control" type="text"
+                                id="ingresosTotales"></td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle;padding-left: 15px;">(-)Costos Directos:</td>
-                        <td><input class="form-control" type="text" id="costosDirectos"></td>
+                        <td><input style="border: none;" readonly class="form-control" type="text"
+                                id="costosDirectos"></td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle;padding-left: 15px;">(=)Utilidad Bruta:</td>
-                        <td><input class="form-control" type="text" id="utilidadBruta"></td>
+                        <td><input style="border: none;" readonly class="form-control" type="text"
+                                id="utilidadBruta"></td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle;padding-left: 15px;">(-)Costo Operativo:</td>
-                        <td><input class="form-control" type="text" id="costoOperativo"></td>
+                        <td><input style="border: none;" readonly class="form-control" type="text"
+                                id="costoOperativo"></td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle;padding-left: 15px;">(=)Utilidad Operativa:</td>
-                        <td><input class="form-control" type="text" id="utilidadOperativa"></td>
+                        <td><input style="border: none;" readonly class="form-control" type="text"
+                                id="utilidadOperativa"></td>
                     </tr>
                 </tbody>
             </table>
@@ -133,55 +153,70 @@
 
             <p style="text-align: center" class="titulo-seccion">Datos Del Credito</p>
 
+            <div class="contenedor-dato-credito">
+                <label class="form-label">Monto Financiar : </label>
+                <input class="form-control" style="border: none;" readonly type="number" id="monto"
+                    min="0" value="{{ $analisisFinancieroModel->monto ?? '0' }}"
+                    oninput="validarInputNumber(event); calcularFlujo()" name="montoAnlisisFinanciero">
+            </div>
 
             <div class="contenedor-dato-credito">
                 <label class="form-label">Frecuencia: </label>
                 <select class="form-select" id="frecuenciaCredito" oninput="calcularFlujo()" name="frecuencia">
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '30' ? 'selected' : '' }} value="30">Mensual</option>
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '60' ? 'selected' : '' }} value="60">Bimestral</option>
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '90' ? 'selected' : '' }} value="90">Trimestral</option>
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '120' ? 'selected' : '' }} value="120">Cuatrimestral</option>
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '180' ? 'selected' : '' }} value="180">Semestral</option>
-                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '360' ? 'selected' : '' }} value="360">Anual</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '30' ? 'selected' : '' }}
+                        value="30">Mensual</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '60' ? 'selected' : '' }}
+                        value="60">Bimestral</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '90' ? 'selected' : '' }}
+                        value="90">Trimestral</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '120' ? 'selected' : '' }}
+                        value="120">Cuatrimestral</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '180' ? 'selected' : '' }}
+                        value="180">Semestral</option>
+                    <option {{ ($analisisFinancieroModel->frecuencia ?? '') == '360' ? 'selected' : '' }}
+                        value="360">Anual</option>
                 </select>
             </div>
             <div class="contenedor-dato-credito">
                 <label class="form-label">Poliza: </label>
                 <input class="form-control" type="number" id="poliza" min="0"
-                    value="{{$analisisFinancieroModel->poliza ?? '0.395' }}" oninput="validarInputNumber(event); calcularFlujo()" name="poliza">
+                    value="{{ $analisisFinancieroModel->poliza ?? '0.395' }}"
+                    oninput="validarInputNumber(event); calcularFlujo()" name="poliza">
             </div>
 
-            <div class="contenedor-dato-credito">
-                <label class="form-label">Monto : </label>
-                <input class="form-control" type="number" id="monto" min="0" value="{{$analisisFinancieroModel->monto ?? '0' }}"
-                    oninput="validarInputNumber(event); calcularFlujo()" name="montoAnlisisFinanciero">
-            </div>
+
             <div class="contenedor-dato-credito">
                 <label class="form-label">Plazo (meses): </label>
-                <input class="form-control" type="number" id="plazo" min="0"  name="plazoMeses" value="{{$analisisFinancieroModel->plazoMeses ?? '0' }}"
+                <input class="form-control" type="number" id="plazo" min="0" name="plazoMeses"
+                    value="{{ $analisisFinancieroModel->plazoMeses ?? '0' }}"
                     oninput="validarInputNumber(event); calcularFlujo()">
             </div>
 
-            <div class="contenedor-dato-credito">
-                <label class="form-label">Tasa de interes (%): </label>
-                <input class="form-control" type="number" id="interes" min="0" 
-                    oninput="validarInputNumber(event); calcularFlujo()">
-            </div>
 
             <div class="contenedor-dato-credito">
                 <label class="form-label">Tipo de Cuota: </label>
                 <select class="form-select" id="tipoCuota" oninput="calcularFlujo()" name="tipoCuota">
-                    <option {{ ($analisisFinancieroModel->tipoCuota ?? '') == '0' ? 'selected' : '' }}  value="0">Cuota Fija</option>
-                    <option {{ ($analisisFinancieroModel->tipoCuota ?? '') == '1' ? 'selected' : '' }}  value="1">Cuota Variable</option>
+                    <option {{ ($analisisFinancieroModel->tipoCuota ?? '') == '0' ? 'selected' : '' }} value="0">
+                        Cuota Fija</option>
+                    <option {{ ($analisisFinancieroModel->tipoCuota ?? '') == '1' ? 'selected' : '' }} value="1">
+                        Cuota Variable</option>
                 </select>
             </div>
 
             <div class="contenedor-dato-credito">
                 <label class="form-label">Actividad: </label>
                 <select class="form-select" id="actividad" oninput="calcularFlujo()" name="actividad">
-                    <option {{ ($analisisFinancieroModel->actividad ?? '') == '0.07' ? 'selected' : '' }} value="0.07">Productiva</option>
-                    <option {{ ($analisisFinancieroModel->actividad ?? '') == '0.115' ? 'selected' : '' }} value="0.115">Servicios</option>
+                    <option {{ ($analisisFinancieroModel->actividad ?? '') == '0.07' ? 'selected' : '' }}
+                        value="0.07">Productiva</option>
+                    <option {{ ($analisisFinancieroModel->actividad ?? '') == '0.115' ? 'selected' : '' }}
+                        value="0.115">Servicios</option>
                 </select>
+            </div>
+
+            <div class="contenedor-dato-credito">
+                <label class="form-label">Tasa de interes (%): </label>
+                <input class="form-control" style="border: none;" readonly type="number" id="interes"
+                    min="0" oninput="validarInputNumber(event); calcularFlujo()">
             </div>
         </div>
 
@@ -379,5 +414,3 @@
 
 <button id="calcularTodo" type="button" onclick="calcularFlujo()">Calcular</button>
 <br>
-
-

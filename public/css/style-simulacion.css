@@ -29,6 +29,10 @@ body {
 
 }
 
+.form-label{
+    text-wrap: wrap;
+}
+
 .pestaniaSimulacion .form-select {
     font-size: 1rem !important;
     outline: none;
