@@ -26,7 +26,6 @@ class simulationController extends Controller
    function saveSimulation(Request $request)
    {
       $usuario = Auth::user();
-      // $elemento = simulationModel::where('idUser', $usuario->id)->where('idSimulation', $request->input('idSimulation'))->first();
 
       try {
          $deudor = emprendedorModel::updateOrCreate(

@@ -412,5 +412,5 @@
 <input type="text" id="tir" value="">&nbsp;&nbsp;<b id="respuestaTIR"></b>
 <br>
 
-<button id="calcularTodo" type="button" onclick="calcularFlujo()">Calcular</button>
+
 <br>
